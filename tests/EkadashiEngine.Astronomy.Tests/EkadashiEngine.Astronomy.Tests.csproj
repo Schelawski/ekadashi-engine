@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/EkadashiEngine.Core/EkadashiEngine.Core.csproj" />
+    <ProjectReference Include="../../src/EkadashiEngine.Astronomy.SwissEphemeris/EkadashiEngine.Astronomy.SwissEphemeris.csproj" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="xunit.runner.visualstudio" PrivateAssets="all" />
+    <Using Include="Xunit" />
+    <None Include="../../data/reference/astronomy/swetest-2.10.03.json"
+          Link="Fixtures/swetest-2.10.03.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

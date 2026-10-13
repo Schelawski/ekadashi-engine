@@ -8,9 +8,16 @@ in **Marga Smriti**. Fachliches Konzept: [Issue #1](https://github.com/Schelawsk
 Das Desktop-Grundgerüst aus [Issue #2](https://github.com/Schelawski/ekadashi-engine/issues/2)
 enthält eine Hauptansicht mit Ort, Jahr, Tradition und Ergebnistabelle.
 Berlin, 2026 und Ananda Marga sind vorausgewählt. Der Berechnen-Button ist
-deaktiviert: Astronomie, Traditionsregeln und Kalendervergleich sind noch nicht
+deaktiviert: Traditionsregeln und Kalendervergleich sind noch nicht
 implementiert. Es werden ausdrücklich keine Beispieltermine als berechnete
 Fastentage angezeigt. Auch die zweite Tradition ist derzeit nur ein Platzhalter.
+
+Die astronomische Basis aus [Issue #3](https://github.com/Schelawski/ekadashi-engine/issues/3)
+ist implementiert: Sonne/Mond, Winkeldifferenz, Tithi, lokaler Sonnenaufgang und
+Diagnoseobjekte. SwissEphSharp ist in einem separaten Adapter gekapselt;
+NodaTime liefert die IANA-Zeitzonendaten. Diese Dienste sind in der Desktop-DI
+registriert, aber noch nicht mit einem Berechnungsworkflow in der UI verbunden.
+API, Konventionen, Grenzen und Referenztests stehen in [Astronomie](docs/astronomy.md).
 
 ## Voraussetzungen und Start
 
@@ -29,7 +36,13 @@ dotnet run --project src/EkadashiEngine.Desktop
 Tests unabhängig vom manuellen App-Start ausführen:
 
 ```powershell
-dotnet test tests/EkadashiEngine.Tests/EkadashiEngine.Tests.csproj
+dotnet test EkadashiEngine.slnx
+```
+
+Nur die Fachlogik und den Astronomieadapter prüfen, ohne Desktop-/Avalonia-Projekt:
+
+```powershell
+dotnet test tests/EkadashiEngine.Astronomy.Tests/EkadashiEngine.Astronomy.Tests.csproj
 ```
 
 Der Avalonia-Headless-Smoke-Test lädt die echten XAML-Ansichten und Styles,
@@ -43,17 +56,20 @@ Prüfung des nativen Fensterstarts.
 
 ```text
 src/
-  EkadashiEngine.Core/       UI-unabhängige Orts- und Traditionsmodelle
-  EkadashiEngine.Desktop/    Avalonia, ViewModels, DI und Logging
+  EkadashiEngine.Core/                      Modelle, Tithi, Diagnose, Schnittstellen
+  EkadashiEngine.Astronomy.SwissEphemeris/   Austauschbarer Astronomieadapter
+  EkadashiEngine.Desktop/                   Avalonia, ViewModels, DI und Logging
 tests/
-  EkadashiEngine.Tests/      xUnit, Headless-Smoke-Test und Architekturtest
+  EkadashiEngine.Astronomy.Tests/           UI-unabhängige Fach- und Referenztests
+  EkadashiEngine.Tests/                     Desktop-Smoke-Test und Architekturtest
 data/
-  reference/                Spätere offizielle Kalender mit Quellenangaben
+  reference/                Astronomische Referenzen; später offizielle Kalender
   locations/                Späterer Ortskatalog
   exports/                  Spätere lokale Exporte und Testvektoren
 ```
 
-Die Desktop-Schicht referenziert Core. Core hat keine Paket- oder UI-Abhängigkeiten.
+Die Desktop-Schicht referenziert Core und den Astronomieadapter. Core nutzt
+NodaTime, hat aber keine Abhängigkeit von UI oder astronomischer Bibliothek.
 Weitere fachliche Dienste und austauschbare Traditionsregeln gehören in Core;
 die Verdrahtung erfolgt in `ServiceConfiguration` im Desktop-Projekt.
 `Microsoft.Extensions.DependencyInjection` löst ViewModels und Logger auf.
@@ -78,8 +94,10 @@ und aktualisierte Lockdateien prüfen.
 - Der Fastentag ist ein lokales Kalenderdatum; astronomische Zeitpunkte können
   in UTC vorliegen. Die Erinnerungseinstellungen der App bestimmen keinen Fastentag.
 - Die Ananda-Marga-Regel wird erst anhand offizieller Kalender validiert.
-- Vaishnava-/ISKCON-Regeln sowie Swiss-Ephemeris-Anbindung und Lizenzprüfung
-  sind spätere Arbeitsschritte.
+- Vaishnava-/ISKCON-Regeln und die Lizenzentscheidung für eine spätere direkte
+  Produktintegration sind weitere Arbeitsschritte. Die Abhängigkeit dieses
+  Referenzprojekts und ihre Original-Lizenztexte sind in
+  [Drittanbieterhinweise](THIRD-PARTY-NOTICES.md) dokumentiert.
 - Für Flutter/Dart sind gemeinsame Spezifikation und Testvektoren vorgesehen.
   Day −1 (Vorabend), Day 0 (Fastentag) und Day +1 (Fastenbrechen, primär informativ)
   bleiben eine getrennte mobile UX-Schicht.

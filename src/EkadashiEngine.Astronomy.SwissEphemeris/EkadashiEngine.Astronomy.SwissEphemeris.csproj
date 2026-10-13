@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="../EkadashiEngine.Core/EkadashiEngine.Core.csproj" />
+    <PackageReference Include="SwissEphSharp" />
+    <None Include="../../third-party/SwissEphSharp/*"
+          Link="third-party/SwissEphSharp/%(Filename)%(Extension)"
+          CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

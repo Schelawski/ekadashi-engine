@@ -1,3 +1,5 @@
+using EkadashiEngine.Astronomy.SwissEphemeris;
+using EkadashiEngine.Core.Astronomy;
 using EkadashiEngine.Desktop.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -17,6 +19,11 @@ public static class ServiceConfiguration
                 options.SingleLine = true;
                 options.TimestampFormat = "HH:mm:ss ";
             }));
+        services.AddSingleton<SwissEphemerisAstronomyService>();
+        services.AddSingleton<IAstronomyService>(provider => provider.GetRequiredService<SwissEphemerisAstronomyService>());
+        services.AddSingleton<ISunriseCalculator>(provider => provider.GetRequiredService<SwissEphemerisAstronomyService>());
+        services.AddSingleton<ITithiCalculator, TithiCalculator>();
+        services.AddTransient<AstronomyDiagnosticsService>();
         services.AddTransient<MainWindowViewModel>();
 
         return services.BuildServiceProvider(new ServiceProviderOptions

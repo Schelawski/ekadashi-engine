@@ -426,8 +426,18 @@
           "xunit.v3.runner.common": "[3.2.2]"
         }
       },
+      "ekadashiengine.astronomy.swissephemeris": {
+        "type": "Project",
+        "dependencies": {
+          "EkadashiEngine.Core": "[1.0.0, )",
+          "SwissEphSharp": "[2.10.3.1, )"
+        }
+      },
       "ekadashiengine.core": {
-        "type": "Project"
+        "type": "Project",
+        "dependencies": {
+          "NodaTime": "[3.3.4, )"
+        }
       },
       "ekadashiengine.desktop": {
         "type": "Project",
@@ -438,6 +448,7 @@
           "Avalonia.Fonts.Inter": "[12.1.4, )",
           "Avalonia.Themes.Fluent": "[12.1.4, )",
           "CommunityToolkit.Mvvm": "[8.4.0, )",
+          "EkadashiEngine.Astronomy.SwissEphemeris": "[1.0.0, )",
           "EkadashiEngine.Core": "[1.0.0, )",
           "Microsoft.Extensions.DependencyInjection": "[10.0.12, )",
           "Microsoft.Extensions.Logging.Console": "[10.0.12, )",
@@ -534,6 +545,18 @@
           "Microsoft.Extensions.Logging": "10.0.12",
           "Microsoft.Extensions.Logging.Abstractions": "10.0.12"
         }
+      },
+      "NodaTime": {
+        "type": "CentralTransitive",
+        "requested": "[3.3.4, )",
+        "resolved": "3.3.4",
+        "contentHash": "iLaEeOFjWHVibXmHa8WOMTkZdxvzTH6b7qNYts7cBmSfttCDenguHvEJsuAQGBDPV4LSA+7c0nyt4A0AR6z6zQ=="
+      },
+      "SwissEphSharp": {
+        "type": "CentralTransitive",
+        "requested": "[2.10.3.1, )",
+        "resolved": "2.10.3.1",
+        "contentHash": "ILYegLRAhG2UTpexG65K7KDZ1MdkJCROK5TyheS/GWKU85/83vZBJRslVwgf0tAPCqyUFraCvloj7LxMVf5wWw=="
       }
     }
   }

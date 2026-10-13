@@ -1,0 +1,560 @@
+{
+  "source": "Astrodienst swetest64 2.10.03 (native C), Moshier, apparent geocentric ecliptic longitudes of date",
+  "sourceUrl": "https://github.com/aloistr/swisseph/blob/aacf962d19d79f8bc921dbcdaacf306d85be1917/windows/programs/swetest64.exe",
+  "sha256": "c44d29554927ad1ba44196b5b274904f012dacaa3b4797f7f4ae6a48618fc1c5",
+  "longitudeToleranceDegrees": 1e-05,
+  "sunriseToleranceSeconds": 2,
+  "sunriseTimeScale": "UT1; compared to UTC with a 2-second tolerance for these contemporary fixtures",
+  "cases": [
+    {
+      "location": {
+        "displayName": "Berlin",
+        "country": "DE",
+        "latitude": 52.52,
+        "longitude": 13.405,
+        "timeZoneId": "Europe/Berlin"
+      },
+      "localDate": "2026-01-15",
+      "instantUtc": "2026-01-15T00:00:00+00:00",
+      "sunLongitude": 294.8329215,
+      "moonLongitude": 252.0978377,
+      "angularDifference": 317.2649162,
+      "tithiNumber": 27,
+      "sunriseUt1": {
+        "UpperLimbWithRefraction": "2026-01-15T07:09:54",
+        "HinduGeometricCenter": "2026-01-15T07:16:35.600000"
+      },
+      "commands": {
+        "positions": [
+          "-b15.01.2026",
+          "-utc00:00:00",
+          "-p01",
+          "-emos",
+          "-fPl",
+          "-g,",
+          "-head"
+        ],
+        "sunrise": {
+          "UpperLimbWithRefraction": [
+            "-b14.01.2026",
+            "-utc23:00:00",
+            "-p0",
+            "-emos",
+            "-rise",
+            "-geopos13.405,52.52,0",
+            "-at1013.25,15",
+            "-n1",
+            "-ep"
+          ],
+          "HinduGeometricCenter": [
+            "-b14.01.2026",
+            "-utc23:00:00",
+            "-p0",
+            "-emos",
+            "-rise",
+            "-geopos13.405,52.52,0",
+            "-at1013.25,15",
+            "-n1",
+            "-ep",
+            "-hindu"
+          ]
+        }
+      }
+    },
+    {
+      "location": {
+        "displayName": "Berlin",
+        "country": "DE",
+        "latitude": 52.52,
+        "longitude": 13.405,
+        "timeZoneId": "Europe/Berlin"
+      },
+      "localDate": "2026-06-21",
+      "instantUtc": "2026-06-21T00:00:00+00:00",
+      "sunLongitude": 89.6656052,
+      "moonLongitude": 168.6971374,
+      "angularDifference": 79.0315322,
+      "tithiNumber": 7,
+      "sunriseUt1": {
+        "UpperLimbWithRefraction": "2026-06-21T02:43:11.900000",
+        "HinduGeometricCenter": "2026-06-21T02:50:23.900000"
+      },
+      "commands": {
+        "positions": [
+          "-b21.06.2026",
+          "-utc00:00:00",
+          "-p01",
+          "-emos",
+          "-fPl",
+          "-g,",
+          "-head"
+        ],
+        "sunrise": {
+          "UpperLimbWithRefraction": [
+            "-b20.06.2026",
+            "-utc22:00:00",
+            "-p0",
+            "-emos",
+            "-rise",
+            "-geopos13.405,52.52,0",
+            "-at1013.25,15",
+            "-n1",
+            "-ep"
+          ],
+          "HinduGeometricCenter": [
+            "-b20.06.2026",
+            "-utc22:00:00",
+            "-p0",
+            "-emos",
+            "-rise",
+            "-geopos13.405,52.52,0",
+            "-at1013.25,15",
+            "-n1",
+            "-ep",
+            "-hindu"
+          ]
+        }
+      }
+    },
+    {
+      "location": {
+        "displayName": "Berlin",
+        "country": "DE",
+        "latitude": 52.52,
+        "longitude": 13.405,
+        "timeZoneId": "Europe/Berlin"
+      },
+      "localDate": "2026-03-29",
+      "instantUtc": "2026-03-29T00:00:00+00:00",
+      "sunLongitude": 8.3126721,
+      "moonLongitude": 139.1313132,
+      "angularDifference": 130.81864109999998,
+      "tithiNumber": 11,
+      "sunriseUt1": {
+        "UpperLimbWithRefraction": "2026-03-29T04:48:06.700000",
+        "HinduGeometricCenter": "2026-03-29T04:53:33.200000"
+      },
+      "commands": {
+        "positions": [
+          "-b29.03.2026",
+          "-utc00:00:00",
+          "-p01",
+          "-emos",
+          "-fPl",
+          "-g,",
+          "-head"
+        ],
+        "sunrise": {
+          "UpperLimbWithRefraction": [
+            "-b28.03.2026",
+            "-utc23:00:00",
+            "-p0",
+            "-emos",
+            "-rise",
+            "-geopos13.405,52.52,0",
+            "-at1013.25,15",
+            "-n1",
+            "-ep"
+          ],
+          "HinduGeometricCenter": [
+            "-b28.03.2026",
+            "-utc23:00:00",
+            "-p0",
+            "-emos",
+            "-rise",
+            "-geopos13.405,52.52,0",
+            "-at1013.25,15",
+            "-n1",
+            "-ep",
+            "-hindu"
+          ]
+        }
+      }
+    },
+    {
+      "location": {
+        "displayName": "Berlin",
+        "country": "DE",
+        "latitude": 52.52,
+        "longitude": 13.405,
+        "timeZoneId": "Europe/Berlin"
+      },
+      "localDate": "2026-10-25",
+      "instantUtc": "2026-10-25T00:00:00+00:00",
+      "sunLongitude": 211.5914508,
+      "moonLongitude": 16.0924548,
+      "angularDifference": 164.50100400000002,
+      "tithiNumber": 14,
+      "sunriseUt1": {
+        "UpperLimbWithRefraction": "2026-10-25T05:49:43.700000",
+        "HinduGeometricCenter": "2026-10-25T05:55:29.800000"
+      },
+      "commands": {
+        "positions": [
+          "-b25.10.2026",
+          "-utc00:00:00",
+          "-p01",
+          "-emos",
+          "-fPl",
+          "-g,",
+          "-head"
+        ],
+        "sunrise": {
+          "UpperLimbWithRefraction": [
+            "-b24.10.2026",
+            "-utc22:00:00",
+            "-p0",
+            "-emos",
+            "-rise",
+            "-geopos13.405,52.52,0",
+            "-at1013.25,15",
+            "-n1",
+            "-ep"
+          ],
+          "HinduGeometricCenter": [
+            "-b24.10.2026",
+            "-utc22:00:00",
+            "-p0",
+            "-emos",
+            "-rise",
+            "-geopos13.405,52.52,0",
+            "-at1013.25,15",
+            "-n1",
+            "-ep",
+            "-hindu"
+          ]
+        }
+      }
+    },
+    {
+      "location": {
+        "displayName": "Moscow",
+        "country": "RU",
+        "latitude": 55.7558,
+        "longitude": 37.6173,
+        "timeZoneId": "Europe/Moscow"
+      },
+      "localDate": "2026-01-15",
+      "instantUtc": "2026-01-15T00:00:00+00:00",
+      "sunLongitude": 294.8329215,
+      "moonLongitude": 252.0978377,
+      "angularDifference": 317.2649162,
+      "tithiNumber": 27,
+      "sunriseUt1": {
+        "UpperLimbWithRefraction": "2026-01-15T05:49:30.400000",
+        "HinduGeometricCenter": "2026-01-15T05:57:04.800000"
+      },
+      "commands": {
+        "positions": [
+          "-b15.01.2026",
+          "-utc00:00:00",
+          "-p01",
+          "-emos",
+          "-fPl",
+          "-g,",
+          "-head"
+        ],
+        "sunrise": {
+          "UpperLimbWithRefraction": [
+            "-b14.01.2026",
+            "-utc21:00:00",
+            "-p0",
+            "-emos",
+            "-rise",
+            "-geopos37.6173,55.7558,0",
+            "-at1013.25,15",
+            "-n1",
+            "-ep"
+          ],
+          "HinduGeometricCenter": [
+            "-b14.01.2026",
+            "-utc21:00:00",
+            "-p0",
+            "-emos",
+            "-rise",
+            "-geopos37.6173,55.7558,0",
+            "-at1013.25,15",
+            "-n1",
+            "-ep",
+            "-hindu"
+          ]
+        }
+      }
+    },
+    {
+      "location": {
+        "displayName": "Moscow",
+        "country": "RU",
+        "latitude": 55.7558,
+        "longitude": 37.6173,
+        "timeZoneId": "Europe/Moscow"
+      },
+      "localDate": "2026-06-21",
+      "instantUtc": "2026-06-21T00:00:00+00:00",
+      "sunLongitude": 89.6656052,
+      "moonLongitude": 168.6971374,
+      "angularDifference": 79.0315322,
+      "tithiNumber": 7,
+      "sunriseUt1": {
+        "UpperLimbWithRefraction": "2026-06-21T00:44:39.200000",
+        "HinduGeometricCenter": "2026-06-21T00:53:01.100000"
+      },
+      "commands": {
+        "positions": [
+          "-b21.06.2026",
+          "-utc00:00:00",
+          "-p01",
+          "-emos",
+          "-fPl",
+          "-g,",
+          "-head"
+        ],
+        "sunrise": {
+          "UpperLimbWithRefraction": [
+            "-b20.06.2026",
+            "-utc21:00:00",
+            "-p0",
+            "-emos",
+            "-rise",
+            "-geopos37.6173,55.7558,0",
+            "-at1013.25,15",
+            "-n1",
+            "-ep"
+          ],
+          "HinduGeometricCenter": [
+            "-b20.06.2026",
+            "-utc21:00:00",
+            "-p0",
+            "-emos",
+            "-rise",
+            "-geopos37.6173,55.7558,0",
+            "-at1013.25,15",
+            "-n1",
+            "-ep",
+            "-hindu"
+          ]
+        }
+      }
+    },
+    {
+      "location": {
+        "displayName": "Delhi",
+        "country": "IN",
+        "latitude": 28.6139,
+        "longitude": 77.209,
+        "timeZoneId": "Asia/Kolkata"
+      },
+      "localDate": "2026-01-15",
+      "instantUtc": "2026-01-15T00:00:00+00:00",
+      "sunLongitude": 294.8329215,
+      "moonLongitude": 252.0978377,
+      "angularDifference": 317.2649162,
+      "tithiNumber": 27,
+      "sunriseUt1": {
+        "UpperLimbWithRefraction": "2026-01-15T01:45:00.100000",
+        "HinduGeometricCenter": "2026-01-15T01:49:08"
+      },
+      "commands": {
+        "positions": [
+          "-b15.01.2026",
+          "-utc00:00:00",
+          "-p01",
+          "-emos",
+          "-fPl",
+          "-g,",
+          "-head"
+        ],
+        "sunrise": {
+          "UpperLimbWithRefraction": [
+            "-b14.01.2026",
+            "-utc18:30:00",
+            "-p0",
+            "-emos",
+            "-rise",
+            "-geopos77.209,28.6139,0",
+            "-at1013.25,15",
+            "-n1",
+            "-ep"
+          ],
+          "HinduGeometricCenter": [
+            "-b14.01.2026",
+            "-utc18:30:00",
+            "-p0",
+            "-emos",
+            "-rise",
+            "-geopos77.209,28.6139,0",
+            "-at1013.25,15",
+            "-n1",
+            "-ep",
+            "-hindu"
+          ]
+        }
+      }
+    },
+    {
+      "location": {
+        "displayName": "Delhi",
+        "country": "IN",
+        "latitude": 28.6139,
+        "longitude": 77.209,
+        "timeZoneId": "Asia/Kolkata"
+      },
+      "localDate": "2026-06-21",
+      "instantUtc": "2026-06-21T00:00:00+00:00",
+      "sunLongitude": 89.6656052,
+      "moonLongitude": 168.6971374,
+      "angularDifference": 79.0315322,
+      "tithiNumber": 7,
+      "sunriseUt1": {
+        "UpperLimbWithRefraction": "2026-06-20T23:53:57.100000",
+        "HinduGeometricCenter": "2026-06-20T23:58:09.100000"
+      },
+      "commands": {
+        "positions": [
+          "-b21.06.2026",
+          "-utc00:00:00",
+          "-p01",
+          "-emos",
+          "-fPl",
+          "-g,",
+          "-head"
+        ],
+        "sunrise": {
+          "UpperLimbWithRefraction": [
+            "-b20.06.2026",
+            "-utc18:30:00",
+            "-p0",
+            "-emos",
+            "-rise",
+            "-geopos77.209,28.6139,0",
+            "-at1013.25,15",
+            "-n1",
+            "-ep"
+          ],
+          "HinduGeometricCenter": [
+            "-b20.06.2026",
+            "-utc18:30:00",
+            "-p0",
+            "-emos",
+            "-rise",
+            "-geopos77.209,28.6139,0",
+            "-at1013.25,15",
+            "-n1",
+            "-ep",
+            "-hindu"
+          ]
+        }
+      }
+    },
+    {
+      "location": {
+        "displayName": "Kiritimati",
+        "country": "KI",
+        "latitude": 1.8721,
+        "longitude": -157.4278,
+        "timeZoneId": "Pacific/Kiritimati"
+      },
+      "localDate": "2026-01-15",
+      "instantUtc": "2026-01-15T00:00:00+00:00",
+      "sunLongitude": 294.8329215,
+      "moonLongitude": 252.0978377,
+      "angularDifference": 317.2649162,
+      "tithiNumber": 27,
+      "sunriseUt1": {
+        "UpperLimbWithRefraction": "2026-01-14T16:38:10.100000",
+        "HinduGeometricCenter": "2026-01-14T16:41:43.500000"
+      },
+      "commands": {
+        "positions": [
+          "-b15.01.2026",
+          "-utc00:00:00",
+          "-p01",
+          "-emos",
+          "-fPl",
+          "-g,",
+          "-head"
+        ],
+        "sunrise": {
+          "UpperLimbWithRefraction": [
+            "-b14.01.2026",
+            "-utc10:00:00",
+            "-p0",
+            "-emos",
+            "-rise",
+            "-geopos-157.4278,1.8721,0",
+            "-at1013.25,15",
+            "-n1",
+            "-ep"
+          ],
+          "HinduGeometricCenter": [
+            "-b14.01.2026",
+            "-utc10:00:00",
+            "-p0",
+            "-emos",
+            "-rise",
+            "-geopos-157.4278,1.8721,0",
+            "-at1013.25,15",
+            "-n1",
+            "-ep",
+            "-hindu"
+          ]
+        }
+      }
+    },
+    {
+      "location": {
+        "displayName": "Los Angeles",
+        "country": "US",
+        "latitude": 34.0522,
+        "longitude": -118.2437,
+        "timeZoneId": "America/Los_Angeles"
+      },
+      "localDate": "2026-01-15",
+      "instantUtc": "2026-01-15T00:00:00+00:00",
+      "sunLongitude": 294.8329215,
+      "moonLongitude": 252.0978377,
+      "angularDifference": 317.2649162,
+      "tithiNumber": 27,
+      "sunriseUt1": {
+        "UpperLimbWithRefraction": "2026-01-15T14:58:16.500000",
+        "HinduGeometricCenter": "2026-01-15T15:02:42"
+      },
+      "commands": {
+        "positions": [
+          "-b15.01.2026",
+          "-utc00:00:00",
+          "-p01",
+          "-emos",
+          "-fPl",
+          "-g,",
+          "-head"
+        ],
+        "sunrise": {
+          "UpperLimbWithRefraction": [
+            "-b15.01.2026",
+            "-utc08:00:00",
+            "-p0",
+            "-emos",
+            "-rise",
+            "-geopos-118.2437,34.0522,0",
+            "-at1013.25,15",
+            "-n1",
+            "-ep"
+          ],
+          "HinduGeometricCenter": [
+            "-b15.01.2026",
+            "-utc08:00:00",
+            "-p0",
+            "-emos",
+            "-rise",
+            "-geopos-118.2437,34.0522,0",
+            "-at1013.25,15",
+            "-n1",
+            "-ep",
+            "-hindu"
+          ]
+        }
+      }
+    }
+  ]
+}

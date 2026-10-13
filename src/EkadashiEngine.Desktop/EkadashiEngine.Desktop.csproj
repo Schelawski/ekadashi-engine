@@ -4,6 +4,7 @@
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="../EkadashiEngine.Astronomy.SwissEphemeris/EkadashiEngine.Astronomy.SwissEphemeris.csproj" />
     <ProjectReference Include="../EkadashiEngine.Core/EkadashiEngine.Core.csproj" />
     <PackageReference Include="Avalonia" />
     <PackageReference Include="Avalonia.Desktop" />
