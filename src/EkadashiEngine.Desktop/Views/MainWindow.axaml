@@ -1,0 +1,91 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:EkadashiEngine.Desktop.ViewModels"
+        xmlns:core="using:EkadashiEngine.Core"
+        x:Class="EkadashiEngine.Desktop.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="Ekadashi Engine · Marga Smriti"
+        Width="1080" Height="720" MinWidth="840" MinHeight="600"
+        Background="#F4F6F8">
+  <Grid RowDefinitions="Auto,Auto,*,Auto" Margin="28" RowSpacing="22">
+    <StackPanel Spacing="6">
+      <TextBlock Text="MARGA SMRITI / REFERENZPROJEKT" FontSize="12" Foreground="#556579" />
+      <TextBlock Text="Ekadashi Engine" FontSize="30" FontWeight="SemiBold" Foreground="#183B3A" />
+      <TextBlock Text="Lokale Fastentage berechnen und mit offiziellen Kalendern vergleichen."
+                 Foreground="#556579" />
+    </StackPanel>
+
+    <Border Grid.Row="1" Background="White" Padding="20" CornerRadius="8">
+      <StackPanel Spacing="16">
+        <Grid ColumnDefinitions="2*,110,3*,Auto" ColumnSpacing="16">
+          <StackPanel Spacing="6">
+            <TextBlock Text="Ort" FontWeight="SemiBold" />
+            <ComboBox x:Name="LocationSelector" ItemsSource="{Binding Locations}"
+                      SelectedItem="{Binding SelectedLocation, Mode=TwoWay}"
+                      HorizontalAlignment="Stretch" AutomationProperties.Name="Ort">
+              <ComboBox.ItemTemplate>
+                <DataTemplate x:DataType="core:Location">
+                  <TextBlock Text="{Binding DisplayName}" />
+                </DataTemplate>
+              </ComboBox.ItemTemplate>
+            </ComboBox>
+          </StackPanel>
+          <StackPanel Grid.Column="1" Spacing="6">
+            <TextBlock Text="Jahr" FontWeight="SemiBold" />
+            <NumericUpDown x:Name="YearInput" Value="{Binding Year, Mode=TwoWay}"
+                           Minimum="1" Maximum="9999" Increment="1" FormatString="0"
+                           AllowSpin="True" AutomationProperties.Name="Jahr" />
+          </StackPanel>
+          <StackPanel Grid.Column="2" Spacing="6">
+            <TextBlock Text="Tradition" FontWeight="SemiBold" />
+            <ComboBox x:Name="TraditionSelector" ItemsSource="{Binding Traditions}"
+                      SelectedItem="{Binding SelectedTradition, Mode=TwoWay}"
+                      HorizontalAlignment="Stretch" AutomationProperties.Name="Tradition">
+              <ComboBox.ItemTemplate>
+                <DataTemplate x:DataType="vm:TraditionOption">
+                  <TextBlock Text="{Binding DisplayName}" />
+                </DataTemplate>
+              </ComboBox.ItemTemplate>
+            </ComboBox>
+          </StackPanel>
+          <Button x:Name="CalculateButton" Grid.Column="3" Content="Berechnen"
+                  IsEnabled="False" VerticalAlignment="Bottom" Padding="20,8"
+                  ToolTip.Tip="Die astronomische Berechnung folgt in einem weiteren Umsetzungsschritt." />
+        </Grid>
+        <StackPanel Orientation="Horizontal" Spacing="12">
+          <TextBlock Text="Zeitzone:" Foreground="#556579" />
+          <TextBlock x:Name="TimeZoneText" Text="{Binding SelectedLocation.TimeZoneId}" />
+        </StackPanel>
+        <Border Background="#EDF4F3" CornerRadius="4" Padding="12">
+          <TextBlock Text="Desktop-Grundgerüst · Die Berechnung ist noch nicht implementiert. Es werden keine Fastentage ausgegeben."
+                     TextWrapping="Wrap" Foreground="#284D49" />
+        </Border>
+      </StackPanel>
+    </Border>
+
+    <Grid Grid.Row="2" RowDefinitions="Auto,*" RowSpacing="12">
+      <TextBlock Text="Ergebnisse" FontSize="20" FontWeight="SemiBold" />
+      <Grid Grid.Row="1">
+        <DataGrid x:Name="ResultsTable" ItemsSource="{Binding Results}" IsReadOnly="True"
+                  AutoGenerateColumns="False" GridLinesVisibility="Horizontal" Background="White"
+                  BorderBrush="#DDE3E8" BorderThickness="1">
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="Lokaler Fastentag" Binding="{ReflectionBinding FastingDate}" Width="*" />
+            <DataGridTextColumn Header="Sonnenaufgang (lokal)" Binding="{ReflectionBinding Sunrise}" Width="*" />
+            <DataGridTextColumn Header="Tithi bei Sonnenaufgang" Binding="{ReflectionBinding TithiAtSunrise}" Width="*" />
+            <DataGridTextColumn Header="Status" Binding="{ReflectionBinding Status}" Width="*" />
+          </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel IsVisible="{Binding !Results.Count}" VerticalAlignment="Center"
+                    HorizontalAlignment="Center" Spacing="6" IsHitTestVisible="False">
+          <TextBlock Text="Noch keine Berechnung" FontSize="17" HorizontalAlignment="Center" />
+          <TextBlock Text="Hier erscheinen später die lokalen Ekadashi-Tage."
+                     Foreground="#556579" HorizontalAlignment="Center" />
+        </StackPanel>
+      </Grid>
+    </Grid>
+
+    <TextBlock Grid.Row="3" Text="Entwicklungsstand: Phase 1 / Grundgerüst · Berlin 2026 als erster Referenzfall"
+               FontSize="12" Foreground="#556579" TextWrapping="Wrap" />
+  </Grid>
+</Window>

@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/EkadashiEngine.Core/EkadashiEngine.Core.csproj" />
+    <Project Path="src/EkadashiEngine.Desktop/EkadashiEngine.Desktop.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/EkadashiEngine.Tests/EkadashiEngine.Tests.csproj" />
+  </Folder>
+</Solution>
