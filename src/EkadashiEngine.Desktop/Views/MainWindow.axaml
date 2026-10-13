@@ -5,20 +5,20 @@
         x:Class="EkadashiEngine.Desktop.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Title="Ekadashi Engine · Marga Smriti"
-        Width="1080" Height="720" MinWidth="840" MinHeight="600"
+        Width="1120" Height="880" MinWidth="960" MinHeight="740"
         Background="#F4F6F8">
-  <Grid RowDefinitions="Auto,Auto,*,Auto" Margin="28" RowSpacing="22">
+  <Grid RowDefinitions="Auto,Auto,*,Auto,Auto" Margin="24" RowSpacing="14">
     <StackPanel Spacing="6">
       <TextBlock Text="MARGA SMRITI / REFERENZPROJEKT" FontSize="12" Foreground="#556579" />
       <TextBlock Text="Ekadashi Engine" FontSize="30" FontWeight="SemiBold" Foreground="#183B3A" />
-      <TextBlock Text="Lokale Fastentage berechnen und mit offiziellen Kalendern vergleichen."
+      <TextBlock Text="Astronomische Jahresübersicht · mögliche Ekadashi-Tage untersuchen"
                  Foreground="#556579" />
     </StackPanel>
 
     <Border Grid.Row="1" Background="White" Padding="20" CornerRadius="8">
       <StackPanel Spacing="16">
-        <Grid ColumnDefinitions="2*,110,3*,Auto" ColumnSpacing="16">
-          <StackPanel Spacing="6">
+        <Grid ColumnDefinitions="2*,140,3*,Auto" ColumnSpacing="16">
+          <StackPanel Spacing="6" IsEnabled="{Binding !IsBusy}">
             <TextBlock Text="Ort" FontWeight="SemiBold" />
             <ComboBox x:Name="LocationSelector" ItemsSource="{Binding Locations}"
                       SelectedItem="{Binding SelectedLocation, Mode=TwoWay}"
@@ -30,14 +30,14 @@
               </ComboBox.ItemTemplate>
             </ComboBox>
           </StackPanel>
-          <StackPanel Grid.Column="1" Spacing="6">
-            <TextBlock Text="Jahr" FontWeight="SemiBold" />
+          <StackPanel Grid.Column="1" Spacing="6" IsEnabled="{Binding !IsBusy}">
+            <TextBlock Text="Jahr (1900–2100)" FontWeight="SemiBold" />
             <NumericUpDown x:Name="YearInput" Value="{Binding Year, Mode=TwoWay}"
-                           Minimum="1" Maximum="9999" Increment="1" FormatString="0"
+                           Minimum="{Binding MinimumYear}" Maximum="{Binding MaximumYear}" Increment="1" FormatString="0.##"
                            AllowSpin="True" AutomationProperties.Name="Jahr" />
           </StackPanel>
-          <StackPanel Grid.Column="2" Spacing="6">
-            <TextBlock Text="Tradition" FontWeight="SemiBold" />
+          <StackPanel Grid.Column="2" Spacing="6" IsEnabled="{Binding !IsBusy}">
+            <TextBlock Text="Tradition / Modus" FontWeight="SemiBold" />
             <ComboBox x:Name="TraditionSelector" ItemsSource="{Binding Traditions}"
                       SelectedItem="{Binding SelectedTradition, Mode=TwoWay}"
                       HorizontalAlignment="Stretch" AutomationProperties.Name="Tradition">
@@ -48,44 +48,98 @@
               </ComboBox.ItemTemplate>
             </ComboBox>
           </StackPanel>
-          <Button x:Name="CalculateButton" Grid.Column="3" Content="Berechnen"
-                  IsEnabled="False" VerticalAlignment="Bottom" Padding="20,8"
-                  ToolTip.Tip="Die astronomische Berechnung folgt in einem weiteren Umsetzungsschritt." />
+          <StackPanel Grid.Column="3" Orientation="Horizontal" Spacing="8" VerticalAlignment="Bottom">
+            <Button x:Name="CalculateButton" Content="Berechnen" Command="{Binding CalculateCommand}" Padding="20,8" />
+            <Button x:Name="CancelButton" Content="Abbrechen" Command="{Binding CalculateCancelCommand}" IsVisible="{Binding IsBusy}" />
+          </StackPanel>
         </Grid>
         <StackPanel Orientation="Horizontal" Spacing="12">
           <TextBlock Text="Zeitzone:" Foreground="#556579" />
           <TextBlock x:Name="TimeZoneText" Text="{Binding SelectedLocation.TimeZoneId}" />
         </StackPanel>
         <Border Background="#EDF4F3" CornerRadius="4" Padding="12">
-          <TextBlock Text="Desktop-Grundgerüst · Die Berechnung ist noch nicht implementiert. Es werden keine Fastentage ausgegeben."
+          <TextBlock Text="Technischer Modus: Tithi 11 oder 26 bei astronomischem Sonnenaufgang markiert einen Kandidaten. Noch keine validierte Ananda-Marga- oder ISKCON-Fastenregel."
                      TextWrapping="Wrap" Foreground="#284D49" />
         </Border>
+        <TextBlock x:Name="YearValidationText" Text="{Binding YearValidationMessage}" Foreground="#A52B26"
+                   IsVisible="{Binding HasYearValidationError}" />
       </StackPanel>
     </Border>
 
     <Grid Grid.Row="2" RowDefinitions="Auto,*" RowSpacing="12">
-      <TextBlock Text="Ergebnisse" FontSize="20" FontWeight="SemiBold" />
+      <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+        <TextBlock x:Name="ResultSummaryText" Text="{Binding ResultSummary}" FontSize="16" FontWeight="SemiBold"
+                   VerticalAlignment="Center" TextWrapping="Wrap" />
+        <CheckBox x:Name="CandidateFilter" Grid.Column="1" Content="Nur Kandidaten"
+                  IsChecked="{Binding ShowCandidatesOnly, Mode=TwoWay}" IsEnabled="{Binding !IsBusy}" />
+      </Grid>
       <Grid Grid.Row="1">
         <DataGrid x:Name="ResultsTable" ItemsSource="{Binding Results}" IsReadOnly="True"
+                  SelectedItem="{Binding SelectedResult, Mode=TwoWay}" SelectionMode="Single"
                   AutoGenerateColumns="False" GridLinesVisibility="Horizontal" Background="White"
                   BorderBrush="#DDE3E8" BorderThickness="1">
           <DataGrid.Columns>
-            <DataGridTextColumn Header="Lokaler Fastentag" Binding="{ReflectionBinding FastingDate}" Width="*" />
+            <DataGridTextColumn Header="Lokales Datum" Binding="{ReflectionBinding LocalDate}" Width="*" />
             <DataGridTextColumn Header="Sonnenaufgang (lokal)" Binding="{ReflectionBinding Sunrise}" Width="*" />
             <DataGridTextColumn Header="Tithi bei Sonnenaufgang" Binding="{ReflectionBinding TithiAtSunrise}" Width="*" />
-            <DataGridTextColumn Header="Status" Binding="{ReflectionBinding Status}" Width="*" />
+            <DataGridTextColumn Header="Ekadashi-Kandidat" Binding="{ReflectionBinding Candidate}" Width="*" />
+            <DataGridTemplateColumn Header="Details" Width="100">
+              <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate x:DataType="vm:ResultRow">
+                  <Button Content="Details" Command="{Binding ShowDetailsCommand}" Margin="4,2" Padding="10,4" />
+                </DataTemplate>
+              </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
           </DataGrid.Columns>
         </DataGrid>
         <StackPanel IsVisible="{Binding !Results.Count}" VerticalAlignment="Center"
                     HorizontalAlignment="Center" Spacing="6" IsHitTestVisible="False">
-          <TextBlock Text="Noch keine Berechnung" FontSize="17" HorizontalAlignment="Center" />
-          <TextBlock Text="Hier erscheinen später die lokalen Ekadashi-Tage."
+          <TextBlock Text="Keine angezeigten Tage" FontSize="17" HorizontalAlignment="Center" />
+          <TextBlock Text="Berechnung starten oder Kandidatenfilter prüfen."
                      Foreground="#556579" HorizontalAlignment="Center" />
         </StackPanel>
       </Grid>
     </Grid>
 
-    <TextBlock Grid.Row="3" Text="Entwicklungsstand: Phase 1 / Grundgerüst · Berlin 2026 als erster Referenzfall"
-               FontSize="12" Foreground="#556579" TextWrapping="Wrap" />
+    <Border x:Name="DetailsPanel" Grid.Row="3" IsVisible="{Binding HasSelectedResult}"
+            Background="White" CornerRadius="8" Padding="16">
+      <Grid RowDefinitions="Auto,Auto" RowSpacing="8">
+        <Grid ColumnDefinitions="*,Auto">
+          <TextBlock Text="Astronomische Tagesdetails" FontSize="18" FontWeight="SemiBold" />
+          <Button Grid.Column="1" Content="Schließen" Command="{Binding CloseDetailsCommand}" Padding="10,3" />
+        </Grid>
+        <ContentControl Grid.Row="1" Content="{Binding SelectedResult}">
+          <ContentControl.ContentTemplate>
+            <DataTemplate x:DataType="vm:ResultRow">
+              <StackPanel Spacing="6">
+                <TextBlock Text="{Binding DetailTitle}" FontWeight="SemiBold" />
+                <TextBlock Text="{Binding LocationDetails}" Foreground="#556579" />
+                <Grid ColumnDefinitions="Auto,*,Auto,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="14" RowSpacing="4">
+                  <TextBlock Text="Sonnenaufgang lokal" />
+                  <TextBlock Grid.Column="1" Text="{Binding SunriseLocal}" />
+                  <TextBlock Grid.Column="2" Text="Sonnenlänge" />
+                  <TextBlock Grid.Column="3" Text="{Binding SunLongitude}" />
+                  <TextBlock Grid.Row="1" Text="Sonnenaufgang UTC" />
+                  <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SunriseUtc}" />
+                  <TextBlock Grid.Row="1" Grid.Column="2" Text="Mondlänge" />
+                  <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding MoonLongitude}" />
+                  <TextBlock Grid.Row="2" Text="Tithi bei Sonnenaufgang" />
+                  <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding TithiAtSunrise}" />
+                  <TextBlock Grid.Row="2" Grid.Column="2" Text="Winkeldifferenz" />
+                  <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding AngularDifference}" />
+                </Grid>
+                <TextBlock Text="{Binding Explanation}" TextWrapping="Wrap" Foreground="#284D49" />
+                <TextBlock Text="Geozentrische Längen am Sonnenaufgang · oberer Sonnenrand, Refraktion, Meereshöhe"
+                           FontSize="12" Foreground="#556579" TextWrapping="Wrap" />
+              </StackPanel>
+            </DataTemplate>
+          </ContentControl.ContentTemplate>
+        </ContentControl>
+      </Grid>
+    </Border>
+    <StackPanel Grid.Row="4" Spacing="6">
+      <ProgressBar IsIndeterminate="True" IsVisible="{Binding IsBusy}" Height="4" />
+      <TextBlock x:Name="StatusText" Text="{Binding StatusMessage}" FontSize="12" Foreground="#556579" TextWrapping="Wrap" />
+    </StackPanel>
   </Grid>
 </Window>

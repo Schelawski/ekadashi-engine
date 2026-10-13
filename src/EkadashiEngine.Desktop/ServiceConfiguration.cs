@@ -24,6 +24,7 @@ public static class ServiceConfiguration
         services.AddSingleton<ISunriseCalculator>(provider => provider.GetRequiredService<SwissEphemerisAstronomyService>());
         services.AddSingleton<ITithiCalculator, TithiCalculator>();
         services.AddTransient<AstronomyDiagnosticsService>();
+        services.AddTransient<IYearAstronomyCalculator, YearAstronomyCalculator>();
         services.AddTransient<MainWindowViewModel>();
 
         return services.BuildServiceProvider(new ServiceProviderOptions

@@ -90,8 +90,8 @@ und werden nicht als fehlender Sonnenaufgang verschleiert.
 
 Moshier deckt nicht den gesamten .NET-Datumsbereich ab (laut Swiss Ephemeris etwa
 3000 v. Chr. bis 3000 n. Chr.). Anfragen außerhalb des vom Backend akzeptierten
-Zeitraums schlagen ausdrücklich fehl. Die Jahresauswahl der UI ist noch kein
-fachlich zugesicherter Berechnungszeitraum. Die festen Vergleichsfälle prüfen 2026;
+Zeitraums schlagen ausdrücklich fehl. Der Jahresworkflow ist bewusst auf
+1900–2100 begrenzt. Die festen Vergleichsfälle prüfen 2026;
 eine umfassende Validierung anderer Epochen und offizieller Kalender steht aus.
 
 Die UTC-Konvertierung folgt den Schaltsekunden- und Delta-T-Modellen der
@@ -137,6 +137,26 @@ Astronomie- oder Zeitzonenpaketen erfordern eine Prüfung der Abweichungen.
 Zusätzliche Tests prüfen alle Tithi-Grenzen, ungültige Eingaben, UTC-Offsets,
 Sommerzeit, Polartag/-nacht, einen übersprungenen Kalendertag, parallele Nutzung
 und das Zusammenspiel der abstrahierten Dienste.
+
+## Jahresworkflow (Issue #4)
+
+`IYearAstronomyCalculator` kapselt den UI-unabhängigen Jahreslauf.
+`YearAstronomyCalculator` besucht jeden lokalen Kalendertag, berechnet dessen
+astronomischen Sonnenaufgang und bestimmt Sonne/Mond/Tithi genau an diesem
+UTC-Zeitpunkt. Das Ergebnis enthält Ort, Jahr und unveränderliche Tageswerte.
+Ein `CancellationToken` ermöglicht den Abbruch zwischen den Tagen.
+
+`DailyAstronomyResult.IsEkadashiCandidate` ist `true` bei Tithi 11 oder 26,
+`false` bei anderen Tithis und `null`, wenn der Tag ohne Sonnenaufgang nicht
+beurteilt werden kann. Das ist eine technische Auswahl, keine Fastentagsregel.
+Ein fehlender Sonnenaufgang erzeugt keine erfundenen Positionswerte. Ein
+Providerfehler bricht den gesamten Lauf ab, ohne eine Teilliste auszugeben.
+
+Der Desktop führt den synchronen Dienst über `Task.Run` im Hintergrund aus
+und übernimmt erst die vollständige Liste auf dem UI-Thread. Eingabeänderungen
+verwerfen alte Ergebnisse; ein abgebrochener oder überholter Lauf kann keine
+Ergebnisse für eine inzwischen andere Auswahl veröffentlichen. Beim Schließen
+des Fensters wird eine noch laufende Berechnung ebenfalls abgebrochen.
 
 ## Quellen und Lizenz
 
