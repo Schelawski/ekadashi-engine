@@ -9,8 +9,17 @@ Der Jahresworkflow aus [Issue #4](https://github.com/Schelawski/ekadashi-engine/
 ist nutzbar. Berlin, 2026 und der neutrale technische Modus sind vorausgewählt.
 Neun Orte stehen zur Auswahl. Die Tabelle zeigt alle lokalen Kalendertage mit
 Sonnenaufgang, Tithi am Sonnenaufgang, Kandidatenkennzeichnung und Tagesdetails.
-Ananda-Marga-/ISKCON-Regeln und der Vergleich mit offiziellen Kalendern folgen
-später: Die angezeigten Kandidaten sind noch keine validierten Fastentage.
+Die angezeigten technischen Kandidaten sind noch keine validierten Fastentage.
+
+Die Engine enthält jetzt die austauschbare Ananda-Marga-Strategie aus
+[Issue #5](https://github.com/Schelawski/ekadashi-engine/issues/5). Sie verwendet
+die dokumentierte Methode der größten Überschneidung zwischen Ekadashi und
+Sonnenaufgangstag und liefert lokale `FastingDates` mit Entscheidungsdiagnosen.
+Der erste Vergleich für Berlin 2026 ergibt **12 von 24 Übereinstimmungen** mit
+dem offiziellen Sektorkalender; die Regel ist daher nicht als kalender-validiert
+gekennzeichnet. Methode, API und Abweichungen stehen in
+[Ananda-Marga-Regel](docs/ananda-marga-rule.md).
+Die UI-Vergleichsansicht folgt in Issue #6; ISKCON-Regeln folgen separat.
 
 Die astronomische Basis aus [Issue #3](https://github.com/Schelawski/ekadashi-engine/issues/3)
 ist implementiert: Sonne/Mond, Winkeldifferenz, Tithi, lokaler Sonnenaufgang und
@@ -89,7 +98,7 @@ tests/
   EkadashiEngine.Astronomy.Tests/           UI-unabhängige Fach- und Referenztests
   EkadashiEngine.Tests/                     Desktop-Smoke-Test und Architekturtest
 data/
-  reference/                Astronomische Referenzen; später offizielle Kalender
+  reference/                Astronomische Referenzen und AM Berlin Sector 2026
   locations/                Späterer Ortskatalog
   exports/                  Spätere lokale Exporte und Testvektoren
 ```
@@ -119,7 +128,8 @@ und aktualisierte Lockdateien prüfen.
   unabhängig davon für Einzelzeitpunkte nutzbar (siehe dokumentierte Grenzen).
 - Der Fastentag ist ein lokales Kalenderdatum; astronomische Zeitpunkte können
   in UTC vorliegen. Die Erinnerungseinstellungen der App bestimmen keinen Fastentag.
-- Die Ananda-Marga-Regel wird erst anhand offizieller Kalender validiert.
+- Die dokumentierte Ananda-Marga-Regel ist implementiert; die Abweichungen von
+  offiziellen Kalenderdaten müssen fachlich weiter geklärt werden.
 - Vaishnava-/ISKCON-Regeln und die Lizenzentscheidung für eine spätere direkte
   Produktintegration sind weitere Arbeitsschritte. Die Abhängigkeit dieses
   Referenzprojekts und ihre Original-Lizenztexte sind in

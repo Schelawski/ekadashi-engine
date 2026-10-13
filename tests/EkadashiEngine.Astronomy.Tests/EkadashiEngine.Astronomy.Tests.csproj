@@ -13,5 +13,7 @@
     <Using Include="Xunit" />
     <None Include="../../data/reference/astronomy/swetest-2.10.03.json"
           Link="Fixtures/swetest-2.10.03.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../data/reference/ananda-marga/berlin-sector-2026.json"
+          Link="Fixtures/berlin-sector-2026.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

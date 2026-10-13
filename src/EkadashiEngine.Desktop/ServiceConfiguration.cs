@@ -1,5 +1,6 @@
 using EkadashiEngine.Astronomy.SwissEphemeris;
 using EkadashiEngine.Core.Astronomy;
+using EkadashiEngine.Core.Rules;
 using EkadashiEngine.Desktop.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -25,6 +26,10 @@ public static class ServiceConfiguration
         services.AddSingleton<ITithiCalculator, TithiCalculator>();
         services.AddTransient<AstronomyDiagnosticsService>();
         services.AddTransient<IYearAstronomyCalculator, YearAstronomyCalculator>();
+        services.AddTransient<ITithiIntervalCalculator, TithiIntervalCalculator>();
+        services.AddTransient<TraditionDataCalculator>();
+        services.AddTransient<ITraditionRule, AnandaMargaRule>();
+        services.AddTransient<FastingCalendarCalculator>();
         services.AddTransient<MainWindowViewModel>();
 
         return services.BuildServiceProvider(new ServiceProviderOptions
