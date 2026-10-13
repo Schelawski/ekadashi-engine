@@ -39,8 +39,9 @@ oder anderen offiziellen Kalendern wird nicht behauptet.
    Astronomiedienst noch UI oder SwissEphSharp. Weitere Traditionen können eigene
    Implementierungen derselben Schnittstelle erhalten.
 4. `FastingCalendarCalculator` verbindet Vorbereitung und Strategie. Die Dienste
-   sind im Desktop-DI registriert. Die bisherige technische UI bleibt bestehen;
-   die Vergleichsansicht ist Gegenstand von Issue #6.
+   sind im Desktop-DI registriert. Die technische UI und der Modus
+   **Ananda Marga · Kalendervergleich** machen beide Berechnungsarten zugänglich;
+   siehe [Kalendervergleich](calendar-comparison.md).
 
 Beispiel für den Engine-Aufruf:
 
@@ -114,8 +115,8 @@ Tag würde die zwölf bisherigen Übereinstimmungen zerstören.
 Die Ursache der Abweichungen ist fachlich offen. Denkbare Unterschiede in
 Quelldaten oder sektorbezogenen Konventionen sind nicht als Regeln implementiert.
 Für spätere Präzisierungen werden belastbare Erläuterungen der Kalenderherausgeber
-benötigt. Issue #6 erweitert den Referenzbestand und macht den Vergleich im UI
-sichtbar. Grüne Regressionstests bedeuten korrekte Umsetzung dieser Methode,
+benötigt. Der Vergleich ist seit Issue #6 im UI sichtbar; für 2025/2027 fehlen
+bislang belastbare Berlin-Sector-Daten. Grüne Regressionstests bedeuten korrekte Umsetzung dieser Methode,
 keine erfolgreiche offizielle Kalender-Validierung.
 
 ## Reproduzieren

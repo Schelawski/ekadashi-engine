@@ -2,6 +2,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using EkadashiEngine.Core;
 using EkadashiEngine.Core.Astronomy;
+using EkadashiEngine.Core.ReferenceData;
+using EkadashiEngine.Core.Rules;
 using Microsoft.Extensions.Logging;
 
 namespace EkadashiEngine.Desktop.ViewModels;
@@ -9,15 +11,20 @@ namespace EkadashiEngine.Desktop.ViewModels;
 public sealed partial class MainWindowViewModel : ObservableObject
 {
     private readonly IYearAstronomyCalculator _calculator;
+    private readonly IFastingCalendarCalculator _fastingCalculator;
+    private readonly ICalendarReferenceProvider _references;
+    private readonly CalendarComparisonService _comparisonService;
     private readonly ILogger<MainWindowViewModel> _logger;
     private IReadOnlyList<ResultRow> _allResults = [];
+    private IReadOnlyList<ComparisonRow> _allComparisonRows = [];
     private int _inputVersion;
 
     public IReadOnlyList<Location> Locations => LocationCatalog.DefaultLocations;
 
     public IReadOnlyList<TraditionOption> Traditions { get; } =
     [
-        new(Tradition.TechnicalSunriseCandidate, "Technisch: Tithi bei Sonnenaufgang")
+        new(Tradition.TechnicalSunriseCandidate, "Technisch: Tithi bei Sonnenaufgang"),
+        new(Tradition.AnandaMarga, "Ananda Marga · Kalendervergleich")
     ];
 
     public int MinimumYear => YearAstronomyCalculator.MinimumYear;
@@ -45,6 +52,28 @@ public sealed partial class MainWindowViewModel : ObservableObject
     private bool _showCandidatesOnly;
 
     [ObservableProperty]
+    private bool _showMismatchesOnly;
+
+    [ObservableProperty]
+    private IReadOnlyList<ComparisonRow> _comparisonRows = [];
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(HasSelectedComparisonRow))]
+    private ComparisonRow? _selectedComparisonRow;
+
+    [ObservableProperty]
+    private string _comparisonSummary = "Noch kein Kalendervergleich";
+
+    [ObservableProperty]
+    private string _referenceDescription = "Referenzen: Berlin Sector 2026; für 2025 und 2027 liegen noch keine belegten Daten vor.";
+
+    [ObservableProperty]
+    private string _referenceSource = string.Empty;
+
+    [ObservableProperty]
+    private string _comparisonWarning = string.Empty;
+
+    [ObservableProperty]
     private IReadOnlyList<ResultRow> _results = [];
 
     [ObservableProperty]
@@ -58,16 +87,25 @@ public sealed partial class MainWindowViewModel : ObservableObject
     private string _resultSummary = "Noch keine Berechnung";
 
     public bool HasSelectedResult => SelectedResult is not null;
+    public bool HasSelectedComparisonRow => SelectedComparisonRow is not null;
+    public bool IsAnandaMargaMode => SelectedTradition?.Tradition == Tradition.AnandaMarga;
+    public string ModeDescription => IsAnandaMargaMode
+        ? "Ananda Marga: größte Überschneidung zwischen Ekadashi und Sonnenaufgangstag. Mit offiziellen Kalendern noch nicht validiert."
+        : "Technischer Modus: Tithi 11 oder 26 bei astronomischem Sonnenaufgang markiert einen Kandidaten. Noch keine validierte traditionelle Fastenregel.";
     public bool HasYearValidationError => !IsYearValid;
     public string YearValidationMessage => IsYearValid ? string.Empty : $"Bitte ein ganzes Jahr von {MinimumYear} bis {MaximumYear} eingeben.";
     private bool IsYearValid => Year is >= YearAstronomyCalculator.MinimumYear and <= YearAstronomyCalculator.MaximumYear
         && decimal.Truncate(Year.Value) == Year.Value;
     private bool CanCalculate => !IsBusy && IsYearValid && SelectedLocation is not null
-        && SelectedTradition?.Tradition == Tradition.TechnicalSunriseCandidate;
+        && SelectedTradition?.Tradition is Tradition.TechnicalSunriseCandidate or Tradition.AnandaMarga;
 
-    public MainWindowViewModel(IYearAstronomyCalculator calculator, ILogger<MainWindowViewModel> logger)
+    public MainWindowViewModel(IYearAstronomyCalculator calculator, IFastingCalendarCalculator fastingCalculator,
+        ICalendarReferenceProvider references, CalendarComparisonService comparisonService, ILogger<MainWindowViewModel> logger)
     {
         _calculator = calculator;
+        _fastingCalculator = fastingCalculator;
+        _references = references;
+        _comparisonService = comparisonService;
         _logger = logger;
         _selectedLocation = Locations[0];
         _selectedTradition = Traditions[0];
@@ -81,13 +119,23 @@ public sealed partial class MainWindowViewModel : ObservableObject
 
         var location = SelectedLocation!;
         var year = (int)Year!.Value;
+        var tradition = SelectedTradition!.Tradition;
         var inputVersion = _inputVersion;
         IsBusy = true;
         ClearResults();
         StatusMessage = $"Berechne {location.DisplayName} {year} …";
         try
         {
-            _logger.LogInformation("Calculating technical candidates for {Location}, {Year}.", location.DisplayName, year);
+            _logger.LogInformation("Calculating {Tradition} for {Location}, {Year}.", tradition, location.DisplayName, year);
+            if (tradition == Tradition.AnandaMarga)
+            {
+                var calendar = await Task.Run(() => _fastingCalculator.Calculate(year, location, cancellationToken), cancellationToken);
+                cancellationToken.ThrowIfCancellationRequested();
+                if (inputVersion != _inputVersion) return;
+                PublishComparison(calendar);
+                StatusMessage = "Kalendervergleich abgeschlossen. Eine Zeile öffnet die Regelentscheidung.";
+                return;
+            }
             var calculation = await Task.Run(() => _calculator.Calculate(year, location, cancellationToken), cancellationToken);
             cancellationToken.ThrowIfCancellationRequested();
             if (inputVersion != _inputVersion)
@@ -120,10 +168,19 @@ public sealed partial class MainWindowViewModel : ObservableObject
     [RelayCommand]
     private void CloseDetails() => SelectedResult = null;
 
+    [RelayCommand]
+    private void CloseComparisonDetails() => SelectedComparisonRow = null;
+
     partial void OnSelectedLocationChanged(Location? value) => InputsChanged();
     partial void OnYearChanged(decimal? value) => InputsChanged();
-    partial void OnSelectedTraditionChanged(TraditionOption? value) => InputsChanged();
+    partial void OnSelectedTraditionChanged(TraditionOption? value)
+    {
+        InputsChanged();
+        OnPropertyChanged(nameof(IsAnandaMargaMode));
+        OnPropertyChanged(nameof(ModeDescription));
+    }
     partial void OnShowCandidatesOnlyChanged(bool value) => UpdateVisibleRows();
+    partial void OnShowMismatchesOnlyChanged(bool value) => UpdateComparisonRows();
 
     private void InputsChanged()
     {
@@ -139,11 +196,43 @@ public sealed partial class MainWindowViewModel : ObservableObject
         Results = [];
         SelectedResult = null;
         ResultSummary = "Noch keine Berechnung";
+        _allComparisonRows = [];
+        ComparisonRows = [];
+        SelectedComparisonRow = null;
+        ComparisonSummary = "Noch kein Kalendervergleich";
+        ReferenceDescription = "Referenzen: Berlin Sector 2026; für 2025 und 2027 liegen noch keine belegten Daten vor.";
+        ReferenceSource = string.Empty;
+        ComparisonWarning = string.Empty;
     }
 
     private void UpdateVisibleRows()
     {
         SelectedResult = null;
         Results = ShowCandidatesOnly ? _allResults.Where(row => row.Day.IsEkadashiCandidate == true).ToArray() : _allResults;
+    }
+
+    private void PublishComparison(TraditionYearResult calendar)
+    {
+        var reference = _references.Find(calendar.Year, calendar.Location, calendar.Tradition);
+        var comparison = _comparisonService.Compare(calendar, reference);
+        _allComparisonRows = comparison.Rows.Select(row => new ComparisonRow(row, calendar.Location,
+            calendar.Decisions.FirstOrDefault(decision => decision.FastingDate == row.Calculated && row.Calculated.HasValue))).ToArray();
+        UpdateComparisonRows();
+        ResultSummary = $"{calendar.Location.DisplayName} · {calendar.Year} · {calendar.FastingDates.Count} berechnete Fastentage";
+        ComparisonSummary = reference is null
+            ? $"{calendar.FastingDates.Count} berechnete Tage · Referenztage, Matches, Mismatches und Trefferquote: nicht verfügbar"
+            : $"{comparison.ReferenceCount} Referenztage · {comparison.Matches} Matches · {comparison.Mismatches} Mismatches · {comparison.UnexpectedCalculated} zusätzlich berechnet · Trefferquote {comparison.MatchRate:F1} %";
+        ReferenceDescription = reference is null
+            ? $"Keine offiziellen Referenzdaten für {calendar.Location.DisplayName} {calendar.Year} vorhanden. Verfügbar: Berlin Sector 2026 (Vergleichsort Berlin)."
+            : $"{reference.Title} · Vergleichsort {reference.ComparisonLocation.DisplayName} · abgerufen {reference.RetrievedOn:yyyy-MM-dd}. {reference.Scope}";
+        ReferenceSource = reference?.Source ?? string.Empty;
+        ComparisonWarning = "Die dokumentierte Methode ist mit offiziellen Kalendern noch nicht validiert."
+            + (calendar.HasUnresolvedDecisions ? $" {calendar.Decisions.Count(decision => decision.Status != RuleDecisionStatus.Selected)} Regelentscheidungen sind ungeklärt; die berechnete Jahresliste ist unvollständig." : string.Empty);
+    }
+
+    private void UpdateComparisonRows()
+    {
+        SelectedComparisonRow = null;
+        ComparisonRows = ShowMismatchesOnly ? _allComparisonRows.Where(row => row.IsMismatch).ToArray() : _allComparisonRows;
     }
 }

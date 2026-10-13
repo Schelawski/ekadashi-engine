@@ -13,6 +13,67 @@ namespace EkadashiEngine.Tests;
 public sealed class DesktopSmokeTests
 {
     [AvaloniaFact]
+    public async Task OfficialCalendarComparisonCanBeCalculatedFilteredAndInspected()
+    {
+        using var services = ServiceConfiguration.CreateServiceProvider();
+        var viewModel = services.GetRequiredService<MainWindowViewModel>();
+        var window = new MainWindow { DataContext = viewModel };
+        try
+        {
+            window.Show();
+            window.FindControl<ComboBox>("TraditionSelector")!.SelectedIndex = 1;
+            Dispatcher.UIThread.RunJobs();
+            Assert.True(viewModel.IsAnandaMargaMode);
+            Assert.True(window.FindControl<Grid>("ComparisonPanel")!.IsVisible);
+            window.FindControl<Button>("CalculateButton")!.Command!.Execute(null);
+            await viewModel.CalculateCommand.ExecutionTask!;
+            Dispatcher.UIThread.RunJobs();
+            Assert.Equal(24, viewModel.ComparisonRows.Count);
+            Assert.Contains("12 Matches", window.FindControl<TextBlock>("ComparisonSummaryText")!.Text);
+            Assert.Contains("12 Mismatches", window.FindControl<TextBlock>("ComparisonSummaryText")!.Text);
+            Assert.Contains("50", window.FindControl<TextBlock>("ComparisonSummaryText")!.Text);
+            Assert.Contains("anandamarga.eu", window.FindControl<SelectableTextBlock>("ReferenceSourceText")!.Text);
+            var table = window.FindControl<DataGrid>("ComparisonTable")!;
+            Assert.Same(viewModel.ComparisonRows, table.ItemsSource);
+            table.UpdateLayout();
+            var statusText = table.GetVisualDescendants().OfType<TextBlock>().First(control => control.Text == "MISMATCH");
+            Assert.Equal(Avalonia.Media.Color.Parse("#A52B26"), ((Avalonia.Media.ISolidColorBrush)statusText.Foreground!).Color);
+            var matchText = table.GetVisualDescendants().OfType<TextBlock>().First(control => control.Text == "MATCH");
+            Assert.NotEqual(statusText.Foreground, matchText.Foreground);
+            table.SelectedItem = viewModel.ComparisonRows[0];
+            Dispatcher.UIThread.RunJobs();
+            Assert.True(window.FindControl<Border>("ComparisonDetailsPanel")!.IsVisible);
+            Assert.Contains("Tithi 26", viewModel.SelectedComparisonRow!.Diagnosis);
+
+            if (Environment.GetEnvironmentVariable("EKADASHI_COMPARISON_SCREENSHOT") is { Length: > 0 } screenshot)
+            {
+                AvaloniaHeadlessPlatform.ForceRenderTimerTick();
+                using var frame = window.CaptureRenderedFrame();
+                Assert.NotNull(frame);
+                frame.Save(screenshot, Avalonia.Media.Imaging.PngBitmapEncoderOptions.Default);
+            }
+
+            window.FindControl<CheckBox>("MismatchFilter")!.IsChecked = true;
+            Dispatcher.UIThread.RunJobs();
+            Assert.Equal(12, viewModel.ComparisonRows.Count);
+            Assert.All(viewModel.ComparisonRows, row => Assert.True(row.IsMismatch));
+            Assert.Null(viewModel.SelectedComparisonRow);
+            window.FindControl<NumericUpDown>("YearInput")!.Value = 2027;
+            Dispatcher.UIThread.RunJobs();
+            Assert.Empty(viewModel.ComparisonRows);
+            Assert.Equal(string.Empty, window.FindControl<SelectableTextBlock>("ReferenceSourceText")!.Text);
+            window.FindControl<CheckBox>("MismatchFilter")!.IsChecked = false;
+            window.FindControl<Button>("CalculateButton")!.Command!.Execute(null);
+            await viewModel.CalculateCommand.ExecutionTask!;
+            Dispatcher.UIThread.RunJobs();
+            Assert.NotEmpty(viewModel.ComparisonRows);
+            Assert.All(viewModel.ComparisonRows, row => Assert.Equal("KEINE REFERENZ", row.Status));
+            Assert.Contains("2027", window.FindControl<TextBlock>("ReferenceDescriptionText")!.Text);
+        }
+        finally { window.Close(); }
+    }
+
+    [AvaloniaFact]
     public async Task BerlinYearCanBeCalculatedFilteredAndInspectedThroughBoundControls()
     {
         using var services = ServiceConfiguration.CreateServiceProvider();

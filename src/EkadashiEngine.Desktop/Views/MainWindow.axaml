@@ -11,7 +11,7 @@
     <StackPanel Spacing="6">
       <TextBlock Text="MARGA SMRITI / REFERENZPROJEKT" FontSize="12" Foreground="#556579" />
       <TextBlock Text="Ekadashi Engine" FontSize="30" FontWeight="SemiBold" Foreground="#183B3A" />
-      <TextBlock Text="Astronomische Jahresübersicht · mögliche Ekadashi-Tage untersuchen"
+      <TextBlock Text="Jahresübersicht und Vergleich mit offiziellen Fastenkalendern"
                  Foreground="#556579" />
     </StackPanel>
 
@@ -58,7 +58,7 @@
           <TextBlock x:Name="TimeZoneText" Text="{Binding SelectedLocation.TimeZoneId}" />
         </StackPanel>
         <Border Background="#EDF4F3" CornerRadius="4" Padding="12">
-          <TextBlock Text="Technischer Modus: Tithi 11 oder 26 bei astronomischem Sonnenaufgang markiert einen Kandidaten. Noch keine validierte Ananda-Marga- oder ISKCON-Fastenregel."
+          <TextBlock Text="{Binding ModeDescription}"
                      TextWrapping="Wrap" Foreground="#284D49" />
         </Border>
         <TextBlock x:Name="YearValidationText" Text="{Binding YearValidationMessage}" Foreground="#A52B26"
@@ -66,7 +66,7 @@
       </StackPanel>
     </Border>
 
-    <Grid Grid.Row="2" RowDefinitions="Auto,*" RowSpacing="12">
+    <Grid Grid.Row="2" RowDefinitions="Auto,*" RowSpacing="12" IsVisible="{Binding !IsAnandaMargaMode}">
       <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
         <TextBlock x:Name="ResultSummaryText" Text="{Binding ResultSummary}" FontSize="16" FontWeight="SemiBold"
                    VerticalAlignment="Center" TextWrapping="Wrap" />
@@ -100,6 +100,64 @@
         </StackPanel>
       </Grid>
     </Grid>
+
+    <Grid x:Name="ComparisonPanel" Grid.Row="2" RowDefinitions="Auto,*" RowSpacing="12"
+          IsVisible="{Binding IsAnandaMargaMode}">
+      <StackPanel Spacing="8">
+        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+          <TextBlock x:Name="FastingSummaryText" Text="{Binding ResultSummary}" FontSize="16" FontWeight="SemiBold"
+                     VerticalAlignment="Center" TextWrapping="Wrap" />
+          <CheckBox x:Name="MismatchFilter" Grid.Column="1" Content="Nur Abweichungen"
+                    IsChecked="{Binding ShowMismatchesOnly, Mode=TwoWay}" IsEnabled="{Binding !IsBusy}" />
+        </Grid>
+        <Border Background="White" CornerRadius="6" Padding="12">
+          <StackPanel Spacing="6">
+            <TextBlock x:Name="ComparisonSummaryText" Text="{Binding ComparisonSummary}" FontWeight="SemiBold" TextWrapping="Wrap" />
+            <TextBlock x:Name="ReferenceDescriptionText" Text="{Binding ReferenceDescription}" Foreground="#556579" FontSize="12" TextWrapping="Wrap" />
+            <SelectableTextBlock x:Name="ReferenceSourceText" Text="{Binding ReferenceSource}" Foreground="#284D49" FontSize="12" TextWrapping="Wrap" />
+            <TextBlock x:Name="ComparisonWarningText" Text="{Binding ComparisonWarning}" Foreground="#A52B26" FontSize="12" TextWrapping="Wrap" />
+          </StackPanel>
+        </Border>
+      </StackPanel>
+      <Grid Grid.Row="1">
+        <DataGrid x:Name="ComparisonTable" ItemsSource="{Binding ComparisonRows}" IsReadOnly="True"
+                  SelectedItem="{Binding SelectedComparisonRow, Mode=TwoWay}" SelectionMode="Single"
+                  AutoGenerateColumns="False" GridLinesVisibility="Horizontal" Background="White"
+                  BorderBrush="#DDE3E8" BorderThickness="1">
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="Berechnet (lokaler Fastentag)" Binding="{ReflectionBinding Calculated}" Width="*" />
+            <DataGridTextColumn Header="Offiziell" Binding="{ReflectionBinding Official}" Width="*" />
+            <DataGridTemplateColumn Header="Status" Width="230">
+              <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate x:DataType="vm:ComparisonRow">
+                  <Border Background="{Binding StatusBackground}" CornerRadius="4" Margin="6,4" Padding="8,5">
+                    <TextBlock Text="{Binding Status}" Foreground="{Binding StatusForeground}" FontWeight="SemiBold" />
+                  </Border>
+                </DataTemplate>
+              </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTextColumn Header="Abweichung" Binding="{ReflectionBinding Difference}" Width="*" />
+          </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel IsVisible="{Binding !ComparisonRows.Count}" VerticalAlignment="Center"
+                    HorizontalAlignment="Center" Spacing="6" IsHitTestVisible="False">
+          <TextBlock Text="Keine angezeigten Vergleichszeilen" FontSize="17" HorizontalAlignment="Center" />
+          <TextBlock Text="Berechnung starten oder Abweichungsfilter prüfen." Foreground="#556579" HorizontalAlignment="Center" />
+        </StackPanel>
+      </Grid>
+    </Grid>
+
+    <Border x:Name="ComparisonDetailsPanel" Grid.Row="3" IsVisible="{Binding HasSelectedComparisonRow}"
+            Background="White" CornerRadius="8" Padding="16">
+      <Grid RowDefinitions="Auto,Auto,Auto" RowSpacing="8">
+        <Grid ColumnDefinitions="*,Auto">
+          <TextBlock Text="Regelentscheidung" FontSize="18" FontWeight="SemiBold" />
+          <Button Grid.Column="1" Content="Schließen" Command="{Binding CloseComparisonDetailsCommand}" Padding="10,3" />
+        </Grid>
+        <TextBlock Grid.Row="1" Text="{Binding SelectedComparisonRow.DetailTitle}" FontWeight="SemiBold" TextWrapping="Wrap" />
+        <TextBlock Grid.Row="2" Text="{Binding SelectedComparisonRow.Diagnosis}" Foreground="#284D49" TextWrapping="Wrap" />
+      </Grid>
+    </Border>
 
     <Border x:Name="DetailsPanel" Grid.Row="3" IsVisible="{Binding HasSelectedResult}"
             Background="White" CornerRadius="8" Padding="16">

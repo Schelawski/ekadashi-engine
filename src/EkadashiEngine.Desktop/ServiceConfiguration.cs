@@ -1,6 +1,7 @@
 using EkadashiEngine.Astronomy.SwissEphemeris;
 using EkadashiEngine.Core.Astronomy;
 using EkadashiEngine.Core.Rules;
+using EkadashiEngine.Core.ReferenceData;
 using EkadashiEngine.Desktop.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -30,6 +31,9 @@ public static class ServiceConfiguration
         services.AddTransient<TraditionDataCalculator>();
         services.AddTransient<ITraditionRule, AnandaMargaRule>();
         services.AddTransient<FastingCalendarCalculator>();
+        services.AddTransient<IFastingCalendarCalculator>(provider => provider.GetRequiredService<FastingCalendarCalculator>());
+        services.AddSingleton<ICalendarReferenceProvider, EmbeddedCalendarReferenceProvider>();
+        services.AddTransient<CalendarComparisonService>();
         services.AddTransient<MainWindowViewModel>();
 
         return services.BuildServiceProvider(new ServiceProviderOptions

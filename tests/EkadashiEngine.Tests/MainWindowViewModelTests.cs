@@ -1,5 +1,7 @@
 using EkadashiEngine.Core;
 using EkadashiEngine.Core.Astronomy;
+using EkadashiEngine.Core.ReferenceData;
+using EkadashiEngine.Core.Rules;
 using EkadashiEngine.Desktop.ViewModels;
 using Microsoft.Extensions.Logging.Abstractions;
 
@@ -72,7 +74,14 @@ public sealed class MainWindowViewModelTests
     }
 
     private static MainWindowViewModel CreateViewModel(IYearAstronomyCalculator calculator) =>
-        new(calculator, NullLogger<MainWindowViewModel>.Instance);
+        new(calculator, new UnusedFastingCalculator(), new EmbeddedCalendarReferenceProvider(),
+            new CalendarComparisonService(), NullLogger<MainWindowViewModel>.Instance);
+
+    private sealed class UnusedFastingCalculator : IFastingCalendarCalculator
+    {
+        public TraditionYearResult Calculate(int year, Location location, CancellationToken cancellationToken = default) =>
+            throw new InvalidOperationException("Technical mode must not invoke traditional calculations.");
+    }
 
     private static YearAstronomyResult CreateResult(int year, Location location)
     {

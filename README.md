@@ -19,7 +19,12 @@ Der erste Vergleich für Berlin 2026 ergibt **12 von 24 Übereinstimmungen** mit
 dem offiziellen Sektorkalender; die Regel ist daher nicht als kalender-validiert
 gekennzeichnet. Methode, API und Abweichungen stehen in
 [Ananda-Marga-Regel](docs/ananda-marga-rule.md).
-Die UI-Vergleichsansicht folgt in Issue #6; ISKCON-Regeln folgen separat.
+Der Kalendervergleich aus [Issue #6](https://github.com/Schelawski/ekadashi-engine/issues/6)
+ist im Modus **Ananda Marga · Kalendervergleich** nutzbar: offizielle und berechnete
+Datumswerte, farbige Statusanzeigen, Abweichungsfilter und automatische Statistik.
+Für Berlin Sector 2025/2027 wurden bislang keine belegten Daten gefunden; die UI
+zeigt fehlende Referenzen ausdrücklich. Bedienung und Statistik stehen in
+[Kalendervergleich](docs/calendar-comparison.md). ISKCON-Regeln folgen separat.
 
 Die astronomische Basis aus [Issue #3](https://github.com/Schelawski/ekadashi-engine/issues/3)
 ist implementiert: Sonne/Mond, Winkeldifferenz, Tithi, lokaler Sonnenaufgang und
@@ -50,6 +55,12 @@ Für Berlin 2026 liefert der technische Modus aktuell **24 Kandidaten** bei 365
 auswertbaren Tagen. Dies beschreibt das Rechenergebnis, nicht die Übereinstimmung
 mit einem offiziellen Kalender. Auch ausgelassene oder doppelte Tithis am
 Sonnenaufgang erhalten in dieser Phase noch keine traditionelle Sonderregel.
+
+Für den offiziellen Kalendervergleich im Modus **Ananda Marga · Kalendervergleich**
+Berlin/2026 wählen und **Berechnen** starten. **Nur Abweichungen** filtert die
+Vergleichstabelle; eine Zeile öffnet die Regelentscheidung. Die Statistik bleibt
+auf das ganze Jahr bezogen. Referenzdaten sind eingebettet und benötigen zur
+Laufzeit weder Netzwerk noch einen lokalen Repository-Pfad.
 
 ## Voraussetzungen und Start
 

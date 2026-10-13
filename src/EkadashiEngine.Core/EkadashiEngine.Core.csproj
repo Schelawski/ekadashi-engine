@@ -1,5 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
     <PackageReference Include="NodaTime" />
+    <EmbeddedResource Include="../../data/reference/ananda-marga/berlin-sector-*.json"
+                      LogicalName="CalendarReferences.%(Filename)%(Extension)" />
   </ItemGroup>
 </Project>
