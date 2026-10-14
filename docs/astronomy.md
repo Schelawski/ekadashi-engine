@@ -158,6 +158,14 @@ verwerfen alte Ergebnisse; ein abgebrochener oder überholter Lauf kann keine
 Ergebnisse für eine inzwischen andere Auswahl veröffentlichen. Beim Schließen
 des Fensters wird eine noch laufende Berechnung ebenfalls abgebrochen.
 
+## Internationaler Vergleich (Issue #8)
+
+Der [internationale Ortsvergleich](international-locations.md) verwendet für
+jeden Punkt die vollständigen Koordinaten und die IANA-Zeitzone. Er vergleicht
+dieselbe lokale Jahresperiode; gleiche Datumsschreibweisen können unterschiedliche
+UTC-Sonnenaufgangsdaten enthalten. `ICrossLocationCalculator` und die geteilte
+Tagesbewertung erhalten ungeklärte Ergebnisse als `null`.
+
 ## Quellen und Lizenz
 
 - [Swiss-Ephemeris-Programmierschnittstelle](https://www.astro.com/swisseph/swephprg.htm)

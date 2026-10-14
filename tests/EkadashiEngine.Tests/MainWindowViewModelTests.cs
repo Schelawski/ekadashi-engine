@@ -10,6 +10,31 @@ namespace EkadashiEngine.Tests;
 
 public sealed class MainWindowViewModelTests
 {
+    [Fact]
+    public async Task CustomCoordinatesReachTheCalculatorAndEditsInvalidateExports()
+    {
+        Location? received = null;
+        var viewModel = CreateViewModel(new StubCalculator((year, location, _) => { received = location; return CreateResult(year, location); }));
+        viewModel.UseCustomLocation = true;
+        viewModel.LocationEditor.DisplayName = "Munich";
+        viewModel.LocationEditor.Latitude = 48.1372m;
+        viewModel.LocationEditor.Longitude = 11.5756m;
+        await viewModel.CalculateCommand.ExecuteAsync(null);
+        Assert.NotNull(received);
+        Assert.Equal(48.1372, received.Latitude);
+        Assert.Equal(11.5756, received.Longitude);
+        Assert.Equal("Europe/Berlin", received.TimeZoneId);
+        Assert.True(viewModel.CanExport);
+        viewModel.LocationEditor.TimeZoneId = "Invalid/Zone";
+        Assert.Empty(viewModel.Results);
+        Assert.Null(viewModel.Snapshot);
+        Assert.False(viewModel.CalculateCommand.CanExecute(null));
+        Assert.False(viewModel.CanExport);
+        viewModel.UseCustomLocation = false;
+        Assert.True(viewModel.CalculateCommand.CanExecute(null));
+        Assert.Equal(LocationCatalog.DefaultLocations[0], viewModel.EffectiveLocation);
+    }
+
     [Theory]
     [InlineData(null)]
     [InlineData("2026.5")]
@@ -76,7 +101,7 @@ public sealed class MainWindowViewModelTests
 
     private static MainWindowViewModel CreateViewModel(IYearAstronomyCalculator calculator) =>
         new(calculator, new UnusedFastingCalculator(), new EmbeddedCalendarReferenceProvider(),
-            new CalendarComparisonService(), TestCalculationServices.Factory, new CalculationExporter(), NullLogger<MainWindowViewModel>.Instance);
+            new CalendarComparisonService(), TestCalculationServices.Factory, new CalculationExporter(), TestCalculationServices.CrossViewModel, NullLogger<MainWindowViewModel>.Instance);
 
     private sealed class UnusedFastingCalculator : IFastingCalendarCalculator
     {

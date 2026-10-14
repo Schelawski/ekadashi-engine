@@ -24,6 +24,17 @@ public sealed partial class MainWindowViewModel : ObservableObject
     private int _inputVersion;
 
     public IReadOnlyList<Location> Locations => LocationCatalog.DefaultLocations;
+    public LocationEditorViewModel LocationEditor { get; } = new();
+    public CrossLocationViewModel CrossLocation { get; }
+    public Location? EffectiveLocation => UseCustomLocation ? LocationEditor.Location : SelectedLocation;
+    public bool CanCompareLocations => !IsBusy && !IsExporting && EffectiveLocation is not null
+        && SelectedTradition?.Tradition is Tradition.TechnicalSunriseCandidate or Tradition.AnandaMarga;
+    public string EffectiveCoordinates => EffectiveLocation is { } location
+        ? FormattableString.Invariant($"{location.Latitude:F5}°, {location.Longitude:F5}°") : "Ungültige Standortangaben";
+
+    [ObservableProperty]
+    [NotifyCanExecuteChangedFor(nameof(CalculateCommand))]
+    private bool _useCustomLocation;
 
     public IReadOnlyList<TraditionOption> Traditions { get; } =
     [
@@ -52,12 +63,14 @@ public sealed partial class MainWindowViewModel : ObservableObject
     [NotifyCanExecuteChangedFor(nameof(CalculateCommand))]
     [NotifyPropertyChangedFor(nameof(CanExport))]
     [NotifyPropertyChangedFor(nameof(CanExportCsv))]
+    [NotifyPropertyChangedFor(nameof(CanCompareLocations))]
     private bool _isBusy;
 
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(CalculateCommand))]
     [NotifyPropertyChangedFor(nameof(CanExport))]
     [NotifyPropertyChangedFor(nameof(CanExportCsv))]
+    [NotifyPropertyChangedFor(nameof(CanCompareLocations))]
     private bool _isExporting;
 
     [ObservableProperty]
@@ -117,12 +130,12 @@ public sealed partial class MainWindowViewModel : ObservableObject
     public string YearValidationMessage => IsYearValid ? string.Empty : $"Bitte ein ganzes Jahr von {MinimumYear} bis {MaximumYear} eingeben.";
     private bool IsYearValid => Year is >= YearAstronomyCalculator.MinimumYear and <= YearAstronomyCalculator.MaximumYear
         && decimal.Truncate(Year.Value) == Year.Value;
-    private bool CanCalculate => !IsBusy && !IsExporting && IsYearValid && SelectedLocation is not null
+    private bool CanCalculate => !IsBusy && !IsExporting && IsYearValid && EffectiveLocation is not null
         && SelectedTradition?.Tradition is Tradition.TechnicalSunriseCandidate or Tradition.AnandaMarga;
 
     public MainWindowViewModel(IYearAstronomyCalculator calculator, IFastingCalendarCalculator fastingCalculator,
         ICalendarReferenceProvider references, CalendarComparisonService comparisonService, CalculationSnapshotFactory snapshotFactory,
-        CalculationExporter exporter, ILogger<MainWindowViewModel> logger)
+        CalculationExporter exporter, CrossLocationViewModel crossLocation, ILogger<MainWindowViewModel> logger)
     {
         _calculator = calculator;
         _fastingCalculator = fastingCalculator;
@@ -130,9 +143,12 @@ public sealed partial class MainWindowViewModel : ObservableObject
         _comparisonService = comparisonService;
         _snapshotFactory = snapshotFactory;
         _exporter = exporter;
+        CrossLocation = crossLocation;
         _logger = logger;
         _selectedLocation = Locations[0];
         _selectedTradition = Traditions[0];
+        LocationEditor.Load(_selectedLocation);
+        LocationEditor.Changed += () => { if (UseCustomLocation) { InputsChanged(); NotifyLocation(); } };
     }
 
     [RelayCommand(CanExecute = nameof(CanCalculate), IncludeCancelCommand = true)]
@@ -141,7 +157,7 @@ public sealed partial class MainWindowViewModel : ObservableObject
         if (!CanCalculate)
             return;
 
-        var location = SelectedLocation!;
+        var location = EffectiveLocation!;
         var year = (int)Year!.Value;
         var tradition = SelectedTradition!.Tradition;
         var inputVersion = _inputVersion;
@@ -205,7 +221,12 @@ public sealed partial class MainWindowViewModel : ObservableObject
     [RelayCommand]
     private void CloseComparisonDetails() => SelectedComparisonRow = null;
 
-    partial void OnSelectedLocationChanged(Location? value) => InputsChanged();
+    partial void OnSelectedLocationChanged(Location? value)
+    {
+        if (value is not null) LocationEditor.Load(value);
+        InputsChanged(); NotifyLocation();
+    }
+    partial void OnUseCustomLocationChanged(bool value) { InputsChanged(); NotifyLocation(); }
     partial void OnYearChanged(decimal? value) => InputsChanged();
     partial void OnSelectedTraditionChanged(TraditionOption? value)
     {
@@ -213,6 +234,7 @@ public sealed partial class MainWindowViewModel : ObservableObject
         OnPropertyChanged(nameof(IsAnandaMargaMode));
         OnPropertyChanged(nameof(ShowComparisonOverview));
         OnPropertyChanged(nameof(ModeDescription));
+        OnPropertyChanged(nameof(CanCompareLocations));
     }
     partial void OnShowCandidatesOnlyChanged(bool value) => UpdateVisibleRows();
     partial void OnShowMismatchesOnlyChanged(bool value) => UpdateComparisonRows();
@@ -283,5 +305,20 @@ public sealed partial class MainWindowViewModel : ObservableObject
     {
         _logger.LogError(exception, "Export failed.");
         StatusMessage = "Export fehlgeschlagen. Bitte Ziel und Schreibrechte prüfen und erneut versuchen.";
+    }
+
+    private void NotifyLocation()
+    {
+        OnPropertyChanged(nameof(EffectiveLocation)); OnPropertyChanged(nameof(EffectiveCoordinates));
+        OnPropertyChanged(nameof(CanCompareLocations)); CalculateCommand.NotifyCanExecuteChanged();
+    }
+
+    public void PrepareCrossLocationComparison()
+    {
+        if (!CanCompareLocations) return;
+        var location = EffectiveLocation!;
+        if (IsYearValid) CrossLocation.Year = Year;
+        CrossLocation.SelectedTradition = CrossLocation.Traditions.First(option => option.Tradition == SelectedTradition!.Tradition);
+        CrossLocation.AddLocation(location);
     }
 }

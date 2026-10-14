@@ -106,7 +106,7 @@ public sealed class CalendarComparisonViewModelTests
     {
         var viewModel = new MainWindowViewModel(new SyntheticYearCalculator(), new StubFastingCalculator(calculate),
             new EmbeddedCalendarReferenceProvider(), new CalendarComparisonService(), TestCalculationServices.Factory,
-            new CalculationExporter(), NullLogger<MainWindowViewModel>.Instance);
+            new CalculationExporter(), TestCalculationServices.CrossViewModel, NullLogger<MainWindowViewModel>.Instance);
         viewModel.SelectedTradition = viewModel.Traditions[1];
         return viewModel;
     }

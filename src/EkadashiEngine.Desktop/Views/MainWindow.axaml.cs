@@ -9,7 +9,18 @@ namespace EkadashiEngine.Desktop.Views;
 public partial class MainWindow : Window
 {
     private readonly CancellationTokenSource _exportCancellation = new();
+    private CrossLocationWindow? _crossLocationWindow;
     public MainWindow() => InitializeComponent();
+
+    private void CompareLocationsClicked(object? sender, RoutedEventArgs e)
+    {
+        if (DataContext is not MainWindowViewModel viewModel) return;
+        viewModel.PrepareCrossLocationComparison();
+        if (_crossLocationWindow is not null) { _crossLocationWindow.Activate(); return; }
+        _crossLocationWindow = new CrossLocationWindow { DataContext = viewModel.CrossLocation };
+        _crossLocationWindow.Closed += (_, _) => _crossLocationWindow = null;
+        _crossLocationWindow.Show(this);
+    }
 
     private async void ExportJsonClicked(object? sender, RoutedEventArgs e) => await ExportAsync(ExportFormat.Json);
     private async void ExportCsvClicked(object? sender, RoutedEventArgs e) => await ExportAsync(ExportFormat.Csv);
@@ -55,6 +66,7 @@ public partial class MainWindow : Window
     protected override void OnClosed(EventArgs e)
     {
         _exportCancellation.Cancel();
+        _crossLocationWindow?.Close();
         if (DataContext is MainWindowViewModel viewModel)
             viewModel.CalculateCommand.Cancel();
         base.OnClosed(e);

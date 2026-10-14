@@ -4,6 +4,7 @@ using EkadashiEngine.Core.Rules;
 using EkadashiEngine.Core.ReferenceData;
 using EkadashiEngine.Core.Diagnostics;
 using EkadashiEngine.Core.Export;
+using EkadashiEngine.Core.Comparison;
 using EkadashiEngine.Desktop.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -40,6 +41,8 @@ public static class ServiceConfiguration
         services.AddSingleton(SwissEphemerisAstronomyService.Provenance);
         services.AddTransient<CalculationSnapshotFactory>();
         services.AddTransient<CalculationExporter>();
+        services.AddTransient<ICrossLocationCalculator, CrossLocationCalculator>();
+        services.AddTransient<CrossLocationViewModel>();
         services.AddTransient<MainWindowViewModel>();
 
         return services.BuildServiceProvider(new ServiceProviderOptions

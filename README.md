@@ -33,6 +33,16 @@ App und einem UI-unabhängigen CLI-Werkzeug. Fünf versionierte Datensätze prü
 Format und Nullwert-Konventionen stehen in
 [Diagnose und Export](docs/diagnostics-and-export.md).
 
+[Issue #8](https://github.com/Schelawski/ekadashi-engine/issues/8) ergänzt freie
+Standortangaben einschließlich IANA-Zeitzone und einen **Ortsvergleich für dasselbe
+Jahr**. Über **Eigene Koordinaten verwenden** einen Punkt eingeben und mit
+**Orte vergleichen …** mehrere Standorte nebeneinander untersuchen. Alle neun
+Katalogorte und zusätzliche eigene Punkte sind auswählbar. Bedienung und
+Berechnungsidentität stehen in [Internationale Locations](docs/international-locations.md).
+Für die spätere mobile Integration sind [Automatic, Home location und Select city](docs/automatic-location.md)
+mit Aktualisierung, Fallback und Cache-Vertrag spezifiziert; Geräte-GPS ist im
+Desktop-Tool nicht aktiv.
+
 Die astronomische Basis aus [Issue #3](https://github.com/Schelawski/ekadashi-engine/issues/3)
 ist implementiert: Sonne/Mond, Winkeldifferenz, Tithi, lokaler Sonnenaufgang und
 Diagnoseobjekte. SwissEphSharp ist in einem separaten Adapter gekapselt;
@@ -120,7 +130,7 @@ tools/
 data/
   reference/                Astronomische Referenzen und AM Berlin Sector 2026
   test-vectors/             Versionierte Tages- und Regeltests für die Portierung
-  locations/                Späterer Ortskatalog
+  locations/                Dokumentation des Ortskatalogs; Katalog liegt in Core
   exports/                  Platzhalter für lokale Exporte; Beispiele nach artifacts/
 ```
 
