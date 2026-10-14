@@ -11,7 +11,7 @@ if (args.Length == 0 || args.Contains("--help"))
 {
     Console.WriteLine("""
         Export a complete calculation without starting the desktop UI.
-        --year 2026 --location Berlin --mode am|technical --format json|csv|test-vectors --output path
+        --year 2026 --location Berlin --mode am|vaishnava|technical --format json|csv|test-vectors --output path
         Optional: --dates yyyy-MM-dd,yyyy-MM-dd (test-vectors only)
         Custom location: --latitude number --longitude number --time-zone IANA --country code
         """);
@@ -42,17 +42,17 @@ try
         _ => throw new ArgumentException("Format must be json, csv or test-vectors.")
     };
     var mode = options.GetValueOrDefault("--mode", "am");
-    if (mode is not ("am" or "technical")) throw new ArgumentException("Mode must be am or technical.");
+    if (mode is not ("am" or "vaishnava" or "technical")) throw new ArgumentException("Mode must be am, vaishnava or technical.");
     var output = Path.GetFullPath(Required("--output"));
     var sky = new SwissEphemerisAstronomyService();
     var tithi = new TithiCalculator();
     var astronomy = new YearAstronomyCalculator(sky, sky, tithi).Calculate(year, location);
     TraditionYearResult? calendar = null;
     CalendarComparisonResult? comparison = null;
-    if (mode == "am")
+    if (mode != "technical")
     {
         calendar = new FastingCalendarCalculator(new TraditionDataCalculator(sky, new TithiIntervalCalculator(sky, tithi)),
-            new AnandaMargaRule()).Calculate(year, location);
+            new AnandaMargaRule()).Calculate(year, location, mode == "am" ? Tradition.AnandaMarga : Tradition.GaudiyaVaishnava);
         comparison = new CalendarComparisonService().Compare(calendar,
             new EmbeddedCalendarReferenceProvider().Find(year, location, calendar.Tradition));
     }

@@ -13,6 +13,9 @@ liegen getrennt unter `data/reference/ananda-marga`.
 | apia-2011-v1.json | 3 | 0 | Übersprungener 30.12.2011 und UTC-Offsetwechsel −10 → +14 |
 | rule-edges-2026-v1.json | 0 | 7 | Synthetische kurze/lange Tithis, Gleichstand und Beinahe-Gleichstand, fehlende Abdeckung, Jahreswechsel |
 
+| vaishnava-berlin-2026-v1.json | 10 | 24 | GCal-Referenzjahr, Viddha, Trisprsha und Paksha-vardhini; vollständiger Arunodaya-/Nakshatra-Kontext |
+| vaishnava-edges-2026-v1.json | 0 | 15 | Synthetische reine/ausgelassene Ekadashi, Viddha, acht Mahadvadashi-Arten und Kombination, fehlende Regelinputs |
+
 Format, Einheiten, Nullwerte und Vergleichstoleranzen beschreibt
 [Diagnose und Export](../../docs/diagnostics-and-export.md).
 `rule-edges` enthält ausdrücklich **synthetische** Daten; seine
@@ -39,3 +42,12 @@ dotnet run --project tools/EkadashiEngine.Export -- --year 2011 --location Apia 
 `rule-edges-2026-v1.json` wird von Hand anhand der ausdrücklich angegebenen
 UTC-Fenster gepflegt. Die Regelfälle lassen sich ohne Sonnen-/Mondberechnung
 direkt an `ITraditionRule` übergeben.
+
+Die beiden Vaishnava-Dateien ergänzen `vaishnavaDays` in jedem Regelfall. Diese
+Beobachtungen sind Inputs der reinen Regel, keine aus der Antwort abzuleitenden
+Erwartungen. Die reale Datei prüft außerdem Sonnenuntergang, Arunodaya-Tithi und
+Nakshatra gegen den Adapter. Insgesamt: 30 Tageswerte und 94 Regelfälle.
+Der vollständige [Dart-Abnahmevertrag](../../docs/flutter-porting-spec.md) trennt
+Regeltests von Astronomie-Tests. Synthetische Vaishnava-Erwartungen lassen sich
+bewusst mit `python tools/generate_vaishnava_edge_vectors.py` reproduzieren;
+der Testlauf selbst schreibt keine Fixtures.

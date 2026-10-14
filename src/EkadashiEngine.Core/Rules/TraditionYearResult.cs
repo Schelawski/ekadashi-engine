@@ -2,16 +2,18 @@ using EkadashiEngine.Core.Astronomy;
 
 namespace EkadashiEngine.Core.Rules;
 
-public enum RuleDecisionStatus { Selected, MissingSunriseCoverage, AmbiguousOverlap }
+public enum RuleDecisionStatus { Selected, MissingSunriseCoverage, AmbiguousOverlap, MissingRuleData }
 
 public sealed record DayOverlap(DateOnly LocalDate, DateTimeOffset SunriseUtc,
     DateTimeOffset NextSunriseUtc, TimeSpan Overlap);
 
 public sealed record RuleDecision(TithiInterval Tithi, DateOnly? FastingDate,
-    RuleDecisionStatus Status, IReadOnlyList<DayOverlap> Candidates, string Explanation)
+    RuleDecisionStatus Status, IReadOnlyList<DayOverlap> Candidates, string Explanation,
+    IReadOnlyList<VaishnavaDay>? VaishnavaDays = null)
 {
     public bool TouchesDate(DateOnly date, Location location) =>
         Candidates.Any(candidate => candidate.LocalDate == date) ||
+        (VaishnavaDays?.Any(day => day.LocalDate == date) ?? false) ||
         (DateOnly.FromDateTime(location.GetLocalTime(Tithi.StartUtc).DateTime) <= date &&
          DateOnly.FromDateTime(location.GetLocalTime(Tithi.EndUtc.AddTicks(-1)).DateTime) >= date);
 }

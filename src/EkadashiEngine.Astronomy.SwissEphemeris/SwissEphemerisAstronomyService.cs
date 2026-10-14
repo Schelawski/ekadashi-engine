@@ -5,7 +5,7 @@ using SwissEphNet;
 
 namespace EkadashiEngine.Astronomy.SwissEphemeris;
 
-public sealed class SwissEphemerisAstronomyService : IAstronomyService, ISunriseCalculator
+public sealed class SwissEphemerisAstronomyService : IAstronomyService, ISunriseCalculator, IVaishnavaAstronomy
 {
     public static AstronomyProvenance Provenance => new("SwissEphSharp",
         typeof(SwissEph).Assembly.GetName().Version!.ToString(), "Moshier (SEFLG_MOSEPH)");
@@ -24,6 +24,22 @@ public sealed class SwissEphemerisAstronomyService : IAstronomyService, ISunrise
 
     public SunriseResult CalculateSunrise(DateOnly localDate, Location location,
         SunriseDefinition definition = SunriseDefinition.UpperLimbWithRefraction)
+        => CalculateSolarEvent(localDate, location, definition, false);
+
+    public DateTimeOffset? GetSunsetUtc(DateOnly date, Location location) =>
+        CalculateSolarEvent(date, location, SunriseDefinition.UpperLimbWithRefraction, true).SunriseUtc;
+
+    public int GetNakshatra(DateTimeOffset instant)
+    {
+        using var swiss = new SwissEph();
+        swiss.swe_set_sid_mode(SwissEph.SE_SIDM_LAHIRI, 0, 0);
+        var jd = ToJulianDayUt1(swiss, instant);
+        var longitude = GetLongitude(swiss, jd, SwissEph.SE_MOON) - swiss.swe_get_ayanamsa_ut(jd);
+        return (int)Math.Floor(((longitude % 360 + 360) % 360) / (360.0 / 27));
+    }
+
+    private static SunriseResult CalculateSolarEvent(DateOnly localDate, Location location,
+        SunriseDefinition definition, bool sunset)
     {
         ArgumentNullException.ThrowIfNull(location);
         if (!Enum.IsDefined(definition))
@@ -34,7 +50,7 @@ public sealed class SwissEphemerisAstronomyService : IAstronomyService, ISunrise
 
         using var swiss = new SwissEph();
         var searchStart = ToJulianDayUt1(swiss, start.Value);
-        var riseFlags = SwissEph.SE_CALC_RISE;
+        var riseFlags = sunset ? SwissEph.SE_CALC_SET : SwissEph.SE_CALC_RISE;
         if (definition == SunriseDefinition.HinduGeometricCenter)
             riseFlags |= SwissEph.SE_BIT_HINDU_RISING;
 

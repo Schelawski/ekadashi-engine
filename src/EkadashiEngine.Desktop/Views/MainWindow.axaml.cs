@@ -14,7 +14,7 @@ public partial class MainWindow : Window
 
     private void CompareLocationsClicked(object? sender, RoutedEventArgs e)
     {
-        if (DataContext is not MainWindowViewModel viewModel) return;
+        if (DataContext is not MainWindowViewModel viewModel || !viewModel.CanCompareLocations) return;
         viewModel.PrepareCrossLocationComparison();
         if (_crossLocationWindow is not null) { _crossLocationWindow.Activate(); return; }
         _crossLocationWindow = new CrossLocationWindow { DataContext = viewModel.CrossLocation };
@@ -39,7 +39,7 @@ public partial class MainWindow : Window
                 viewModel.StatusMessage = saved ? "Export gespeichert." : "Export abgebrochen.";
         }
         catch (OperationCanceledException) when (_exportCancellation.IsCancellationRequested) { }
-        catch (Exception exception) { viewModel.ReportExportFailure(exception); }
+        catch (Exception exception) { viewModel.ReportExportFailure(exception, ReferenceEquals(snapshot, viewModel.Snapshot)); }
         finally { viewModel.IsExporting = false; }
     }
 

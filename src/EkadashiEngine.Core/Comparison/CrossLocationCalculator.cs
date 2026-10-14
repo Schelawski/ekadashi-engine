@@ -29,7 +29,7 @@ public sealed class CrossLocationCalculator(IYearAstronomyCalculator astronomy, 
         ArgumentNullException.ThrowIfNull(locations);
         if (year is < YearAstronomyCalculator.MinimumYear or > YearAstronomyCalculator.MaximumYear)
             throw new ArgumentOutOfRangeException(nameof(year));
-        if (tradition is not (Tradition.TechnicalSunriseCandidate or Tradition.AnandaMarga))
+        if (tradition is not (Tradition.TechnicalSunriseCandidate or Tradition.AnandaMarga or Tradition.GaudiyaVaishnava))
             throw new ArgumentOutOfRangeException(nameof(tradition));
         if (locations.Count < 2 || locations.Select(LocationKey.From).Distinct().Count() != locations.Count)
             throw new ArgumentException("Select at least two distinct coordinate/time-zone locations.", nameof(locations));
@@ -39,7 +39,7 @@ public sealed class CrossLocationCalculator(IYearAstronomyCalculator astronomy, 
         {
             cancellationToken.ThrowIfCancellationRequested();
             var sky = astronomy.Calculate(year, location, cancellationToken);
-            var calendar = tradition == Tradition.AnandaMarga ? fasting.Calculate(year, location, cancellationToken) : null;
+            var calendar = tradition != Tradition.TechnicalSunriseCandidate ? fasting.Calculate(year, location, tradition, cancellationToken) : null;
             if (sky.Year != year || sky.Location != location || sky.Days.Count != dayCount
                 || !sky.Days.Select(day => day.LocalDate).SequenceEqual(Enumerable.Range(0, dayCount).Select(index => new DateOnly(year, 1, 1).AddDays(index))))
                 throw new AstronomyCalculationException("Cross-location comparison requires a complete, ordered local calendar year.");

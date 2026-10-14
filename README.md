@@ -20,11 +20,11 @@ dem offiziellen Sektorkalender; die Regel ist daher nicht als kalender-validiert
 gekennzeichnet. Methode, API und Abweichungen stehen in
 [Ananda-Marga-Regel](docs/ananda-marga-rule.md).
 Der Kalendervergleich aus [Issue #6](https://github.com/Schelawski/ekadashi-engine/issues/6)
-ist im Modus **Ananda Marga · Kalendervergleich** nutzbar: offizielle und berechnete
+ist im Modus **Ananda Marga** nutzbar: offizielle und berechnete
 Datumswerte, farbige Statusanzeigen, Abweichungsfilter und automatische Statistik.
 Für Berlin Sector 2025/2027 wurden bislang keine belegten Daten gefunden; die UI
 zeigt fehlende Referenzen ausdrücklich. Bedienung und Statistik stehen in
-[Kalendervergleich](docs/calendar-comparison.md). ISKCON-Regeln folgen separat.
+[Kalendervergleich](docs/calendar-comparison.md). Vaishnava ist ebenfalls verfügbar (siehe unten).
 
 [Issue #7](https://github.com/Schelawski/ekadashi-engine/issues/7) ergänzt die
 vollständige Grenzfalldiagnose sowie **JSON-, CSV- und Testvektor-Export** aus der
@@ -42,6 +42,22 @@ Berechnungsidentität stehen in [Internationale Locations](docs/international-lo
 Für die spätere mobile Integration sind [Automatic, Home location und Select city](docs/automatic-location.md)
 mit Aktualisierung, Fallback und Cache-Vertrag spezifiziert; Geräte-GPS ist im
 Desktop-Tool nicht aktiv.
+
+[Issue #9](https://github.com/Schelawski/ekadashi-engine/issues/9) ergänzt
+**Vaishnava / ISKCON** als getrennte Strategie mit Arunodaya, Viddha und
+Mahadvadashi. Berlin 2026 stimmt mit **24/24 GCal-Referenztagen** überein.
+Die Haupttabelle zeigt beide berechneten Traditionen nebeneinander; bei 17
+Intervallen liegen sie einen Tag auseinander. Auch der Ortsvergleich und alle
+Exporte unterstützen Vaishnava. Der Referenzfilter betrifft die gewählte Tradition.
+
+- [Vaishnava-Regeln, Quellen und Validierungsumfang](docs/vaishnava-rule.md)
+- [Flutter-/Dart-Übergabespezifikation](docs/flutter-porting-spec.md)
+- [Abschließendes Code- und Oberflächenreview](docs/final-review.md)
+
+Sieben portable Datensätze enthalten insgesamt **30 Tageswerte und 94 Regelfälle**.
+Sie sind die Abnahmebasis für Dart; weltweite Kalendergleichheit ist damit nicht
+zugesichert. Fastenbrechen-Zeitfenster und mobile Reminder bleiben getrennte
+Integrationsaufgaben; Day +1 ist als Informationsanzeige ohne Standard-Push vorgesehen.
 
 Die astronomische Basis aus [Issue #3](https://github.com/Schelawski/ekadashi-engine/issues/3)
 ist implementiert: Sonne/Mond, Winkeldifferenz, Tithi, lokaler Sonnenaufgang und
@@ -73,8 +89,8 @@ auswertbaren Tagen. Dies beschreibt das Rechenergebnis, nicht die Übereinstimmu
 mit einem offiziellen Kalender. Auch ausgelassene oder doppelte Tithis am
 Sonnenaufgang erhalten in dieser Phase noch keine traditionelle Sonderregel.
 
-Für den offiziellen Kalendervergleich im Modus **Ananda Marga · Kalendervergleich**
-Berlin/2026 wählen und **Berechnen** starten. **Nur Abweichungen** filtert die
+Für den offiziellen Kalendervergleich im Modus **Ananda Marga**
+Berlin/2026 wählen und **Berechnen** starten. **Nur Referenzabweichungen** filtert die
 Vergleichstabelle; eine Zeile öffnet die Regelentscheidung. Die Statistik bleibt
 auf das ganze Jahr bezogen. Referenzdaten sind eingebettet und benötigen zur
 Laufzeit weder Netzwerk noch einen lokalen Repository-Pfad.
@@ -161,11 +177,11 @@ und aktualisierte Lockdateien prüfen.
   in UTC vorliegen. Die Erinnerungseinstellungen der App bestimmen keinen Fastentag.
 - Die dokumentierte Ananda-Marga-Regel ist implementiert; die Abweichungen von
   offiziellen Kalenderdaten müssen fachlich weiter geklärt werden.
-- Vaishnava-/ISKCON-Regeln und die Lizenzentscheidung für eine spätere direkte
-  Produktintegration sind weitere Arbeitsschritte. Die Abhängigkeit dieses
+- Vaishnava-/ISKCON-Regeln sind implementiert und für Berlin 2026 abgeglichen.
+  Die Lizenzentscheidung für eine spätere direkte Produktintegration bleibt offen. Die Abhängigkeit dieses
   Referenzprojekts und ihre Original-Lizenztexte sind in
   [Drittanbieterhinweise](THIRD-PARTY-NOTICES.md) dokumentiert.
-- Für Flutter/Dart sind gemeinsame Spezifikation und Testvektoren vorgesehen.
+- Für Flutter/Dart liegen gemeinsame Spezifikation und Testvektoren vor.
   Day −1 (Vorabend), Day 0 (Fastentag) und Day +1 (Fastenbrechen, primär informativ)
   bleiben eine getrennte mobile UX-Schicht.
 

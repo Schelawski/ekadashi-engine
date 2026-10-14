@@ -1,5 +1,16 @@
 # Drittanbieterhinweise
 
+## Gaurabda-Regelreferenz
+
+Die Entscheidungsreihenfolge der Vaishnava-Strategie basiert auf
+[gaurabda-calendar](https://github.com/gopa810/gaurabda-calendar),
+Commit `92c36b5948e9bcbfe991f19f511371aff1cc0fcb`, insbesondere den Funktionen
+`MahadvadasiCalc`, `EkadasiCalc`, `IsMhd58` und `NextNewFullIsVriddhi`.
+Copyright (c) 2020 gopa810, MIT-Lizenz. Der vollständige Lizenztext liegt unter
+[`third-party/Gaurabda/LICENSE`](third-party/Gaurabda/LICENSE) und wird in Build-
+und Publish-Ausgaben kopiert. Die astronomische Implementierung verwendet
+weiterhin den getrennten Swiss-Ephemeris-Adapter.
+
 ## SwissEphSharp 2.10.3.1
 
 Das Referenzprojekt verwendet [SwissEphSharp](https://github.com/Tim81/SwissEphNet),

@@ -1,0 +1,42 @@
+{
+  "source": "https://www.vaisnavacalendar.info/ICS/2026/Berlin%20%5BGermany%5D-a2026-ICS.ics",
+  "title": "GCal 11 · Vaisnava Calendar · Berlin 2026",
+  "retrievedOn": "2026-10-14",
+  "scope": "Vollständige Ekadashi-Fastentage aus dem veröffentlichten GCal-11-Kalender; keine Parana-Zeiten. Anbieter unabhängig vom GBC Calendar Committee. Vergleich am Berliner Katalogpunkt.",
+  "year": 2026,
+  "tradition": "GaudiyaVaishnava",
+  "comparisonLocation": {
+    "displayName": "Berlin",
+    "country": "DE",
+    "latitude": 52.52,
+    "longitude": 13.405,
+    "timeZoneId": "Europe/Berlin"
+  },
+  "fastingDates": [
+    "2026-01-14",
+    "2026-01-29",
+    "2026-02-13",
+    "2026-02-27",
+    "2026-03-14",
+    "2026-03-29",
+    "2026-04-13",
+    "2026-04-27",
+    "2026-05-13",
+    "2026-05-26",
+    "2026-06-11",
+    "2026-06-25",
+    "2026-07-11",
+    "2026-07-25",
+    "2026-08-09",
+    "2026-08-24",
+    "2026-09-07",
+    "2026-09-22",
+    "2026-10-06",
+    "2026-10-22",
+    "2026-11-05",
+    "2026-11-20",
+    "2026-12-04",
+    "2026-12-20"
+  ],
+  "sourceSha256": "397f1989fabe39c42ccfe81b0eb04337e35d2a0057ecae6b57682eb81dc3f1b0"
+}

@@ -4,12 +4,12 @@ Umsetzung von [Issue #6](https://github.com/Schelawski/ekadashi-engine/issues/6)
 
 ## Bedienung
 
-1. **Berlin**, **2026** und **Ananda Marga · Kalendervergleich** auswählen.
+1. **Berlin**, **2026** und **Ananda Marga** auswählen.
 2. **Berechnen** startet die vorhandene AM-Regelstrategie im Hintergrund.
 3. Die Tabelle zeigt den berechneten lokalen Fastentag, das veröffentlichte
    Datum, Status und Differenz. `MATCH` ist grün, `MISMATCH` rot hinterlegt.
    Der Textstatus bleibt auch ohne Farberkennung eindeutig.
-4. **Nur Abweichungen** blendet Treffer aus. Die Statistik bezieht sich weiter
+4. **Nur Referenzabweichungen** blendet Treffer aus. Die Statistik bezieht sich weiter
    auf das gesamte Jahr.
 5. Eine Zeile öffnet die vollständige Diagnose mit Sonnenaufgang und Winkeln für
    beide Tage, Tithi-Grenzen lokal/UTC und angewandter Regel. **Schließen** führt

@@ -40,7 +40,7 @@ oder anderen offiziellen Kalendern wird nicht behauptet.
    Implementierungen derselben Schnittstelle erhalten.
 4. `FastingCalendarCalculator` verbindet Vorbereitung und Strategie. Die Dienste
    sind im Desktop-DI registriert. Die technische UI und der Modus
-   **Ananda Marga · Kalendervergleich** machen beide Berechnungsarten zugänglich;
+   **Ananda Marga** machen beide Berechnungsarten zugänglich;
    siehe [Kalendervergleich](calendar-comparison.md).
 
 Beispiel für den Engine-Aufruf:

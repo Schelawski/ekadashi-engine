@@ -7,7 +7,7 @@ using EkadashiEngine.Core.Diagnostics;
 
 namespace EkadashiEngine.Desktop.ViewModels;
 
-public sealed class ComparisonRow(ComparisonDiagnostic diagnostic, TraditionYearResult calendar)
+public sealed class ComparisonRow(ComparisonDiagnostic diagnostic, TraditionYearResult calendar, TraditionYearResult? other = null)
 {
     private CalendarComparisonRow row => diagnostic.Comparison;
     private Location location => calendar.Location;
@@ -15,6 +15,15 @@ public sealed class ComparisonRow(ComparisonDiagnostic diagnostic, TraditionYear
     public CalendarComparisonRow Data => row;
     public string Calculated => Format(row.Calculated);
     public string Official => Format(row.Official);
+    private RuleDecision? SelectedDecision => diagnostic.Decisions.FirstOrDefault(d => d.FastingDate == row.Calculated)
+        ?? diagnostic.Decisions.FirstOrDefault();
+    private DateOnly? OtherDate => other?.Decisions.FirstOrDefault(d => SelectedDecision is { } selected
+        && d.Tithi.TithiNumber == selected.Tithi.TithiNumber
+        && Math.Abs((d.Tithi.StartUtc - selected.Tithi.StartUtc).TotalSeconds) < 1)?.FastingDate;
+    public string AnandaMargaDate => calendar.Tradition == Tradition.AnandaMarga ? Calculated : Format(OtherDate);
+    public string VaishnavaDate => calendar.Tradition == Tradition.GaudiyaVaishnava ? Calculated : Format(OtherDate);
+    public string TraditionDifference => row.Calculated is { } date && OtherDate is { } otherDate
+        ? Math.Abs(date.DayNumber - otherDate.DayNumber) + " Tag(e)" : "Ungeklärt";
     public bool IsMismatch => row.Status is CalendarComparisonStatus.Mismatch or CalendarComparisonStatus.MissingCalculated or CalendarComparisonStatus.UnexpectedCalculated;
     public string Status => row.Status switch
     {
@@ -37,7 +46,7 @@ public sealed class ComparisonRow(ComparisonDiagnostic diagnostic, TraditionYear
         : row.Status == CalendarComparisonStatus.MissingCalculated ? "Kein zugehöriges Rechendatum"
         : row.Status == CalendarComparisonStatus.UnexpectedCalculated ? "Kein zugehöriges Referenzdatum"
         : "Offizieller Vergleich nicht verfügbar";
-    public string DetailTitle => $"{location.DisplayName} · berechnet {Calculated} · offiziell {Official} · {Status}";
+    public string DetailTitle => $"{location.DisplayName} · berechnet {Calculated} · Referenz {Official} · {Status}";
     public string Diagnosis
     {
         get
@@ -45,8 +54,17 @@ public sealed class ComparisonRow(ComparisonDiagnostic diagnostic, TraditionYear
             var lines = new List<string>
             {
                 FormattableString.Invariant($"Ort: {location.DisplayName}, {location.Country} · {location.Latitude:F5}°, {location.Longitude:F5}° · {location.TimeZoneId}"),
-                $"Regel: {calendar.Tradition} / {calendar.RuleVersion} · {calendar.RuleSource}"
+                $"Regel: {calendar.Tradition} / {calendar.RuleVersion} · {calendar.RuleSource}",
+                $"Traditionsvergleich: Ananda Marga {AnandaMargaDate} · Vaishnava {VaishnavaDate} · {TraditionDifference}"
             };
+            foreach (var decision in diagnostic.Decisions)
+            {
+                lines.Add($"Entscheidung: {decision.Explanation} · Fastentag {Format(decision.FastingDate)}");
+                foreach (var observation in decision.VaishnavaDays?.Where(day =>
+                    day.LocalDate == decision.FastingDate || day.LocalDate == decision.FastingDate?.AddDays(-1)) ?? [])
+                    lines.Add($"{Format(observation.LocalDate)} · Arunodaya lokal {Instant(observation.ArunodayaUtc is { } arun ? location.GetLocalTime(arun) : null)} / UTC {Instant(observation.ArunodayaUtc)} · Tithi {observation.ArunodayaTithi} · Sonnenaufgang-Tithi {observation.SunriseTithi}");
+            }
+            lines.Add("Astronomische Rohdaten und vollständiger Regelkontext:");
             foreach (var day in diagnostic.Days)
             {
                 lines.Add($"Lokales Datum: {Format(day.LocalDate)} · Sonnenaufgang: {day.Sunrise.Status}");
@@ -62,6 +80,8 @@ public sealed class ComparisonRow(ComparisonDiagnostic diagnostic, TraditionYear
                 lines.Add("Überschneidung mit Sonnenaufgangstagen: " + string.Join(" · ", decision.Candidates.Select(candidate =>
                     $"{Format(candidate.LocalDate)}: {candidate.Overlap.TotalHours.ToString("F2", CultureInfo.CurrentCulture)} h")));
                 lines.Add(decision.Explanation);
+                foreach (var observation in decision.VaishnavaDays ?? [])
+                    lines.Add($"{Format(observation.LocalDate)} · Arunodaya lokal {Instant(observation.ArunodayaUtc is { } arun ? location.GetLocalTime(arun) : null)} / Tithi {observation.ArunodayaTithi} · Sonnenaufgang-Tithi {observation.SunriseTithi} · Sonnenuntergang-Tithi {observation.SunsetTithi} · Nakshatra (0–26) {observation.Nakshatra}");
             }
             if (diagnostic.Decisions.Count == 0) lines.Add("Keine zugehörige Ekadashi-Regelentscheidung vorhanden.");
             return string.Join(Environment.NewLine, lines);

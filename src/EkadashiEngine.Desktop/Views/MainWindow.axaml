@@ -8,16 +8,17 @@
         Title="Ekadashi Engine · Marga Smriti"
         Width="1120" Height="880" MinWidth="960" MinHeight="740"
         Background="#F4F6F8">
-  <Grid RowDefinitions="Auto,Auto,*,Auto,Auto" Margin="24" RowSpacing="14">
+  <Grid RowDefinitions="Auto,Auto,*,Auto,Auto" Margin="16" RowSpacing="10">
     <StackPanel Spacing="6">
       <TextBlock Text="MARGA SMRITI / REFERENZPROJEKT" FontSize="12" Foreground="#556579" />
       <TextBlock Text="Ekadashi Engine" FontSize="30" FontWeight="SemiBold" Foreground="#183B3A" />
-      <TextBlock Text="Jahresübersicht und Vergleich mit offiziellen Fastenkalendern"
+      <TextBlock Text="Jahresübersicht und Vergleich mit Referenzkalendern"
                  Foreground="#556579" />
     </StackPanel>
 
-    <Border Grid.Row="1" Background="White" Padding="20" CornerRadius="8">
-      <StackPanel Spacing="16">
+    <Border Grid.Row="1" Background="White" Padding="12" CornerRadius="8">
+      <ScrollViewer MaxHeight="250" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+      <StackPanel Spacing="8">
         <Grid ColumnDefinitions="2*,140,3*,Auto" ColumnSpacing="16">
           <StackPanel Spacing="6" IsEnabled="{Binding !IsBusy}">
             <TextBlock Text="Ort / Vorlage" FontWeight="SemiBold" />
@@ -74,9 +75,10 @@
         <TextBlock x:Name="YearValidationText" Text="{Binding YearValidationMessage}" Foreground="#A52B26"
                    IsVisible="{Binding HasYearValidationError}" />
       </StackPanel>
+      </ScrollViewer>
     </Border>
 
-    <Grid Grid.Row="2" RowDefinitions="Auto,*" RowSpacing="12" IsVisible="{Binding !IsAnandaMargaMode}">
+    <Grid Grid.Row="2" RowDefinitions="Auto,*" RowSpacing="12" IsVisible="{Binding !IsTraditionalMode}">
       <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
         <TextBlock x:Name="ResultSummaryText" Text="{Binding ResultSummary}" FontSize="16" FontWeight="SemiBold"
                    VerticalAlignment="Center" TextWrapping="Wrap" />
@@ -117,7 +119,7 @@
         <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
           <TextBlock x:Name="FastingSummaryText" Text="{Binding ResultSummary}" FontSize="16" FontWeight="SemiBold"
                      VerticalAlignment="Center" TextWrapping="Wrap" />
-          <CheckBox x:Name="MismatchFilter" Grid.Column="1" Content="Nur Abweichungen"
+          <CheckBox x:Name="MismatchFilter" Grid.Column="1" Content="Nur Referenzabweichungen"
                     IsChecked="{Binding ShowMismatchesOnly, Mode=TwoWay}" IsEnabled="{Binding !IsBusy}" />
         </Grid>
         <Border Background="White" CornerRadius="6" Padding="12">
@@ -135,9 +137,11 @@
                   AutoGenerateColumns="False" GridLinesVisibility="Horizontal" Background="White"
                   BorderBrush="#DDE3E8" BorderThickness="1">
           <DataGrid.Columns>
-            <DataGridTextColumn Header="Berechnet (lokaler Fastentag)" Binding="{ReflectionBinding Calculated}" Width="*" />
-            <DataGridTextColumn Header="Offiziell" Binding="{ReflectionBinding Official}" Width="*" />
-            <DataGridTemplateColumn Header="Status" Width="230">
+            <DataGridTextColumn Header="Ananda Marga" Binding="{ReflectionBinding AnandaMargaDate}" Width="*" MinWidth="125" />
+            <DataGridTextColumn Header="Vaishnava" Binding="{ReflectionBinding VaishnavaDate}" Width="*" MinWidth="125" />
+            <DataGridTextColumn Header="Δ Traditionen" Binding="{ReflectionBinding TraditionDifference}" Width="135" />
+            <DataGridTextColumn Header="Referenz (gewählt)" Binding="{ReflectionBinding Official}" Width="*" MinWidth="155" />
+            <DataGridTemplateColumn Header="Status" Width="165">
               <DataGridTemplateColumn.CellTemplate>
                 <DataTemplate x:DataType="vm:ComparisonRow">
                   <Border Background="{Binding StatusBackground}" CornerRadius="4" Margin="6,4" Padding="8,5">
@@ -146,7 +150,7 @@
                 </DataTemplate>
               </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
-            <DataGridTextColumn Header="Abweichung" Binding="{ReflectionBinding Difference}" Width="*" />
+            <DataGridTextColumn Header="Δ zur Referenz" Binding="{ReflectionBinding Difference}" Width="*" MinWidth="160" />
           </DataGrid.Columns>
         </DataGrid>
         <StackPanel IsVisible="{Binding !ComparisonRows.Count}" VerticalAlignment="Center"

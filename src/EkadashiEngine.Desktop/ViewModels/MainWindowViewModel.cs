@@ -27,8 +27,8 @@ public sealed partial class MainWindowViewModel : ObservableObject
     public LocationEditorViewModel LocationEditor { get; } = new();
     public CrossLocationViewModel CrossLocation { get; }
     public Location? EffectiveLocation => UseCustomLocation ? LocationEditor.Location : SelectedLocation;
-    public bool CanCompareLocations => !IsBusy && !IsExporting && EffectiveLocation is not null
-        && SelectedTradition?.Tradition is Tradition.TechnicalSunriseCandidate or Tradition.AnandaMarga;
+    public bool CanCompareLocations => !IsBusy && !IsExporting && IsYearValid && EffectiveLocation is not null
+        && SelectedTradition?.Tradition is Tradition.TechnicalSunriseCandidate or Tradition.AnandaMarga or Tradition.GaudiyaVaishnava;
     public string EffectiveCoordinates => EffectiveLocation is { } location
         ? FormattableString.Invariant($"{location.Latitude:F5}°, {location.Longitude:F5}°") : "Ungültige Standortangaben";
 
@@ -36,11 +36,7 @@ public sealed partial class MainWindowViewModel : ObservableObject
     [NotifyCanExecuteChangedFor(nameof(CalculateCommand))]
     private bool _useCustomLocation;
 
-    public IReadOnlyList<TraditionOption> Traditions { get; } =
-    [
-        new(Tradition.TechnicalSunriseCandidate, "Technisch: Tithi bei Sonnenaufgang"),
-        new(Tradition.AnandaMarga, "Ananda Marga · Kalendervergleich")
-    ];
+    public IReadOnlyList<TraditionOption> Traditions => TraditionOptions.All;
 
     public int MinimumYear => YearAstronomyCalculator.MinimumYear;
     public int MaximumYear => YearAstronomyCalculator.MaximumYear;
@@ -96,7 +92,7 @@ public sealed partial class MainWindowViewModel : ObservableObject
     private string _comparisonSummary = "Noch kein Kalendervergleich";
 
     [ObservableProperty]
-    private string _referenceDescription = "Referenzen: Berlin Sector 2026; für 2025 und 2027 liegen noch keine belegten Daten vor.";
+    private string _referenceDescription = "Referenzen für Berlin 2026: AM Berlin Sector und Vaishnava GCal 11.";
 
     [ObservableProperty]
     private string _referenceSource = string.Empty;
@@ -121,17 +117,15 @@ public sealed partial class MainWindowViewModel : ObservableObject
     public bool CanExport => Snapshot is not null && !IsBusy && !IsExporting;
     public bool CanExportCsv => CanExport && Snapshot!.Comparison is not null;
     public bool HasSelectedComparisonRow => SelectedComparisonRow is not null;
-    public bool ShowComparisonOverview => IsAnandaMargaMode && !HasSelectedComparisonRow;
-    public bool IsAnandaMargaMode => SelectedTradition?.Tradition == Tradition.AnandaMarga;
-    public string ModeDescription => IsAnandaMargaMode
-        ? "Ananda Marga: größte Überschneidung zwischen Ekadashi und Sonnenaufgangstag. Mit offiziellen Kalendern noch nicht validiert."
-        : "Technischer Modus: Tithi 11 oder 26 bei astronomischem Sonnenaufgang markiert einen Kandidaten. Noch keine validierte traditionelle Fastenregel.";
+    public bool ShowComparisonOverview => IsTraditionalMode && !HasSelectedComparisonRow;
+    public bool IsTraditionalMode => SelectedTradition?.Tradition is Tradition.AnandaMarga or Tradition.GaudiyaVaishnava;
+    public string ModeDescription => TraditionOptions.Description(SelectedTradition?.Tradition);
     public bool HasYearValidationError => !IsYearValid;
     public string YearValidationMessage => IsYearValid ? string.Empty : $"Bitte ein ganzes Jahr von {MinimumYear} bis {MaximumYear} eingeben.";
     private bool IsYearValid => Year is >= YearAstronomyCalculator.MinimumYear and <= YearAstronomyCalculator.MaximumYear
         && decimal.Truncate(Year.Value) == Year.Value;
     private bool CanCalculate => !IsBusy && !IsExporting && IsYearValid && EffectiveLocation is not null
-        && SelectedTradition?.Tradition is Tradition.TechnicalSunriseCandidate or Tradition.AnandaMarga;
+        && SelectedTradition?.Tradition is Tradition.TechnicalSunriseCandidate or Tradition.AnandaMarga or Tradition.GaudiyaVaishnava;
 
     public MainWindowViewModel(IYearAstronomyCalculator calculator, IFastingCalendarCalculator fastingCalculator,
         ICalendarReferenceProvider references, CalendarComparisonService comparisonService, CalculationSnapshotFactory snapshotFactory,
@@ -167,20 +161,21 @@ public sealed partial class MainWindowViewModel : ObservableObject
         try
         {
             _logger.LogInformation("Calculating {Tradition} for {Location}, {Year}.", tradition, location.DisplayName, year);
-            if (tradition == Tradition.AnandaMarga)
+            if (tradition != Tradition.TechnicalSunriseCandidate)
             {
-                var snapshot = await Task.Run(() =>
+                var calculated = await Task.Run(() =>
                 {
-                    var calendar = _fastingCalculator.Calculate(year, location, cancellationToken);
+                    var calendar = _fastingCalculator.Calculate(year, location, tradition, cancellationToken);
+                    var other = _fastingCalculator.Calculate(year, location, tradition == Tradition.AnandaMarga ? Tradition.GaudiyaVaishnava : Tradition.AnandaMarga, cancellationToken);
                     var astronomy = _calculator.Calculate(year, location, cancellationToken);
                     var reference = _references.Find(year, location, calendar.Tradition);
                     var comparison = _comparisonService.Compare(calendar, reference);
-                    return _snapshotFactory.Create(astronomy, calendar, comparison, cancellationToken);
+                    return (Snapshot: _snapshotFactory.Create(astronomy, calendar, comparison, cancellationToken), Other: other);
                 }, cancellationToken);
                 cancellationToken.ThrowIfCancellationRequested();
                 if (inputVersion != _inputVersion) return;
-                PublishComparison(snapshot);
-                Snapshot = snapshot;
+                PublishComparison(calculated.Snapshot, calculated.Other);
+                Snapshot = calculated.Snapshot;
                 StatusMessage = "Kalendervergleich abgeschlossen. Eine Zeile öffnet die Regelentscheidung.";
                 return;
             }
@@ -227,11 +222,11 @@ public sealed partial class MainWindowViewModel : ObservableObject
         InputsChanged(); NotifyLocation();
     }
     partial void OnUseCustomLocationChanged(bool value) { InputsChanged(); NotifyLocation(); }
-    partial void OnYearChanged(decimal? value) => InputsChanged();
+    partial void OnYearChanged(decimal? value) { InputsChanged(); OnPropertyChanged(nameof(CanCompareLocations)); }
     partial void OnSelectedTraditionChanged(TraditionOption? value)
     {
         InputsChanged();
-        OnPropertyChanged(nameof(IsAnandaMargaMode));
+        OnPropertyChanged(nameof(IsTraditionalMode));
         OnPropertyChanged(nameof(ShowComparisonOverview));
         OnPropertyChanged(nameof(ModeDescription));
         OnPropertyChanged(nameof(CanCompareLocations));
@@ -258,7 +253,7 @@ public sealed partial class MainWindowViewModel : ObservableObject
         ComparisonRows = [];
         SelectedComparisonRow = null;
         ComparisonSummary = "Noch kein Kalendervergleich";
-        ReferenceDescription = "Referenzen: Berlin Sector 2026; für 2025 und 2027 liegen noch keine belegten Daten vor.";
+        ReferenceDescription = "Referenzen für Berlin 2026: AM Berlin Sector und Vaishnava GCal 11.";
         ReferenceSource = string.Empty;
         ComparisonWarning = string.Empty;
     }
@@ -269,22 +264,22 @@ public sealed partial class MainWindowViewModel : ObservableObject
         Results = ShowCandidatesOnly ? _allResults.Where(row => row.Day.IsEkadashiCandidate == true).ToArray() : _allResults;
     }
 
-    private void PublishComparison(CalculationSnapshot snapshot)
+    private void PublishComparison(CalculationSnapshot snapshot, TraditionYearResult other)
     {
         var calendar = snapshot.Calendar!;
         var comparison = snapshot.Comparison!;
         var reference = comparison.Reference;
-        _allComparisonRows = snapshot.Diagnostics.Select(diagnostic => new ComparisonRow(diagnostic, calendar)).ToArray();
+        _allComparisonRows = snapshot.Diagnostics.Select(diagnostic => new ComparisonRow(diagnostic, calendar, other)).ToArray();
         UpdateComparisonRows();
         ResultSummary = $"{calendar.Location.DisplayName} · {calendar.Year} · {calendar.FastingDates.Count} berechnete Fastentage";
         ComparisonSummary = reference is null
             ? $"{calendar.FastingDates.Count} berechnete Tage · Referenztage, Matches, Mismatches und Trefferquote: nicht verfügbar"
             : $"{comparison.ReferenceCount} Referenztage · {comparison.Matches} Matches · {comparison.Mismatches} Mismatches · {comparison.UnexpectedCalculated} zusätzlich berechnet · Trefferquote {comparison.MatchRate:F1} %";
         ReferenceDescription = reference is null
-            ? $"Keine offiziellen Referenzdaten für {calendar.Location.DisplayName} {calendar.Year} vorhanden. Verfügbar: Berlin Sector 2026 (Vergleichsort Berlin)."
+            ? $"Keine passenden Referenzdaten für {calendar.Location.DisplayName} {calendar.Year} vorhanden. Verfügbar: Berlin 2026 je Tradition."
             : $"{reference.Title} · Vergleichsort {reference.ComparisonLocation.DisplayName} · abgerufen {reference.RetrievedOn:yyyy-MM-dd}. {reference.Scope}";
         ReferenceSource = reference?.Source ?? string.Empty;
-        ComparisonWarning = "Die dokumentierte Methode ist mit offiziellen Kalendern noch nicht validiert."
+        ComparisonWarning = (calendar.Tradition == Tradition.AnandaMarga ? "Die dokumentierte AM-Methode weicht vom offiziellen Kalender ab." : "Validierungsumfang: Berlin 2026. Andere Orte und Jahre sind nicht allgemein freigegeben.")
             + (calendar.HasUnresolvedDecisions ? $" {calendar.Decisions.Count(decision => decision.Status != RuleDecisionStatus.Selected)} Regelentscheidungen sind ungeklärt; die berechnete Jahresliste ist unvollständig." : string.Empty);
     }
 
@@ -301,10 +296,10 @@ public sealed partial class MainWindowViewModel : ObservableObject
         return _exporter.Create(Snapshot!, format);
     }
 
-    public void ReportExportFailure(Exception exception)
+    public void ReportExportFailure(Exception exception, bool updateStatus = true)
     {
         _logger.LogError(exception, "Export failed.");
-        StatusMessage = "Export fehlgeschlagen. Bitte Ziel und Schreibrechte prüfen und erneut versuchen.";
+        if (updateStatus) StatusMessage = "Export fehlgeschlagen. Bitte Ziel und Schreibrechte prüfen und erneut versuchen.";
     }
 
     private void NotifyLocation()

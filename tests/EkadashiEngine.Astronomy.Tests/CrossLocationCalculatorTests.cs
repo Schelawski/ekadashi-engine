@@ -93,7 +93,7 @@ public sealed class CrossLocationCalculatorTests
     [Theory]
     [InlineData(1899, Tradition.TechnicalSunriseCandidate)]
     [InlineData(2101, Tradition.TechnicalSunriseCandidate)]
-    [InlineData(2026, Tradition.GaudiyaVaishnava)]
+    [InlineData(2026, (Tradition)999)]
     public void InvalidRequestsAreRejectedBeforeAstronomy(int year, Tradition tradition) =>
         Assert.Throws<ArgumentOutOfRangeException>(() => new CrossLocationCalculator(new NeverCalledAstronomy(), new NeverCalledCalendar())
             .Calculate(year, LocationCatalog.DefaultLocations, tradition, TestContext.Current.CancellationToken));

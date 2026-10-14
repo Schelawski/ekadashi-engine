@@ -75,6 +75,12 @@ Im AM-Modus bezeichnet Ja das Ergebnis von `am-max-overlap-v1`, dessen bekannte
 Abweichungen von offiziellen Kalendern fortbestehen. Es werden die Ergebnisse
 der Orte untereinander verglichen, keine neue offizielle Referenz erzeugt.
 
+Im Vaishnava-Modus bezeichnet Ja das Ergebnis von `vaishnava-gcal-v1`, einschließlich
+Arunodaya, Viddha und Mahadvadashi. Alle neun Katalogorte sind technisch geprüft;
+der unabhängige Kalenderabgleich gilt bislang für Berlin 2026. Fehlender relevanter
+Regelkontext ergibt „Ungeklärt“. Die [Regeldokumentation](vaishnava-rule.md) erklärt
+den Validierungsumfang und die konservative Behandlung polarer Randfälle.
+
 Ein Datum hat unterschiedliche Entscheidungen, wenn mindestens ein auswertbarer
 Ort Ja und ein anderer Nein ergibt. Ungeklärte Orte werden nicht als Nein oder
 Übereinstimmung gezählt. Der Filter nimmt sie ausdrücklich mit auf. Abweichende

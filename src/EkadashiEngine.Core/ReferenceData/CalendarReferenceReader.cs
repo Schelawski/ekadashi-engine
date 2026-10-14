@@ -13,7 +13,7 @@ public static class CalendarReferenceReader
         if (string.IsNullOrWhiteSpace(document.Title) || string.IsNullOrWhiteSpace(document.Scope)
             || !Uri.TryCreate(document.Source, UriKind.Absolute, out var source) || source.Scheme != "https"
             || document.Year is < 1900 or > 2100 || document.RetrievedOn == default
-            || document.Tradition != "AnandaMarga" || document.ComparisonLocation is null
+            || document.Tradition is not ("AnandaMarga" or "GaudiyaVaishnava") || document.ComparisonLocation is null
             || document.FastingDates is not { Length: > 0 })
             throw new InvalidDataException("Incomplete or unsupported calendar reference metadata.");
         if (document.FastingDates.Any(date => date.Year != document.Year)
@@ -21,7 +21,7 @@ public static class CalendarReferenceReader
             throw new InvalidDataException("Reference dates must be unique and belong to the reference year.");
         var location = document.ComparisonLocation;
         return new(document.Source!, document.Title, document.RetrievedOn, document.Scope, document.Year,
-            Tradition.AnandaMarga,
+            Enum.Parse<Tradition>(document.Tradition!),
             new Location(location.DisplayName, location.Country, location.Latitude, location.Longitude, location.TimeZoneId),
             Array.AsReadOnly(document.FastingDates.Order().ToArray()));
     }

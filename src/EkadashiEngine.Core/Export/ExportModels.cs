@@ -15,7 +15,7 @@ public sealed record ExportDay(DateOnly Date, SunriseStatus SunriseStatus, Sunri
     double? AngularDifference, int? Tithi, bool? IsEkadashiCandidate, bool? Fasting, bool? OfficialFasting);
 public sealed record ExportDecision(int Tithi, DateTimeOffset StartUtc, DateTimeOffset StartLocal,
     DateTimeOffset EndUtc, DateTimeOffset EndLocal, DateOnly? FastingDate,
-    RuleDecisionStatus Status, string Explanation, IReadOnlyList<ExportSolarDay> SolarDays);
+    RuleDecisionStatus Status, string Explanation, IReadOnlyList<ExportSolarDay> SolarDays, IReadOnlyList<VaishnavaDay>? VaishnavaDays = null);
 public sealed record ExportSolarDay(DateOnly Date, DateTimeOffset SunriseUtc, DateTimeOffset NextSunriseUtc, double OverlapSeconds);
 public sealed record ExportComparison(DateOnly? CalculatedFastingDate, DateOnly? OfficialFastingDate,
     CalendarComparisonStatus Status, IReadOnlyList<ExportDay> Days, IReadOnlyList<ExportDecision> Decisions);
@@ -27,7 +27,7 @@ public sealed record AnalysisDocument(int SchemaVersion, string Kind, ExportLoca
 
 public sealed record VectorTolerances(double LongitudeDegrees, double SunriseSeconds, double TithiBoundarySeconds);
 public sealed record RuleTestCase(int Tithi, DateTimeOffset StartUtc, DateTimeOffset EndUtc,
-    IReadOnlyList<ExportSolarDay> SolarDays, DateOnly? ExpectedFastingDate, RuleDecisionStatus ExpectedStatus);
+    IReadOnlyList<ExportSolarDay> SolarDays, DateOnly? ExpectedFastingDate, RuleDecisionStatus ExpectedStatus, IReadOnlyList<VaishnavaDay>? VaishnavaDays = null);
 public sealed record TestVectorDocument(int SchemaVersion, string Kind, ExportLocation Location, int Year,
     AstronomyProvenance Astronomy, ExportConventions Conventions, ExportRule Rule, CalendarReference? Reference, VectorTolerances Tolerances,
     IReadOnlyList<ExportDay> Vectors, IReadOnlyList<RuleTestCase> RuleCases);

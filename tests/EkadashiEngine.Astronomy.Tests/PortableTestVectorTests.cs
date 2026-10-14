@@ -17,6 +17,8 @@ public sealed class PortableTestVectorTests
     [InlineData("tromso-2026-v1.json")]
     [InlineData("apia-2011-v1.json")]
     [InlineData("rule-edges-2026-v1.json")]
+    [InlineData("vaishnava-berlin-2026-v1.json")]
+    [InlineData("vaishnava-edges-2026-v1.json")]
     public void VersionedVectorsReplayAstronomyAndPureTraditionDecisions(string file)
     {
         var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true, Converters = { new JsonStringEnumConverter() } };
@@ -30,8 +32,9 @@ public sealed class PortableTestVectorTests
         {
             var prepared = new PreparedTraditionYear(location, document.Year,
                 testCase.SolarDays.Select(day => new SolarDay(day.Date, day.SunriseUtc, day.NextSunriseUtc)).ToArray(),
-                [new(testCase.Tithi, testCase.StartUtc, testCase.EndUtc)]);
-            var result = new AnandaMargaRule().Evaluate(prepared, TestContext.Current.CancellationToken);
+                [new(testCase.Tithi, testCase.StartUtc, testCase.EndUtc)], testCase.VaishnavaDays);
+            ITraditionRule rule = document.Rule.Tradition == Tradition.GaudiyaVaishnava ? new VaishnavaRule() : new AnandaMargaRule();
+            var result = rule.Evaluate(prepared, TestContext.Current.CancellationToken);
             var decision = Assert.Single(result.Decisions);
             Assert.Equal(testCase.ExpectedFastingDate, decision.FastingDate);
             Assert.Equal(testCase.ExpectedStatus, decision.Status);
@@ -69,6 +72,21 @@ public sealed class PortableTestVectorTests
         }
         if (document.Astronomy.Provider != "Synthetic")
         {
+            foreach (var observation in document.RuleCases.SelectMany(testCase => testCase.VaishnavaDays ?? []).DistinctBy(day => day.LocalDate))
+            {
+                var rise = sky.CalculateSunrise(observation.LocalDate, location).SunriseUtc;
+                var sunset = sky.GetSunsetUtc(observation.LocalDate, location);
+                Assert.NotNull(rise);
+                Assert.NotNull(sunset);
+                Assert.InRange(Math.Abs((sunset.Value - observation.SunsetUtc!.Value).TotalSeconds), 0, document.Tolerances.SunriseSeconds);
+                Assert.Equal(observation.SunriseUtc!.Value.AddMinutes(-96), observation.ArunodayaUtc);
+                Assert.Equal(observation.Nakshatra, sky.GetNakshatra(rise.Value));
+                foreach (var (instant, expected) in new[] { (rise.Value, observation.SunriseTithi), (rise.Value.AddMinutes(-96), observation.ArunodayaTithi), (sunset.Value, observation.SunsetTithi) })
+                {
+                    var position = sky.GetPositions(instant);
+                    Assert.Equal(expected, new TithiCalculator().Calculate(position.SunLongitude, position.MoonLongitude).TithiNumber);
+                }
+            }
             // Recorded lunar boundaries are checked against the ephemeris as well as the rule.
             foreach (var testCase in document.RuleCases)
             {

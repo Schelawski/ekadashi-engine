@@ -4,7 +4,7 @@ Umsetzung von [Issue #7](https://github.com/Schelawski/ekadashi-engine/issues/7)
 
 ## Grenzfall untersuchen
 
-Im Modus **Ananda Marga · Kalendervergleich** eine Vergleichszeile auswählen.
+Im Modus **Ananda Marga** eine Vergleichszeile auswählen.
 Die vollständige Diagnose ersetzt vorübergehend die Tabelle; **Schließen** führt
 zurück. Der Diagnosebereich ist scrollbar und sein Text kann kopiert werden.
 
@@ -43,7 +43,7 @@ Datei- oder Schreibfehler werden im Status angezeigt und geloggt; ein erneuter
 Export bleibt möglich. Während eines Exports sind weitere Exporte und eine neue
 Berechnung gesperrt.
 
-**Der Tabellenfilter beeinflusst den Export nicht.** Auch bei „Nur Abweichungen“
+**Der Tabellenfilter beeinflusst den Export nicht.** Auch bei „Nur Referenzabweichungen“
 enthält JSON alle 24 Vergleichsfälle und alle 365 Tageswerte für Berlin 2026.
 Der technische Modus exportiert seine vollständige Jahresliste. Bei geänderten
 Eingaben, Fehlern oder Abbruch einer Berechnung werden alte Snapshots entfernt;
@@ -146,3 +146,17 @@ Testvektor-Exports; die Jahresregelfälle bleiben vollständig. Unbekannte Param
 und ungültige Werte führen zu Exitcode 2. `--help` beschreibt eigene Locations.
 Die CLI ersetzt die ausdrücklich angegebene Zieldatei; automatisch erzeugte
 Beispiele gehören nach `artifacts/`, versionierte Vektoren nach `data/test-vectors`.
+
+## Vaishnava-Erweiterung (Issue #9)
+
+CLI-Modus `--mode vaishnava` und UI-Auswahl **Vaishnava / ISKCON** verwenden
+dieselben Exportwege. JSON-Entscheidungen und Testfälle enthalten zusätzlich
+`vaishnavaDays`: Sonnenaufgang, Arunodaya, Sonnenuntergang in UTC, deren Tithis
+und Lahiri-Nakshatra (0–26). Das Feld ist eine additive Schema-1-Erweiterung und
+bei alten AM-Vektoren nicht vorhanden. `missingRuleData` bezeichnet einen
+ungeklärten Vaishnava-Fall. CSV ergänzt sieben entsprechende Beobachtungsspalten
+(Arunodaya UTC/lokal/Tithi, Sonnenuntergang UTC/lokal/Tithi, Nakshatra).
+Dateivorschläge enthalten die Tradition, damit AM- und Vaishnava-Exporte
+unterscheidbar sind. Die zusätzlichen Vergleichsspalten der Oberfläche sind
+kein zweiter Kalender im Export: beide Traditionen jeweils separat exportieren.
+Siehe [Dart-Spezifikation](flutter-porting-spec.md).

@@ -32,8 +32,7 @@ public sealed partial class CrossLocationViewModel : ObservableObject
     private IReadOnlyList<LocationComparisonDay> _allDays = [];
     public ObservableCollection<LocationChoice> Locations { get; } = [];
     public LocationEditorViewModel LocationEditor { get; } = new();
-    public IReadOnlyList<TraditionOption> Traditions { get; } =
-    [new(Tradition.TechnicalSunriseCandidate, "Technisch: Sonnenaufgangskandidaten"), new(Tradition.AnandaMarga, "Ananda Marga: berechnete Fastentage")];
+    public IReadOnlyList<TraditionOption> Traditions => TraditionOptions.All;
 
     [ObservableProperty] [NotifyCanExecuteChangedFor(nameof(CalculateCommand))] [NotifyPropertyChangedFor(nameof(ValidationMessage))]
     private decimal? _year = 2026;
@@ -51,9 +50,7 @@ public sealed partial class CrossLocationViewModel : ObservableObject
     public string ValidationMessage => Year is < 1900 or > 2100 or null || decimal.Truncate(Year.Value) != Year.Value
         ? "Bitte ein ganzes Jahr von 1900 bis 2100 eingeben." : Locations.Count(choice => choice.IsSelected) < 2
         ? "Mindestens zwei Orte auswählen." : string.Empty;
-    public string ModeDescription => SelectedTradition?.Tradition == Tradition.AnandaMarga
-        ? "Ja/Nein bezieht sich auf die dokumentierte AM-Regel; diese ist mit offiziellen Kalendern noch nicht validiert."
-        : "Ja/Nein bezeichnet Tithi 11 oder 26 am örtlichen Sonnenaufgang; das sind technische Kandidaten.";
+    public string ModeDescription => TraditionOptions.Description(SelectedTradition?.Tradition);
     private bool CanCalculate => !IsBusy && ValidationMessage.Length == 0 && SelectedTradition is not null;
     private bool CanAddLocation => !IsBusy && LocationEditor.IsValid;
     private bool CanSelectAll => !IsBusy;

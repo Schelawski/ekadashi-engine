@@ -21,7 +21,8 @@ public sealed class CalendarComparisonTests
         Assert.Contains("anandamarga.eu", reference.Source);
         Assert.Null(provider.Find(2025, Berlin, Tradition.AnandaMarga));
         Assert.Null(provider.Find(2027, Berlin, Tradition.AnandaMarga));
-        Assert.Null(provider.Find(2026, Berlin, Tradition.GaudiyaVaishnava));
+        Assert.NotNull(provider.Find(2026, Berlin, Tradition.GaudiyaVaishnava));
+        Assert.Null(provider.Find(2026, Berlin, Tradition.TechnicalSunriseCandidate));
         Assert.Null(provider.Find(2026, LocationCatalog.DefaultLocations[2], Tradition.AnandaMarga));
         Assert.Null(provider.Find(2026, new("Other coordinates", "DE", 52, 13, "Europe/Berlin"), Tradition.AnandaMarga));
         Assert.NotNull(provider.Find(2026, new("Renamed Berlin", "DE", Berlin.Latitude, Berlin.Longitude, Berlin.TimeZoneId), Tradition.AnandaMarga));

@@ -44,7 +44,7 @@ public sealed class CalendarComparisonViewModelTests
         await viewModel.CalculateCommand.ExecuteAsync(null);
         Assert.NotEmpty(viewModel.ComparisonRows);
         Assert.All(viewModel.ComparisonRows, row => Assert.Equal("KEINE REFERENZ", row.Status));
-        Assert.Contains("Keine offiziellen Referenzdaten", viewModel.ReferenceDescription);
+        Assert.Contains("Keine passenden Referenzdaten", viewModel.ReferenceDescription);
         Assert.Contains("nicht verfügbar", viewModel.ComparisonSummary);
         Assert.DoesNotContain("%", viewModel.ComparisonSummary);
     }
@@ -121,6 +121,7 @@ public sealed class CalendarComparisonViewModelTests
     private sealed class StubFastingCalculator(Func<int, Location, CancellationToken, TraditionYearResult> calculate) : IFastingCalendarCalculator
     {
         public TraditionYearResult Calculate(int year, Location location, CancellationToken cancellationToken = default) => calculate(year, location, cancellationToken);
+        public TraditionYearResult Calculate(int year, Location location, Tradition tradition, CancellationToken cancellationToken = default) => calculate(year, location, cancellationToken) with { Tradition = tradition };
     }
 
     private sealed class SyntheticYearCalculator : IYearAstronomyCalculator

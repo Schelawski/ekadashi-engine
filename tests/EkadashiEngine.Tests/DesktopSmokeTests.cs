@@ -14,8 +14,10 @@ namespace EkadashiEngine.Tests;
 
 public sealed class DesktopSmokeTests
 {
-    [AvaloniaFact]
-    public async Task PendingExportDisablesActionsAndDoesNotReplaceStatusAfterInputChanges()
+    [AvaloniaTheory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task PendingExportDisablesActionsAndDoesNotReplaceStatusAfterInputChanges(bool fail)
     {
         using var services = ServiceConfiguration.CreateServiceProvider();
         var viewModel = services.GetRequiredService<MainWindowViewModel>();
@@ -32,7 +34,8 @@ public sealed class DesktopSmokeTests
             Assert.False(window.FindControl<Button>("ExportJsonButton")!.IsEnabled);
             Assert.False(viewModel.CalculateCommand.CanExecute(null));
             viewModel.Year = 2027;
-            destination.SetResult(true);
+            if (fail) destination.SetException(new IOException("Test export failure"));
+            else destination.SetResult(true);
             await exporting;
             Assert.False(viewModel.IsExporting);
             Assert.False(viewModel.CanExport);
@@ -52,7 +55,7 @@ public sealed class DesktopSmokeTests
             window.Show();
             window.FindControl<ComboBox>("TraditionSelector")!.SelectedIndex = 1;
             Dispatcher.UIThread.RunJobs();
-            Assert.True(viewModel.IsAnandaMargaMode);
+            Assert.True(viewModel.IsTraditionalMode);
             Assert.True(window.FindControl<Grid>("ComparisonPanel")!.IsVisible);
             window.FindControl<Button>("CalculateButton")!.Command!.Execute(null);
             await viewModel.CalculateCommand.ExecutionTask!;

@@ -1,0 +1,4101 @@
+{
+  "schemaVersion": 1,
+  "kind": "testVectors",
+  "location": {
+    "displayName": "Berlin",
+    "country": "DE",
+    "latitude": 52.52,
+    "longitude": 13.405,
+    "timeZone": "Europe/Berlin"
+  },
+  "year": 2026,
+  "astronomy": {
+    "provider": "Synthetic",
+    "version": "1",
+    "ephemeris": "Rule-only fixtures"
+  },
+  "conventions": {
+    "timeZoneDatabase": "TZDB: 2026d (mapping: 48.2)",
+    "longitudes": "apparent geocentric tropical ecliptic of date",
+    "angles": "degrees [0,360)",
+    "intervals": "half-open [start,end); elapsed durations in UTC"
+  },
+  "rule": {
+    "tradition": "gaudiyaVaishnava",
+    "version": "vaishnava-gcal-v1",
+    "source": "https://github.com/gopa810/gaurabda-calendar/blob/92c36b5948e9bcbfe991f19f511371aff1cc0fcb/gaurabda/TCalendar.py",
+    "isCalendarValidated": false
+  },
+  "reference": null,
+  "tolerances": {
+    "longitudeDegrees": 1e-05,
+    "sunriseSeconds": 2,
+    "tithiBoundarySeconds": 1
+  },
+  "vectors": [],
+  "ruleCases": [
+    {
+      "tithi": 11,
+      "startUtc": "2026-01-12T01:00:00+00:00",
+      "endUtc": "2026-01-13T01:00:00+00:00",
+      "solarDays": [
+        {
+          "date": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-11T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-12T06:00:00+00:00",
+          "overlapSeconds": 18000.0
+        },
+        {
+          "date": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-13T06:00:00+00:00",
+          "overlapSeconds": 68400.0
+        },
+        {
+          "date": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-14T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-15T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-16T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-17T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-18T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-19T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-20T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-21T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-22T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-23T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-24T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-25T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-26T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-27T06:00:00+00:00",
+          "overlapSeconds": 0
+        }
+      ],
+      "expectedFastingDate": "2026-01-12",
+      "expectedStatus": "selected",
+      "vaishnavaDays": [
+        {
+          "localDate": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-10T04:24:00+00:00",
+          "sunsetUtc": "2026-01-10T18:00:00+00:00",
+          "sunriseTithi": 9,
+          "arunodayaTithi": 9,
+          "sunsetTithi": 9,
+          "nakshatra": 10
+        },
+        {
+          "localDate": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-11T04:24:00+00:00",
+          "sunsetUtc": "2026-01-11T18:00:00+00:00",
+          "sunriseTithi": 10,
+          "arunodayaTithi": 10,
+          "sunsetTithi": 10,
+          "nakshatra": 11
+        },
+        {
+          "localDate": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-12T04:24:00+00:00",
+          "sunsetUtc": "2026-01-12T18:00:00+00:00",
+          "sunriseTithi": 11,
+          "arunodayaTithi": 11,
+          "sunsetTithi": 11,
+          "nakshatra": 12
+        },
+        {
+          "localDate": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-13T04:24:00+00:00",
+          "sunsetUtc": "2026-01-13T18:00:00+00:00",
+          "sunriseTithi": 12,
+          "arunodayaTithi": 12,
+          "sunsetTithi": 12,
+          "nakshatra": 13
+        },
+        {
+          "localDate": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-14T04:24:00+00:00",
+          "sunsetUtc": "2026-01-14T18:00:00+00:00",
+          "sunriseTithi": 13,
+          "arunodayaTithi": 13,
+          "sunsetTithi": 13,
+          "nakshatra": 14
+        },
+        {
+          "localDate": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-15T04:24:00+00:00",
+          "sunsetUtc": "2026-01-15T18:00:00+00:00",
+          "sunriseTithi": 14,
+          "arunodayaTithi": 14,
+          "sunsetTithi": 14,
+          "nakshatra": 15
+        },
+        {
+          "localDate": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-16T04:24:00+00:00",
+          "sunsetUtc": "2026-01-16T18:00:00+00:00",
+          "sunriseTithi": 15,
+          "arunodayaTithi": 15,
+          "sunsetTithi": 15,
+          "nakshatra": 16
+        },
+        {
+          "localDate": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-17T04:24:00+00:00",
+          "sunsetUtc": "2026-01-17T18:00:00+00:00",
+          "sunriseTithi": 16,
+          "arunodayaTithi": 16,
+          "sunsetTithi": 16,
+          "nakshatra": 17
+        },
+        {
+          "localDate": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-18T04:24:00+00:00",
+          "sunsetUtc": "2026-01-18T18:00:00+00:00",
+          "sunriseTithi": 17,
+          "arunodayaTithi": 17,
+          "sunsetTithi": 17,
+          "nakshatra": 18
+        },
+        {
+          "localDate": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-19T04:24:00+00:00",
+          "sunsetUtc": "2026-01-19T18:00:00+00:00",
+          "sunriseTithi": 18,
+          "arunodayaTithi": 18,
+          "sunsetTithi": 18,
+          "nakshatra": 19
+        },
+        {
+          "localDate": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-20T04:24:00+00:00",
+          "sunsetUtc": "2026-01-20T18:00:00+00:00",
+          "sunriseTithi": 19,
+          "arunodayaTithi": 19,
+          "sunsetTithi": 19,
+          "nakshatra": 20
+        },
+        {
+          "localDate": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-21T04:24:00+00:00",
+          "sunsetUtc": "2026-01-21T18:00:00+00:00",
+          "sunriseTithi": 20,
+          "arunodayaTithi": 20,
+          "sunsetTithi": 20,
+          "nakshatra": 21
+        },
+        {
+          "localDate": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-22T04:24:00+00:00",
+          "sunsetUtc": "2026-01-22T18:00:00+00:00",
+          "sunriseTithi": 21,
+          "arunodayaTithi": 21,
+          "sunsetTithi": 21,
+          "nakshatra": 22
+        },
+        {
+          "localDate": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-23T04:24:00+00:00",
+          "sunsetUtc": "2026-01-23T18:00:00+00:00",
+          "sunriseTithi": 22,
+          "arunodayaTithi": 22,
+          "sunsetTithi": 22,
+          "nakshatra": 23
+        },
+        {
+          "localDate": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-24T04:24:00+00:00",
+          "sunsetUtc": "2026-01-24T18:00:00+00:00",
+          "sunriseTithi": 23,
+          "arunodayaTithi": 23,
+          "sunsetTithi": 23,
+          "nakshatra": 24
+        },
+        {
+          "localDate": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-25T04:24:00+00:00",
+          "sunsetUtc": "2026-01-25T18:00:00+00:00",
+          "sunriseTithi": 24,
+          "arunodayaTithi": 24,
+          "sunsetTithi": 24,
+          "nakshatra": 25
+        },
+        {
+          "localDate": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-26T04:24:00+00:00",
+          "sunsetUtc": "2026-01-26T18:00:00+00:00",
+          "sunriseTithi": 25,
+          "arunodayaTithi": 25,
+          "sunsetTithi": 25,
+          "nakshatra": 26
+        }
+      ]
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-01-12T05:00:00+00:00",
+      "endUtc": "2026-01-13T01:00:00+00:00",
+      "solarDays": [
+        {
+          "date": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-11T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-12T06:00:00+00:00",
+          "overlapSeconds": 3600.0
+        },
+        {
+          "date": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-13T06:00:00+00:00",
+          "overlapSeconds": 68400.0
+        },
+        {
+          "date": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-14T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-15T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-16T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-17T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-18T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-19T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-20T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-21T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-22T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-23T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-24T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-25T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-26T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-27T06:00:00+00:00",
+          "overlapSeconds": 0
+        }
+      ],
+      "expectedFastingDate": "2026-01-13",
+      "expectedStatus": "selected",
+      "vaishnavaDays": [
+        {
+          "localDate": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-10T04:24:00+00:00",
+          "sunsetUtc": "2026-01-10T18:00:00+00:00",
+          "sunriseTithi": 9,
+          "arunodayaTithi": 9,
+          "sunsetTithi": 9,
+          "nakshatra": 10
+        },
+        {
+          "localDate": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-11T04:24:00+00:00",
+          "sunsetUtc": "2026-01-11T18:00:00+00:00",
+          "sunriseTithi": 10,
+          "arunodayaTithi": 10,
+          "sunsetTithi": 10,
+          "nakshatra": 11
+        },
+        {
+          "localDate": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-12T04:24:00+00:00",
+          "sunsetUtc": "2026-01-12T18:00:00+00:00",
+          "sunriseTithi": 11,
+          "arunodayaTithi": 10,
+          "sunsetTithi": 11,
+          "nakshatra": 12
+        },
+        {
+          "localDate": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-13T04:24:00+00:00",
+          "sunsetUtc": "2026-01-13T18:00:00+00:00",
+          "sunriseTithi": 12,
+          "arunodayaTithi": 12,
+          "sunsetTithi": 12,
+          "nakshatra": 13
+        },
+        {
+          "localDate": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-14T04:24:00+00:00",
+          "sunsetUtc": "2026-01-14T18:00:00+00:00",
+          "sunriseTithi": 13,
+          "arunodayaTithi": 13,
+          "sunsetTithi": 13,
+          "nakshatra": 14
+        },
+        {
+          "localDate": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-15T04:24:00+00:00",
+          "sunsetUtc": "2026-01-15T18:00:00+00:00",
+          "sunriseTithi": 14,
+          "arunodayaTithi": 14,
+          "sunsetTithi": 14,
+          "nakshatra": 15
+        },
+        {
+          "localDate": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-16T04:24:00+00:00",
+          "sunsetUtc": "2026-01-16T18:00:00+00:00",
+          "sunriseTithi": 15,
+          "arunodayaTithi": 15,
+          "sunsetTithi": 15,
+          "nakshatra": 16
+        },
+        {
+          "localDate": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-17T04:24:00+00:00",
+          "sunsetUtc": "2026-01-17T18:00:00+00:00",
+          "sunriseTithi": 16,
+          "arunodayaTithi": 16,
+          "sunsetTithi": 16,
+          "nakshatra": 17
+        },
+        {
+          "localDate": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-18T04:24:00+00:00",
+          "sunsetUtc": "2026-01-18T18:00:00+00:00",
+          "sunriseTithi": 17,
+          "arunodayaTithi": 17,
+          "sunsetTithi": 17,
+          "nakshatra": 18
+        },
+        {
+          "localDate": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-19T04:24:00+00:00",
+          "sunsetUtc": "2026-01-19T18:00:00+00:00",
+          "sunriseTithi": 18,
+          "arunodayaTithi": 18,
+          "sunsetTithi": 18,
+          "nakshatra": 19
+        },
+        {
+          "localDate": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-20T04:24:00+00:00",
+          "sunsetUtc": "2026-01-20T18:00:00+00:00",
+          "sunriseTithi": 19,
+          "arunodayaTithi": 19,
+          "sunsetTithi": 19,
+          "nakshatra": 20
+        },
+        {
+          "localDate": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-21T04:24:00+00:00",
+          "sunsetUtc": "2026-01-21T18:00:00+00:00",
+          "sunriseTithi": 20,
+          "arunodayaTithi": 20,
+          "sunsetTithi": 20,
+          "nakshatra": 21
+        },
+        {
+          "localDate": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-22T04:24:00+00:00",
+          "sunsetUtc": "2026-01-22T18:00:00+00:00",
+          "sunriseTithi": 21,
+          "arunodayaTithi": 21,
+          "sunsetTithi": 21,
+          "nakshatra": 22
+        },
+        {
+          "localDate": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-23T04:24:00+00:00",
+          "sunsetUtc": "2026-01-23T18:00:00+00:00",
+          "sunriseTithi": 22,
+          "arunodayaTithi": 22,
+          "sunsetTithi": 22,
+          "nakshatra": 23
+        },
+        {
+          "localDate": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-24T04:24:00+00:00",
+          "sunsetUtc": "2026-01-24T18:00:00+00:00",
+          "sunriseTithi": 23,
+          "arunodayaTithi": 23,
+          "sunsetTithi": 23,
+          "nakshatra": 24
+        },
+        {
+          "localDate": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-25T04:24:00+00:00",
+          "sunsetUtc": "2026-01-25T18:00:00+00:00",
+          "sunriseTithi": 24,
+          "arunodayaTithi": 24,
+          "sunsetTithi": 24,
+          "nakshatra": 25
+        },
+        {
+          "localDate": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-26T04:24:00+00:00",
+          "sunsetUtc": "2026-01-26T18:00:00+00:00",
+          "sunriseTithi": 25,
+          "arunodayaTithi": 25,
+          "sunsetTithi": 25,
+          "nakshatra": 26
+        }
+      ]
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-01-11T07:00:00+00:00",
+      "endUtc": "2026-01-12T01:00:00+00:00",
+      "solarDays": [
+        {
+          "date": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-11T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-12T06:00:00+00:00",
+          "overlapSeconds": 64800.0
+        },
+        {
+          "date": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-13T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-14T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-15T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-16T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-17T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-18T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-19T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-20T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-21T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-22T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-23T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-24T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-25T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-26T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-27T06:00:00+00:00",
+          "overlapSeconds": 0
+        }
+      ],
+      "expectedFastingDate": "2026-01-12",
+      "expectedStatus": "selected",
+      "vaishnavaDays": [
+        {
+          "localDate": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-10T04:24:00+00:00",
+          "sunsetUtc": "2026-01-10T18:00:00+00:00",
+          "sunriseTithi": 9,
+          "arunodayaTithi": 9,
+          "sunsetTithi": 9,
+          "nakshatra": 10
+        },
+        {
+          "localDate": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-11T04:24:00+00:00",
+          "sunsetUtc": "2026-01-11T18:00:00+00:00",
+          "sunriseTithi": 10,
+          "arunodayaTithi": 10,
+          "sunsetTithi": 10,
+          "nakshatra": 11
+        },
+        {
+          "localDate": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-12T04:24:00+00:00",
+          "sunsetUtc": "2026-01-12T18:00:00+00:00",
+          "sunriseTithi": 12,
+          "arunodayaTithi": 12,
+          "sunsetTithi": 12,
+          "nakshatra": 12
+        },
+        {
+          "localDate": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-13T04:24:00+00:00",
+          "sunsetUtc": "2026-01-13T18:00:00+00:00",
+          "sunriseTithi": 12,
+          "arunodayaTithi": 12,
+          "sunsetTithi": 12,
+          "nakshatra": 13
+        },
+        {
+          "localDate": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-14T04:24:00+00:00",
+          "sunsetUtc": "2026-01-14T18:00:00+00:00",
+          "sunriseTithi": 13,
+          "arunodayaTithi": 13,
+          "sunsetTithi": 13,
+          "nakshatra": 14
+        },
+        {
+          "localDate": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-15T04:24:00+00:00",
+          "sunsetUtc": "2026-01-15T18:00:00+00:00",
+          "sunriseTithi": 14,
+          "arunodayaTithi": 14,
+          "sunsetTithi": 14,
+          "nakshatra": 15
+        },
+        {
+          "localDate": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-16T04:24:00+00:00",
+          "sunsetUtc": "2026-01-16T18:00:00+00:00",
+          "sunriseTithi": 15,
+          "arunodayaTithi": 15,
+          "sunsetTithi": 15,
+          "nakshatra": 16
+        },
+        {
+          "localDate": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-17T04:24:00+00:00",
+          "sunsetUtc": "2026-01-17T18:00:00+00:00",
+          "sunriseTithi": 16,
+          "arunodayaTithi": 16,
+          "sunsetTithi": 16,
+          "nakshatra": 17
+        },
+        {
+          "localDate": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-18T04:24:00+00:00",
+          "sunsetUtc": "2026-01-18T18:00:00+00:00",
+          "sunriseTithi": 17,
+          "arunodayaTithi": 17,
+          "sunsetTithi": 17,
+          "nakshatra": 18
+        },
+        {
+          "localDate": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-19T04:24:00+00:00",
+          "sunsetUtc": "2026-01-19T18:00:00+00:00",
+          "sunriseTithi": 18,
+          "arunodayaTithi": 18,
+          "sunsetTithi": 18,
+          "nakshatra": 19
+        },
+        {
+          "localDate": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-20T04:24:00+00:00",
+          "sunsetUtc": "2026-01-20T18:00:00+00:00",
+          "sunriseTithi": 19,
+          "arunodayaTithi": 19,
+          "sunsetTithi": 19,
+          "nakshatra": 20
+        },
+        {
+          "localDate": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-21T04:24:00+00:00",
+          "sunsetUtc": "2026-01-21T18:00:00+00:00",
+          "sunriseTithi": 20,
+          "arunodayaTithi": 20,
+          "sunsetTithi": 20,
+          "nakshatra": 21
+        },
+        {
+          "localDate": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-22T04:24:00+00:00",
+          "sunsetUtc": "2026-01-22T18:00:00+00:00",
+          "sunriseTithi": 21,
+          "arunodayaTithi": 21,
+          "sunsetTithi": 21,
+          "nakshatra": 22
+        },
+        {
+          "localDate": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-23T04:24:00+00:00",
+          "sunsetUtc": "2026-01-23T18:00:00+00:00",
+          "sunriseTithi": 22,
+          "arunodayaTithi": 22,
+          "sunsetTithi": 22,
+          "nakshatra": 23
+        },
+        {
+          "localDate": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-24T04:24:00+00:00",
+          "sunsetUtc": "2026-01-24T18:00:00+00:00",
+          "sunriseTithi": 23,
+          "arunodayaTithi": 23,
+          "sunsetTithi": 23,
+          "nakshatra": 24
+        },
+        {
+          "localDate": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-25T04:24:00+00:00",
+          "sunsetUtc": "2026-01-25T18:00:00+00:00",
+          "sunriseTithi": 24,
+          "arunodayaTithi": 24,
+          "sunsetTithi": 24,
+          "nakshatra": 25
+        },
+        {
+          "localDate": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-26T04:24:00+00:00",
+          "sunsetUtc": "2026-01-26T18:00:00+00:00",
+          "sunriseTithi": 25,
+          "arunodayaTithi": 25,
+          "sunsetTithi": 25,
+          "nakshatra": 26
+        }
+      ]
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-01-12T01:00:00+00:00",
+      "endUtc": "2026-01-13T07:00:00+00:00",
+      "solarDays": [
+        {
+          "date": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-11T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-12T06:00:00+00:00",
+          "overlapSeconds": 18000.0
+        },
+        {
+          "date": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-13T06:00:00+00:00",
+          "overlapSeconds": 86400.0
+        },
+        {
+          "date": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-14T06:00:00+00:00",
+          "overlapSeconds": 3600.0
+        },
+        {
+          "date": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-15T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-16T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-17T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-18T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-19T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-20T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-21T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-22T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-23T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-24T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-25T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-26T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-27T06:00:00+00:00",
+          "overlapSeconds": 0
+        }
+      ],
+      "expectedFastingDate": "2026-01-13",
+      "expectedStatus": "selected",
+      "vaishnavaDays": [
+        {
+          "localDate": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-10T04:24:00+00:00",
+          "sunsetUtc": "2026-01-10T18:00:00+00:00",
+          "sunriseTithi": 9,
+          "arunodayaTithi": 9,
+          "sunsetTithi": 9,
+          "nakshatra": 10
+        },
+        {
+          "localDate": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-11T04:24:00+00:00",
+          "sunsetUtc": "2026-01-11T18:00:00+00:00",
+          "sunriseTithi": 10,
+          "arunodayaTithi": 10,
+          "sunsetTithi": 10,
+          "nakshatra": 11
+        },
+        {
+          "localDate": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-12T04:24:00+00:00",
+          "sunsetUtc": "2026-01-12T18:00:00+00:00",
+          "sunriseTithi": 11,
+          "arunodayaTithi": 11,
+          "sunsetTithi": 11,
+          "nakshatra": 12
+        },
+        {
+          "localDate": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-13T04:24:00+00:00",
+          "sunsetUtc": "2026-01-13T18:00:00+00:00",
+          "sunriseTithi": 11,
+          "arunodayaTithi": 11,
+          "sunsetTithi": 12,
+          "nakshatra": 13
+        },
+        {
+          "localDate": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-14T04:24:00+00:00",
+          "sunsetUtc": "2026-01-14T18:00:00+00:00",
+          "sunriseTithi": 12,
+          "arunodayaTithi": 13,
+          "sunsetTithi": 13,
+          "nakshatra": 14
+        },
+        {
+          "localDate": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-15T04:24:00+00:00",
+          "sunsetUtc": "2026-01-15T18:00:00+00:00",
+          "sunriseTithi": 14,
+          "arunodayaTithi": 14,
+          "sunsetTithi": 14,
+          "nakshatra": 15
+        },
+        {
+          "localDate": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-16T04:24:00+00:00",
+          "sunsetUtc": "2026-01-16T18:00:00+00:00",
+          "sunriseTithi": 15,
+          "arunodayaTithi": 15,
+          "sunsetTithi": 15,
+          "nakshatra": 16
+        },
+        {
+          "localDate": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-17T04:24:00+00:00",
+          "sunsetUtc": "2026-01-17T18:00:00+00:00",
+          "sunriseTithi": 16,
+          "arunodayaTithi": 16,
+          "sunsetTithi": 16,
+          "nakshatra": 17
+        },
+        {
+          "localDate": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-18T04:24:00+00:00",
+          "sunsetUtc": "2026-01-18T18:00:00+00:00",
+          "sunriseTithi": 17,
+          "arunodayaTithi": 17,
+          "sunsetTithi": 17,
+          "nakshatra": 18
+        },
+        {
+          "localDate": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-19T04:24:00+00:00",
+          "sunsetUtc": "2026-01-19T18:00:00+00:00",
+          "sunriseTithi": 18,
+          "arunodayaTithi": 18,
+          "sunsetTithi": 18,
+          "nakshatra": 19
+        },
+        {
+          "localDate": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-20T04:24:00+00:00",
+          "sunsetUtc": "2026-01-20T18:00:00+00:00",
+          "sunriseTithi": 19,
+          "arunodayaTithi": 19,
+          "sunsetTithi": 19,
+          "nakshatra": 20
+        },
+        {
+          "localDate": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-21T04:24:00+00:00",
+          "sunsetUtc": "2026-01-21T18:00:00+00:00",
+          "sunriseTithi": 20,
+          "arunodayaTithi": 20,
+          "sunsetTithi": 20,
+          "nakshatra": 21
+        },
+        {
+          "localDate": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-22T04:24:00+00:00",
+          "sunsetUtc": "2026-01-22T18:00:00+00:00",
+          "sunriseTithi": 21,
+          "arunodayaTithi": 21,
+          "sunsetTithi": 21,
+          "nakshatra": 22
+        },
+        {
+          "localDate": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-23T04:24:00+00:00",
+          "sunsetUtc": "2026-01-23T18:00:00+00:00",
+          "sunriseTithi": 22,
+          "arunodayaTithi": 22,
+          "sunsetTithi": 22,
+          "nakshatra": 23
+        },
+        {
+          "localDate": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-24T04:24:00+00:00",
+          "sunsetUtc": "2026-01-24T18:00:00+00:00",
+          "sunriseTithi": 23,
+          "arunodayaTithi": 23,
+          "sunsetTithi": 23,
+          "nakshatra": 24
+        },
+        {
+          "localDate": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-25T04:24:00+00:00",
+          "sunsetUtc": "2026-01-25T18:00:00+00:00",
+          "sunriseTithi": 24,
+          "arunodayaTithi": 24,
+          "sunsetTithi": 24,
+          "nakshatra": 25
+        },
+        {
+          "localDate": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-26T04:24:00+00:00",
+          "sunsetUtc": "2026-01-26T18:00:00+00:00",
+          "sunriseTithi": 25,
+          "arunodayaTithi": 25,
+          "sunsetTithi": 25,
+          "nakshatra": 26
+        }
+      ]
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-01-12T01:00:00+00:00",
+      "endUtc": "2026-01-13T01:00:00+00:00",
+      "solarDays": [
+        {
+          "date": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-11T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-12T06:00:00+00:00",
+          "overlapSeconds": 18000.0
+        },
+        {
+          "date": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-13T06:00:00+00:00",
+          "overlapSeconds": 68400.0
+        },
+        {
+          "date": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-14T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-15T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-16T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-17T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-18T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-19T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-20T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-21T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-22T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-23T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-24T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-25T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-26T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-27T06:00:00+00:00",
+          "overlapSeconds": 0
+        }
+      ],
+      "expectedFastingDate": "2026-01-12",
+      "expectedStatus": "selected",
+      "vaishnavaDays": [
+        {
+          "localDate": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-10T04:24:00+00:00",
+          "sunsetUtc": "2026-01-10T18:00:00+00:00",
+          "sunriseTithi": 9,
+          "arunodayaTithi": 9,
+          "sunsetTithi": 9,
+          "nakshatra": 10
+        },
+        {
+          "localDate": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-11T04:24:00+00:00",
+          "sunsetUtc": "2026-01-11T18:00:00+00:00",
+          "sunriseTithi": 10,
+          "arunodayaTithi": 10,
+          "sunsetTithi": 10,
+          "nakshatra": 11
+        },
+        {
+          "localDate": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-12T04:24:00+00:00",
+          "sunsetUtc": "2026-01-12T18:00:00+00:00",
+          "sunriseTithi": 11,
+          "arunodayaTithi": 11,
+          "sunsetTithi": 11,
+          "nakshatra": 12
+        },
+        {
+          "localDate": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-13T04:24:00+00:00",
+          "sunsetUtc": "2026-01-13T18:00:00+00:00",
+          "sunriseTithi": 13,
+          "arunodayaTithi": 12,
+          "sunsetTithi": 12,
+          "nakshatra": 13
+        },
+        {
+          "localDate": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-14T04:24:00+00:00",
+          "sunsetUtc": "2026-01-14T18:00:00+00:00",
+          "sunriseTithi": 13,
+          "arunodayaTithi": 13,
+          "sunsetTithi": 13,
+          "nakshatra": 14
+        },
+        {
+          "localDate": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-15T04:24:00+00:00",
+          "sunsetUtc": "2026-01-15T18:00:00+00:00",
+          "sunriseTithi": 14,
+          "arunodayaTithi": 14,
+          "sunsetTithi": 14,
+          "nakshatra": 15
+        },
+        {
+          "localDate": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-16T04:24:00+00:00",
+          "sunsetUtc": "2026-01-16T18:00:00+00:00",
+          "sunriseTithi": 15,
+          "arunodayaTithi": 15,
+          "sunsetTithi": 15,
+          "nakshatra": 16
+        },
+        {
+          "localDate": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-17T04:24:00+00:00",
+          "sunsetUtc": "2026-01-17T18:00:00+00:00",
+          "sunriseTithi": 16,
+          "arunodayaTithi": 16,
+          "sunsetTithi": 16,
+          "nakshatra": 17
+        },
+        {
+          "localDate": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-18T04:24:00+00:00",
+          "sunsetUtc": "2026-01-18T18:00:00+00:00",
+          "sunriseTithi": 17,
+          "arunodayaTithi": 17,
+          "sunsetTithi": 17,
+          "nakshatra": 18
+        },
+        {
+          "localDate": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-19T04:24:00+00:00",
+          "sunsetUtc": "2026-01-19T18:00:00+00:00",
+          "sunriseTithi": 18,
+          "arunodayaTithi": 18,
+          "sunsetTithi": 18,
+          "nakshatra": 19
+        },
+        {
+          "localDate": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-20T04:24:00+00:00",
+          "sunsetUtc": "2026-01-20T18:00:00+00:00",
+          "sunriseTithi": 19,
+          "arunodayaTithi": 19,
+          "sunsetTithi": 19,
+          "nakshatra": 20
+        },
+        {
+          "localDate": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-21T04:24:00+00:00",
+          "sunsetUtc": "2026-01-21T18:00:00+00:00",
+          "sunriseTithi": 20,
+          "arunodayaTithi": 20,
+          "sunsetTithi": 20,
+          "nakshatra": 21
+        },
+        {
+          "localDate": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-22T04:24:00+00:00",
+          "sunsetUtc": "2026-01-22T18:00:00+00:00",
+          "sunriseTithi": 21,
+          "arunodayaTithi": 21,
+          "sunsetTithi": 21,
+          "nakshatra": 22
+        },
+        {
+          "localDate": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-23T04:24:00+00:00",
+          "sunsetUtc": "2026-01-23T18:00:00+00:00",
+          "sunriseTithi": 22,
+          "arunodayaTithi": 22,
+          "sunsetTithi": 22,
+          "nakshatra": 23
+        },
+        {
+          "localDate": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-24T04:24:00+00:00",
+          "sunsetUtc": "2026-01-24T18:00:00+00:00",
+          "sunriseTithi": 23,
+          "arunodayaTithi": 23,
+          "sunsetTithi": 23,
+          "nakshatra": 24
+        },
+        {
+          "localDate": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-25T04:24:00+00:00",
+          "sunsetUtc": "2026-01-25T18:00:00+00:00",
+          "sunriseTithi": 24,
+          "arunodayaTithi": 24,
+          "sunsetTithi": 24,
+          "nakshatra": 25
+        },
+        {
+          "localDate": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-26T04:24:00+00:00",
+          "sunsetUtc": "2026-01-26T18:00:00+00:00",
+          "sunriseTithi": 25,
+          "arunodayaTithi": 25,
+          "sunsetTithi": 25,
+          "nakshatra": 26
+        }
+      ]
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-01-12T01:00:00+00:00",
+      "endUtc": "2026-01-13T07:00:00+00:00",
+      "solarDays": [
+        {
+          "date": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-11T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-12T06:00:00+00:00",
+          "overlapSeconds": 18000.0
+        },
+        {
+          "date": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-13T06:00:00+00:00",
+          "overlapSeconds": 86400.0
+        },
+        {
+          "date": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-14T06:00:00+00:00",
+          "overlapSeconds": 3600.0
+        },
+        {
+          "date": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-15T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-16T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-17T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-18T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-19T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-20T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-21T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-22T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-23T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-24T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-25T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-26T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-27T06:00:00+00:00",
+          "overlapSeconds": 0
+        }
+      ],
+      "expectedFastingDate": "2026-01-13",
+      "expectedStatus": "selected",
+      "vaishnavaDays": [
+        {
+          "localDate": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-10T04:24:00+00:00",
+          "sunsetUtc": "2026-01-10T18:00:00+00:00",
+          "sunriseTithi": 9,
+          "arunodayaTithi": 9,
+          "sunsetTithi": 9,
+          "nakshatra": 10
+        },
+        {
+          "localDate": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-11T04:24:00+00:00",
+          "sunsetUtc": "2026-01-11T18:00:00+00:00",
+          "sunriseTithi": 10,
+          "arunodayaTithi": 10,
+          "sunsetTithi": 10,
+          "nakshatra": 11
+        },
+        {
+          "localDate": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-12T04:24:00+00:00",
+          "sunsetUtc": "2026-01-12T18:00:00+00:00",
+          "sunriseTithi": 11,
+          "arunodayaTithi": 11,
+          "sunsetTithi": 11,
+          "nakshatra": 12
+        },
+        {
+          "localDate": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-13T04:24:00+00:00",
+          "sunsetUtc": "2026-01-13T18:00:00+00:00",
+          "sunriseTithi": 11,
+          "arunodayaTithi": 11,
+          "sunsetTithi": 12,
+          "nakshatra": 13
+        },
+        {
+          "localDate": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-14T04:24:00+00:00",
+          "sunsetUtc": "2026-01-14T18:00:00+00:00",
+          "sunriseTithi": 13,
+          "arunodayaTithi": 13,
+          "sunsetTithi": 13,
+          "nakshatra": 14
+        },
+        {
+          "localDate": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-15T04:24:00+00:00",
+          "sunsetUtc": "2026-01-15T18:00:00+00:00",
+          "sunriseTithi": 14,
+          "arunodayaTithi": 14,
+          "sunsetTithi": 14,
+          "nakshatra": 15
+        },
+        {
+          "localDate": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-16T04:24:00+00:00",
+          "sunsetUtc": "2026-01-16T18:00:00+00:00",
+          "sunriseTithi": 15,
+          "arunodayaTithi": 15,
+          "sunsetTithi": 15,
+          "nakshatra": 16
+        },
+        {
+          "localDate": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-17T04:24:00+00:00",
+          "sunsetUtc": "2026-01-17T18:00:00+00:00",
+          "sunriseTithi": 16,
+          "arunodayaTithi": 16,
+          "sunsetTithi": 16,
+          "nakshatra": 17
+        },
+        {
+          "localDate": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-18T04:24:00+00:00",
+          "sunsetUtc": "2026-01-18T18:00:00+00:00",
+          "sunriseTithi": 17,
+          "arunodayaTithi": 17,
+          "sunsetTithi": 17,
+          "nakshatra": 18
+        },
+        {
+          "localDate": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-19T04:24:00+00:00",
+          "sunsetUtc": "2026-01-19T18:00:00+00:00",
+          "sunriseTithi": 18,
+          "arunodayaTithi": 18,
+          "sunsetTithi": 18,
+          "nakshatra": 19
+        },
+        {
+          "localDate": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-20T04:24:00+00:00",
+          "sunsetUtc": "2026-01-20T18:00:00+00:00",
+          "sunriseTithi": 19,
+          "arunodayaTithi": 19,
+          "sunsetTithi": 19,
+          "nakshatra": 20
+        },
+        {
+          "localDate": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-21T04:24:00+00:00",
+          "sunsetUtc": "2026-01-21T18:00:00+00:00",
+          "sunriseTithi": 20,
+          "arunodayaTithi": 20,
+          "sunsetTithi": 20,
+          "nakshatra": 21
+        },
+        {
+          "localDate": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-22T04:24:00+00:00",
+          "sunsetUtc": "2026-01-22T18:00:00+00:00",
+          "sunriseTithi": 21,
+          "arunodayaTithi": 21,
+          "sunsetTithi": 21,
+          "nakshatra": 22
+        },
+        {
+          "localDate": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-23T04:24:00+00:00",
+          "sunsetUtc": "2026-01-23T18:00:00+00:00",
+          "sunriseTithi": 22,
+          "arunodayaTithi": 22,
+          "sunsetTithi": 22,
+          "nakshatra": 23
+        },
+        {
+          "localDate": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-24T04:24:00+00:00",
+          "sunsetUtc": "2026-01-24T18:00:00+00:00",
+          "sunriseTithi": 23,
+          "arunodayaTithi": 23,
+          "sunsetTithi": 23,
+          "nakshatra": 24
+        },
+        {
+          "localDate": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-25T04:24:00+00:00",
+          "sunsetUtc": "2026-01-25T18:00:00+00:00",
+          "sunriseTithi": 24,
+          "arunodayaTithi": 24,
+          "sunsetTithi": 24,
+          "nakshatra": 25
+        },
+        {
+          "localDate": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-26T04:24:00+00:00",
+          "sunsetUtc": "2026-01-26T18:00:00+00:00",
+          "sunriseTithi": 25,
+          "arunodayaTithi": 25,
+          "sunsetTithi": 25,
+          "nakshatra": 26
+        }
+      ]
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-01-12T01:00:00+00:00",
+      "endUtc": "2026-01-13T01:00:00+00:00",
+      "solarDays": [
+        {
+          "date": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-11T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-12T06:00:00+00:00",
+          "overlapSeconds": 18000.0
+        },
+        {
+          "date": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-13T06:00:00+00:00",
+          "overlapSeconds": 68400.0
+        },
+        {
+          "date": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-14T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-15T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-16T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-17T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-18T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-19T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-20T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-21T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-22T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-23T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-24T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-25T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-26T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-27T06:00:00+00:00",
+          "overlapSeconds": 0
+        }
+      ],
+      "expectedFastingDate": "2026-01-13",
+      "expectedStatus": "selected",
+      "vaishnavaDays": [
+        {
+          "localDate": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-10T04:24:00+00:00",
+          "sunsetUtc": "2026-01-10T18:00:00+00:00",
+          "sunriseTithi": 9,
+          "arunodayaTithi": 9,
+          "sunsetTithi": 9,
+          "nakshatra": 10
+        },
+        {
+          "localDate": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-11T04:24:00+00:00",
+          "sunsetUtc": "2026-01-11T18:00:00+00:00",
+          "sunriseTithi": 10,
+          "arunodayaTithi": 10,
+          "sunsetTithi": 10,
+          "nakshatra": 11
+        },
+        {
+          "localDate": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-12T04:24:00+00:00",
+          "sunsetUtc": "2026-01-12T18:00:00+00:00",
+          "sunriseTithi": 11,
+          "arunodayaTithi": 11,
+          "sunsetTithi": 11,
+          "nakshatra": 12
+        },
+        {
+          "localDate": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-13T04:24:00+00:00",
+          "sunsetUtc": "2026-01-13T18:00:00+00:00",
+          "sunriseTithi": 12,
+          "arunodayaTithi": 12,
+          "sunsetTithi": 12,
+          "nakshatra": 13
+        },
+        {
+          "localDate": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-14T04:24:00+00:00",
+          "sunsetUtc": "2026-01-14T18:00:00+00:00",
+          "sunriseTithi": 12,
+          "arunodayaTithi": 13,
+          "sunsetTithi": 13,
+          "nakshatra": 14
+        },
+        {
+          "localDate": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-15T04:24:00+00:00",
+          "sunsetUtc": "2026-01-15T18:00:00+00:00",
+          "sunriseTithi": 14,
+          "arunodayaTithi": 14,
+          "sunsetTithi": 14,
+          "nakshatra": 15
+        },
+        {
+          "localDate": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-16T04:24:00+00:00",
+          "sunsetUtc": "2026-01-16T18:00:00+00:00",
+          "sunriseTithi": 15,
+          "arunodayaTithi": 15,
+          "sunsetTithi": 15,
+          "nakshatra": 16
+        },
+        {
+          "localDate": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-17T04:24:00+00:00",
+          "sunsetUtc": "2026-01-17T18:00:00+00:00",
+          "sunriseTithi": 16,
+          "arunodayaTithi": 16,
+          "sunsetTithi": 16,
+          "nakshatra": 17
+        },
+        {
+          "localDate": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-18T04:24:00+00:00",
+          "sunsetUtc": "2026-01-18T18:00:00+00:00",
+          "sunriseTithi": 17,
+          "arunodayaTithi": 17,
+          "sunsetTithi": 17,
+          "nakshatra": 18
+        },
+        {
+          "localDate": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-19T04:24:00+00:00",
+          "sunsetUtc": "2026-01-19T18:00:00+00:00",
+          "sunriseTithi": 18,
+          "arunodayaTithi": 18,
+          "sunsetTithi": 18,
+          "nakshatra": 19
+        },
+        {
+          "localDate": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-20T04:24:00+00:00",
+          "sunsetUtc": "2026-01-20T18:00:00+00:00",
+          "sunriseTithi": 19,
+          "arunodayaTithi": 19,
+          "sunsetTithi": 19,
+          "nakshatra": 20
+        },
+        {
+          "localDate": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-21T04:24:00+00:00",
+          "sunsetUtc": "2026-01-21T18:00:00+00:00",
+          "sunriseTithi": 20,
+          "arunodayaTithi": 20,
+          "sunsetTithi": 20,
+          "nakshatra": 21
+        },
+        {
+          "localDate": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-22T04:24:00+00:00",
+          "sunsetUtc": "2026-01-22T18:00:00+00:00",
+          "sunriseTithi": 21,
+          "arunodayaTithi": 21,
+          "sunsetTithi": 21,
+          "nakshatra": 22
+        },
+        {
+          "localDate": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-23T04:24:00+00:00",
+          "sunsetUtc": "2026-01-23T18:00:00+00:00",
+          "sunriseTithi": 22,
+          "arunodayaTithi": 22,
+          "sunsetTithi": 22,
+          "nakshatra": 23
+        },
+        {
+          "localDate": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-24T04:24:00+00:00",
+          "sunsetUtc": "2026-01-24T18:00:00+00:00",
+          "sunriseTithi": 23,
+          "arunodayaTithi": 23,
+          "sunsetTithi": 23,
+          "nakshatra": 24
+        },
+        {
+          "localDate": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-25T04:24:00+00:00",
+          "sunsetUtc": "2026-01-25T18:00:00+00:00",
+          "sunriseTithi": 24,
+          "arunodayaTithi": 24,
+          "sunsetTithi": 24,
+          "nakshatra": 25
+        },
+        {
+          "localDate": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-26T04:24:00+00:00",
+          "sunsetUtc": "2026-01-26T18:00:00+00:00",
+          "sunriseTithi": 25,
+          "arunodayaTithi": 25,
+          "sunsetTithi": 25,
+          "nakshatra": 26
+        }
+      ]
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-01-12T01:00:00+00:00",
+      "endUtc": "2026-01-13T01:00:00+00:00",
+      "solarDays": [
+        {
+          "date": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-11T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-12T06:00:00+00:00",
+          "overlapSeconds": 18000.0
+        },
+        {
+          "date": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-13T06:00:00+00:00",
+          "overlapSeconds": 68400.0
+        },
+        {
+          "date": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-14T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-15T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-16T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-17T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-18T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-19T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-20T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-21T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-22T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-23T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-24T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-25T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-26T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-27T06:00:00+00:00",
+          "overlapSeconds": 0
+        }
+      ],
+      "expectedFastingDate": "2026-01-13",
+      "expectedStatus": "selected",
+      "vaishnavaDays": [
+        {
+          "localDate": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-10T04:24:00+00:00",
+          "sunsetUtc": "2026-01-10T18:00:00+00:00",
+          "sunriseTithi": 9,
+          "arunodayaTithi": 9,
+          "sunsetTithi": 9,
+          "nakshatra": 10
+        },
+        {
+          "localDate": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-11T04:24:00+00:00",
+          "sunsetUtc": "2026-01-11T18:00:00+00:00",
+          "sunriseTithi": 10,
+          "arunodayaTithi": 10,
+          "sunsetTithi": 10,
+          "nakshatra": 11
+        },
+        {
+          "localDate": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-12T04:24:00+00:00",
+          "sunsetUtc": "2026-01-12T18:00:00+00:00",
+          "sunriseTithi": 11,
+          "arunodayaTithi": 11,
+          "sunsetTithi": 11,
+          "nakshatra": 12
+        },
+        {
+          "localDate": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-13T04:24:00+00:00",
+          "sunsetUtc": "2026-01-13T18:00:00+00:00",
+          "sunriseTithi": 12,
+          "arunodayaTithi": 12,
+          "sunsetTithi": 12,
+          "nakshatra": 13
+        },
+        {
+          "localDate": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-14T04:24:00+00:00",
+          "sunsetUtc": "2026-01-14T18:00:00+00:00",
+          "sunriseTithi": 13,
+          "arunodayaTithi": 13,
+          "sunsetTithi": 13,
+          "nakshatra": 14
+        },
+        {
+          "localDate": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-15T04:24:00+00:00",
+          "sunsetUtc": "2026-01-15T18:00:00+00:00",
+          "sunriseTithi": 14,
+          "arunodayaTithi": 14,
+          "sunsetTithi": 14,
+          "nakshatra": 15
+        },
+        {
+          "localDate": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-16T04:24:00+00:00",
+          "sunsetUtc": "2026-01-16T18:00:00+00:00",
+          "sunriseTithi": 15,
+          "arunodayaTithi": 15,
+          "sunsetTithi": 15,
+          "nakshatra": 16
+        },
+        {
+          "localDate": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-17T04:24:00+00:00",
+          "sunsetUtc": "2026-01-17T18:00:00+00:00",
+          "sunriseTithi": 15,
+          "arunodayaTithi": 16,
+          "sunsetTithi": 16,
+          "nakshatra": 17
+        },
+        {
+          "localDate": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-18T04:24:00+00:00",
+          "sunsetUtc": "2026-01-18T18:00:00+00:00",
+          "sunriseTithi": 17,
+          "arunodayaTithi": 17,
+          "sunsetTithi": 17,
+          "nakshatra": 18
+        },
+        {
+          "localDate": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-19T04:24:00+00:00",
+          "sunsetUtc": "2026-01-19T18:00:00+00:00",
+          "sunriseTithi": 18,
+          "arunodayaTithi": 18,
+          "sunsetTithi": 18,
+          "nakshatra": 19
+        },
+        {
+          "localDate": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-20T04:24:00+00:00",
+          "sunsetUtc": "2026-01-20T18:00:00+00:00",
+          "sunriseTithi": 19,
+          "arunodayaTithi": 19,
+          "sunsetTithi": 19,
+          "nakshatra": 20
+        },
+        {
+          "localDate": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-21T04:24:00+00:00",
+          "sunsetUtc": "2026-01-21T18:00:00+00:00",
+          "sunriseTithi": 20,
+          "arunodayaTithi": 20,
+          "sunsetTithi": 20,
+          "nakshatra": 21
+        },
+        {
+          "localDate": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-22T04:24:00+00:00",
+          "sunsetUtc": "2026-01-22T18:00:00+00:00",
+          "sunriseTithi": 21,
+          "arunodayaTithi": 21,
+          "sunsetTithi": 21,
+          "nakshatra": 22
+        },
+        {
+          "localDate": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-23T04:24:00+00:00",
+          "sunsetUtc": "2026-01-23T18:00:00+00:00",
+          "sunriseTithi": 22,
+          "arunodayaTithi": 22,
+          "sunsetTithi": 22,
+          "nakshatra": 23
+        },
+        {
+          "localDate": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-24T04:24:00+00:00",
+          "sunsetUtc": "2026-01-24T18:00:00+00:00",
+          "sunriseTithi": 23,
+          "arunodayaTithi": 23,
+          "sunsetTithi": 23,
+          "nakshatra": 24
+        },
+        {
+          "localDate": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-25T04:24:00+00:00",
+          "sunsetUtc": "2026-01-25T18:00:00+00:00",
+          "sunriseTithi": 24,
+          "arunodayaTithi": 24,
+          "sunsetTithi": 24,
+          "nakshatra": 25
+        },
+        {
+          "localDate": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-26T04:24:00+00:00",
+          "sunsetUtc": "2026-01-26T18:00:00+00:00",
+          "sunriseTithi": 25,
+          "arunodayaTithi": 25,
+          "sunsetTithi": 25,
+          "nakshatra": 26
+        }
+      ]
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-01-12T01:00:00+00:00",
+      "endUtc": "2026-01-13T01:00:00+00:00",
+      "solarDays": [
+        {
+          "date": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-11T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-12T06:00:00+00:00",
+          "overlapSeconds": 18000.0
+        },
+        {
+          "date": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-13T06:00:00+00:00",
+          "overlapSeconds": 68400.0
+        },
+        {
+          "date": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-14T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-15T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-16T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-17T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-18T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-19T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-20T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-21T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-22T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-23T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-24T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-25T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-26T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-27T06:00:00+00:00",
+          "overlapSeconds": 0
+        }
+      ],
+      "expectedFastingDate": "2026-01-13",
+      "expectedStatus": "selected",
+      "vaishnavaDays": [
+        {
+          "localDate": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-10T04:24:00+00:00",
+          "sunsetUtc": "2026-01-10T18:00:00+00:00",
+          "sunriseTithi": 9,
+          "arunodayaTithi": 9,
+          "sunsetTithi": 9,
+          "nakshatra": 10
+        },
+        {
+          "localDate": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-11T04:24:00+00:00",
+          "sunsetUtc": "2026-01-11T18:00:00+00:00",
+          "sunriseTithi": 10,
+          "arunodayaTithi": 10,
+          "sunsetTithi": 10,
+          "nakshatra": 11
+        },
+        {
+          "localDate": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-12T04:24:00+00:00",
+          "sunsetUtc": "2026-01-12T18:00:00+00:00",
+          "sunriseTithi": 11,
+          "arunodayaTithi": 11,
+          "sunsetTithi": 11,
+          "nakshatra": 12
+        },
+        {
+          "localDate": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-13T04:24:00+00:00",
+          "sunsetUtc": "2026-01-13T18:00:00+00:00",
+          "sunriseTithi": 12,
+          "arunodayaTithi": 12,
+          "sunsetTithi": 12,
+          "nakshatra": 6
+        },
+        {
+          "localDate": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-14T04:24:00+00:00",
+          "sunsetUtc": "2026-01-14T18:00:00+00:00",
+          "sunriseTithi": 13,
+          "arunodayaTithi": 13,
+          "sunsetTithi": 13,
+          "nakshatra": 6
+        },
+        {
+          "localDate": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-15T04:24:00+00:00",
+          "sunsetUtc": "2026-01-15T18:00:00+00:00",
+          "sunriseTithi": 14,
+          "arunodayaTithi": 14,
+          "sunsetTithi": 14,
+          "nakshatra": 15
+        },
+        {
+          "localDate": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-16T04:24:00+00:00",
+          "sunsetUtc": "2026-01-16T18:00:00+00:00",
+          "sunriseTithi": 15,
+          "arunodayaTithi": 15,
+          "sunsetTithi": 15,
+          "nakshatra": 16
+        },
+        {
+          "localDate": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-17T04:24:00+00:00",
+          "sunsetUtc": "2026-01-17T18:00:00+00:00",
+          "sunriseTithi": 16,
+          "arunodayaTithi": 16,
+          "sunsetTithi": 16,
+          "nakshatra": 17
+        },
+        {
+          "localDate": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-18T04:24:00+00:00",
+          "sunsetUtc": "2026-01-18T18:00:00+00:00",
+          "sunriseTithi": 17,
+          "arunodayaTithi": 17,
+          "sunsetTithi": 17,
+          "nakshatra": 18
+        },
+        {
+          "localDate": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-19T04:24:00+00:00",
+          "sunsetUtc": "2026-01-19T18:00:00+00:00",
+          "sunriseTithi": 18,
+          "arunodayaTithi": 18,
+          "sunsetTithi": 18,
+          "nakshatra": 19
+        },
+        {
+          "localDate": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-20T04:24:00+00:00",
+          "sunsetUtc": "2026-01-20T18:00:00+00:00",
+          "sunriseTithi": 19,
+          "arunodayaTithi": 19,
+          "sunsetTithi": 19,
+          "nakshatra": 20
+        },
+        {
+          "localDate": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-21T04:24:00+00:00",
+          "sunsetUtc": "2026-01-21T18:00:00+00:00",
+          "sunriseTithi": 20,
+          "arunodayaTithi": 20,
+          "sunsetTithi": 20,
+          "nakshatra": 21
+        },
+        {
+          "localDate": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-22T04:24:00+00:00",
+          "sunsetUtc": "2026-01-22T18:00:00+00:00",
+          "sunriseTithi": 21,
+          "arunodayaTithi": 21,
+          "sunsetTithi": 21,
+          "nakshatra": 22
+        },
+        {
+          "localDate": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-23T04:24:00+00:00",
+          "sunsetUtc": "2026-01-23T18:00:00+00:00",
+          "sunriseTithi": 22,
+          "arunodayaTithi": 22,
+          "sunsetTithi": 22,
+          "nakshatra": 23
+        },
+        {
+          "localDate": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-24T04:24:00+00:00",
+          "sunsetUtc": "2026-01-24T18:00:00+00:00",
+          "sunriseTithi": 23,
+          "arunodayaTithi": 23,
+          "sunsetTithi": 23,
+          "nakshatra": 24
+        },
+        {
+          "localDate": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-25T04:24:00+00:00",
+          "sunsetUtc": "2026-01-25T18:00:00+00:00",
+          "sunriseTithi": 24,
+          "arunodayaTithi": 24,
+          "sunsetTithi": 24,
+          "nakshatra": 25
+        },
+        {
+          "localDate": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-26T04:24:00+00:00",
+          "sunsetUtc": "2026-01-26T18:00:00+00:00",
+          "sunriseTithi": 25,
+          "arunodayaTithi": 25,
+          "sunsetTithi": 25,
+          "nakshatra": 26
+        }
+      ]
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-01-12T01:00:00+00:00",
+      "endUtc": "2026-01-13T01:00:00+00:00",
+      "solarDays": [
+        {
+          "date": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-11T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-12T06:00:00+00:00",
+          "overlapSeconds": 18000.0
+        },
+        {
+          "date": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-13T06:00:00+00:00",
+          "overlapSeconds": 68400.0
+        },
+        {
+          "date": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-14T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-15T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-16T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-17T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-18T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-19T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-20T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-21T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-22T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-23T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-24T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-25T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-26T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-27T06:00:00+00:00",
+          "overlapSeconds": 0
+        }
+      ],
+      "expectedFastingDate": "2026-01-13",
+      "expectedStatus": "selected",
+      "vaishnavaDays": [
+        {
+          "localDate": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-10T04:24:00+00:00",
+          "sunsetUtc": "2026-01-10T18:00:00+00:00",
+          "sunriseTithi": 9,
+          "arunodayaTithi": 9,
+          "sunsetTithi": 9,
+          "nakshatra": 10
+        },
+        {
+          "localDate": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-11T04:24:00+00:00",
+          "sunsetUtc": "2026-01-11T18:00:00+00:00",
+          "sunriseTithi": 10,
+          "arunodayaTithi": 10,
+          "sunsetTithi": 10,
+          "nakshatra": 11
+        },
+        {
+          "localDate": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-12T04:24:00+00:00",
+          "sunsetUtc": "2026-01-12T18:00:00+00:00",
+          "sunriseTithi": 11,
+          "arunodayaTithi": 11,
+          "sunsetTithi": 11,
+          "nakshatra": 12
+        },
+        {
+          "localDate": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-13T04:24:00+00:00",
+          "sunsetUtc": "2026-01-13T18:00:00+00:00",
+          "sunriseTithi": 12,
+          "arunodayaTithi": 12,
+          "sunsetTithi": 12,
+          "nakshatra": 3
+        },
+        {
+          "localDate": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-14T04:24:00+00:00",
+          "sunsetUtc": "2026-01-14T18:00:00+00:00",
+          "sunriseTithi": 13,
+          "arunodayaTithi": 13,
+          "sunsetTithi": 13,
+          "nakshatra": 3
+        },
+        {
+          "localDate": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-15T04:24:00+00:00",
+          "sunsetUtc": "2026-01-15T18:00:00+00:00",
+          "sunriseTithi": 14,
+          "arunodayaTithi": 14,
+          "sunsetTithi": 14,
+          "nakshatra": 15
+        },
+        {
+          "localDate": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-16T04:24:00+00:00",
+          "sunsetUtc": "2026-01-16T18:00:00+00:00",
+          "sunriseTithi": 15,
+          "arunodayaTithi": 15,
+          "sunsetTithi": 15,
+          "nakshatra": 16
+        },
+        {
+          "localDate": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-17T04:24:00+00:00",
+          "sunsetUtc": "2026-01-17T18:00:00+00:00",
+          "sunriseTithi": 16,
+          "arunodayaTithi": 16,
+          "sunsetTithi": 16,
+          "nakshatra": 17
+        },
+        {
+          "localDate": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-18T04:24:00+00:00",
+          "sunsetUtc": "2026-01-18T18:00:00+00:00",
+          "sunriseTithi": 17,
+          "arunodayaTithi": 17,
+          "sunsetTithi": 17,
+          "nakshatra": 18
+        },
+        {
+          "localDate": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-19T04:24:00+00:00",
+          "sunsetUtc": "2026-01-19T18:00:00+00:00",
+          "sunriseTithi": 18,
+          "arunodayaTithi": 18,
+          "sunsetTithi": 18,
+          "nakshatra": 19
+        },
+        {
+          "localDate": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-20T04:24:00+00:00",
+          "sunsetUtc": "2026-01-20T18:00:00+00:00",
+          "sunriseTithi": 19,
+          "arunodayaTithi": 19,
+          "sunsetTithi": 19,
+          "nakshatra": 20
+        },
+        {
+          "localDate": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-21T04:24:00+00:00",
+          "sunsetUtc": "2026-01-21T18:00:00+00:00",
+          "sunriseTithi": 20,
+          "arunodayaTithi": 20,
+          "sunsetTithi": 20,
+          "nakshatra": 21
+        },
+        {
+          "localDate": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-22T04:24:00+00:00",
+          "sunsetUtc": "2026-01-22T18:00:00+00:00",
+          "sunriseTithi": 21,
+          "arunodayaTithi": 21,
+          "sunsetTithi": 21,
+          "nakshatra": 22
+        },
+        {
+          "localDate": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-23T04:24:00+00:00",
+          "sunsetUtc": "2026-01-23T18:00:00+00:00",
+          "sunriseTithi": 22,
+          "arunodayaTithi": 22,
+          "sunsetTithi": 22,
+          "nakshatra": 23
+        },
+        {
+          "localDate": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-24T04:24:00+00:00",
+          "sunsetUtc": "2026-01-24T18:00:00+00:00",
+          "sunriseTithi": 23,
+          "arunodayaTithi": 23,
+          "sunsetTithi": 23,
+          "nakshatra": 24
+        },
+        {
+          "localDate": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-25T04:24:00+00:00",
+          "sunsetUtc": "2026-01-25T18:00:00+00:00",
+          "sunriseTithi": 24,
+          "arunodayaTithi": 24,
+          "sunsetTithi": 24,
+          "nakshatra": 25
+        },
+        {
+          "localDate": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-26T04:24:00+00:00",
+          "sunsetUtc": "2026-01-26T18:00:00+00:00",
+          "sunriseTithi": 25,
+          "arunodayaTithi": 25,
+          "sunsetTithi": 25,
+          "nakshatra": 26
+        }
+      ]
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-01-12T01:00:00+00:00",
+      "endUtc": "2026-01-13T01:00:00+00:00",
+      "solarDays": [
+        {
+          "date": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-11T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-12T06:00:00+00:00",
+          "overlapSeconds": 18000.0
+        },
+        {
+          "date": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-13T06:00:00+00:00",
+          "overlapSeconds": 68400.0
+        },
+        {
+          "date": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-14T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-15T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-16T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-17T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-18T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-19T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-20T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-21T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-22T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-23T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-24T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-25T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-26T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-27T06:00:00+00:00",
+          "overlapSeconds": 0
+        }
+      ],
+      "expectedFastingDate": "2026-01-13",
+      "expectedStatus": "selected",
+      "vaishnavaDays": [
+        {
+          "localDate": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-10T04:24:00+00:00",
+          "sunsetUtc": "2026-01-10T18:00:00+00:00",
+          "sunriseTithi": 9,
+          "arunodayaTithi": 9,
+          "sunsetTithi": 9,
+          "nakshatra": 10
+        },
+        {
+          "localDate": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-11T04:24:00+00:00",
+          "sunsetUtc": "2026-01-11T18:00:00+00:00",
+          "sunriseTithi": 10,
+          "arunodayaTithi": 10,
+          "sunsetTithi": 10,
+          "nakshatra": 11
+        },
+        {
+          "localDate": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-12T04:24:00+00:00",
+          "sunsetUtc": "2026-01-12T18:00:00+00:00",
+          "sunriseTithi": 11,
+          "arunodayaTithi": 11,
+          "sunsetTithi": 11,
+          "nakshatra": 12
+        },
+        {
+          "localDate": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-13T04:24:00+00:00",
+          "sunsetUtc": "2026-01-13T18:00:00+00:00",
+          "sunriseTithi": 12,
+          "arunodayaTithi": 12,
+          "sunsetTithi": 12,
+          "nakshatra": 7
+        },
+        {
+          "localDate": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-14T04:24:00+00:00",
+          "sunsetUtc": "2026-01-14T18:00:00+00:00",
+          "sunriseTithi": 13,
+          "arunodayaTithi": 13,
+          "sunsetTithi": 13,
+          "nakshatra": 7
+        },
+        {
+          "localDate": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-15T04:24:00+00:00",
+          "sunsetUtc": "2026-01-15T18:00:00+00:00",
+          "sunriseTithi": 14,
+          "arunodayaTithi": 14,
+          "sunsetTithi": 14,
+          "nakshatra": 15
+        },
+        {
+          "localDate": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-16T04:24:00+00:00",
+          "sunsetUtc": "2026-01-16T18:00:00+00:00",
+          "sunriseTithi": 15,
+          "arunodayaTithi": 15,
+          "sunsetTithi": 15,
+          "nakshatra": 16
+        },
+        {
+          "localDate": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-17T04:24:00+00:00",
+          "sunsetUtc": "2026-01-17T18:00:00+00:00",
+          "sunriseTithi": 16,
+          "arunodayaTithi": 16,
+          "sunsetTithi": 16,
+          "nakshatra": 17
+        },
+        {
+          "localDate": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-18T04:24:00+00:00",
+          "sunsetUtc": "2026-01-18T18:00:00+00:00",
+          "sunriseTithi": 17,
+          "arunodayaTithi": 17,
+          "sunsetTithi": 17,
+          "nakshatra": 18
+        },
+        {
+          "localDate": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-19T04:24:00+00:00",
+          "sunsetUtc": "2026-01-19T18:00:00+00:00",
+          "sunriseTithi": 18,
+          "arunodayaTithi": 18,
+          "sunsetTithi": 18,
+          "nakshatra": 19
+        },
+        {
+          "localDate": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-20T04:24:00+00:00",
+          "sunsetUtc": "2026-01-20T18:00:00+00:00",
+          "sunriseTithi": 19,
+          "arunodayaTithi": 19,
+          "sunsetTithi": 19,
+          "nakshatra": 20
+        },
+        {
+          "localDate": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-21T04:24:00+00:00",
+          "sunsetUtc": "2026-01-21T18:00:00+00:00",
+          "sunriseTithi": 20,
+          "arunodayaTithi": 20,
+          "sunsetTithi": 20,
+          "nakshatra": 21
+        },
+        {
+          "localDate": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-22T04:24:00+00:00",
+          "sunsetUtc": "2026-01-22T18:00:00+00:00",
+          "sunriseTithi": 21,
+          "arunodayaTithi": 21,
+          "sunsetTithi": 21,
+          "nakshatra": 22
+        },
+        {
+          "localDate": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-23T04:24:00+00:00",
+          "sunsetUtc": "2026-01-23T18:00:00+00:00",
+          "sunriseTithi": 22,
+          "arunodayaTithi": 22,
+          "sunsetTithi": 22,
+          "nakshatra": 23
+        },
+        {
+          "localDate": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-24T04:24:00+00:00",
+          "sunsetUtc": "2026-01-24T18:00:00+00:00",
+          "sunriseTithi": 23,
+          "arunodayaTithi": 23,
+          "sunsetTithi": 23,
+          "nakshatra": 24
+        },
+        {
+          "localDate": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-25T04:24:00+00:00",
+          "sunsetUtc": "2026-01-25T18:00:00+00:00",
+          "sunriseTithi": 24,
+          "arunodayaTithi": 24,
+          "sunsetTithi": 24,
+          "nakshatra": 25
+        },
+        {
+          "localDate": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-26T04:24:00+00:00",
+          "sunsetUtc": "2026-01-26T18:00:00+00:00",
+          "sunriseTithi": 25,
+          "arunodayaTithi": 25,
+          "sunsetTithi": 25,
+          "nakshatra": 26
+        }
+      ]
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-01-12T01:00:00+00:00",
+      "endUtc": "2026-01-13T01:00:00+00:00",
+      "solarDays": [
+        {
+          "date": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-11T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-12T06:00:00+00:00",
+          "overlapSeconds": 18000.0
+        },
+        {
+          "date": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-13T06:00:00+00:00",
+          "overlapSeconds": 68400.0
+        },
+        {
+          "date": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-14T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-15T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-16T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-17T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-18T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-19T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-20T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-21T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-22T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-23T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-24T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-25T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-26T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-27T06:00:00+00:00",
+          "overlapSeconds": 0
+        }
+      ],
+      "expectedFastingDate": "2026-01-13",
+      "expectedStatus": "selected",
+      "vaishnavaDays": [
+        {
+          "localDate": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-10T04:24:00+00:00",
+          "sunsetUtc": "2026-01-10T18:00:00+00:00",
+          "sunriseTithi": 9,
+          "arunodayaTithi": 9,
+          "sunsetTithi": 9,
+          "nakshatra": 10
+        },
+        {
+          "localDate": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-11T04:24:00+00:00",
+          "sunsetUtc": "2026-01-11T18:00:00+00:00",
+          "sunriseTithi": 10,
+          "arunodayaTithi": 10,
+          "sunsetTithi": 10,
+          "nakshatra": 11
+        },
+        {
+          "localDate": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-12T04:24:00+00:00",
+          "sunsetUtc": "2026-01-12T18:00:00+00:00",
+          "sunriseTithi": 11,
+          "arunodayaTithi": 11,
+          "sunsetTithi": 11,
+          "nakshatra": 12
+        },
+        {
+          "localDate": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-13T04:24:00+00:00",
+          "sunsetUtc": "2026-01-13T18:00:00+00:00",
+          "sunriseTithi": 12,
+          "arunodayaTithi": 12,
+          "sunsetTithi": 12,
+          "nakshatra": 21
+        },
+        {
+          "localDate": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-14T04:24:00+00:00",
+          "sunsetUtc": "2026-01-14T18:00:00+00:00",
+          "sunriseTithi": 13,
+          "arunodayaTithi": 13,
+          "sunsetTithi": 13,
+          "nakshatra": 21
+        },
+        {
+          "localDate": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-15T04:24:00+00:00",
+          "sunsetUtc": "2026-01-15T18:00:00+00:00",
+          "sunriseTithi": 14,
+          "arunodayaTithi": 14,
+          "sunsetTithi": 14,
+          "nakshatra": 15
+        },
+        {
+          "localDate": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-16T04:24:00+00:00",
+          "sunsetUtc": "2026-01-16T18:00:00+00:00",
+          "sunriseTithi": 15,
+          "arunodayaTithi": 15,
+          "sunsetTithi": 15,
+          "nakshatra": 16
+        },
+        {
+          "localDate": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-17T04:24:00+00:00",
+          "sunsetUtc": "2026-01-17T18:00:00+00:00",
+          "sunriseTithi": 16,
+          "arunodayaTithi": 16,
+          "sunsetTithi": 16,
+          "nakshatra": 17
+        },
+        {
+          "localDate": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-18T04:24:00+00:00",
+          "sunsetUtc": "2026-01-18T18:00:00+00:00",
+          "sunriseTithi": 17,
+          "arunodayaTithi": 17,
+          "sunsetTithi": 17,
+          "nakshatra": 18
+        },
+        {
+          "localDate": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-19T04:24:00+00:00",
+          "sunsetUtc": "2026-01-19T18:00:00+00:00",
+          "sunriseTithi": 18,
+          "arunodayaTithi": 18,
+          "sunsetTithi": 18,
+          "nakshatra": 19
+        },
+        {
+          "localDate": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-20T04:24:00+00:00",
+          "sunsetUtc": "2026-01-20T18:00:00+00:00",
+          "sunriseTithi": 19,
+          "arunodayaTithi": 19,
+          "sunsetTithi": 19,
+          "nakshatra": 20
+        },
+        {
+          "localDate": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-21T04:24:00+00:00",
+          "sunsetUtc": "2026-01-21T18:00:00+00:00",
+          "sunriseTithi": 20,
+          "arunodayaTithi": 20,
+          "sunsetTithi": 20,
+          "nakshatra": 21
+        },
+        {
+          "localDate": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-22T04:24:00+00:00",
+          "sunsetUtc": "2026-01-22T18:00:00+00:00",
+          "sunriseTithi": 21,
+          "arunodayaTithi": 21,
+          "sunsetTithi": 21,
+          "nakshatra": 22
+        },
+        {
+          "localDate": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-23T04:24:00+00:00",
+          "sunsetUtc": "2026-01-23T18:00:00+00:00",
+          "sunriseTithi": 22,
+          "arunodayaTithi": 22,
+          "sunsetTithi": 22,
+          "nakshatra": 23
+        },
+        {
+          "localDate": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-24T04:24:00+00:00",
+          "sunsetUtc": "2026-01-24T18:00:00+00:00",
+          "sunriseTithi": 23,
+          "arunodayaTithi": 23,
+          "sunsetTithi": 23,
+          "nakshatra": 24
+        },
+        {
+          "localDate": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-25T04:24:00+00:00",
+          "sunsetUtc": "2026-01-25T18:00:00+00:00",
+          "sunriseTithi": 24,
+          "arunodayaTithi": 24,
+          "sunsetTithi": 24,
+          "nakshatra": 25
+        },
+        {
+          "localDate": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-26T04:24:00+00:00",
+          "sunsetUtc": "2026-01-26T18:00:00+00:00",
+          "sunriseTithi": 25,
+          "arunodayaTithi": 25,
+          "sunsetTithi": 25,
+          "nakshatra": 26
+        }
+      ]
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-01-12T01:00:00+00:00",
+      "endUtc": "2026-01-13T01:00:00+00:00",
+      "solarDays": [
+        {
+          "date": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-11T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-12T06:00:00+00:00",
+          "overlapSeconds": 18000.0
+        },
+        {
+          "date": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-14T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-15T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-16T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-17T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-18T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-19T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-20T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-21T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-22T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-23T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-24T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-25T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-26T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-27T06:00:00+00:00",
+          "overlapSeconds": 0
+        }
+      ],
+      "expectedFastingDate": null,
+      "expectedStatus": "missingRuleData",
+      "vaishnavaDays": [
+        {
+          "localDate": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-10T04:24:00+00:00",
+          "sunsetUtc": "2026-01-10T18:00:00+00:00",
+          "sunriseTithi": 9,
+          "arunodayaTithi": 9,
+          "sunsetTithi": 9,
+          "nakshatra": 10
+        },
+        {
+          "localDate": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-11T04:24:00+00:00",
+          "sunsetUtc": "2026-01-11T18:00:00+00:00",
+          "sunriseTithi": 10,
+          "arunodayaTithi": 10,
+          "sunsetTithi": 10,
+          "nakshatra": 11
+        },
+        {
+          "localDate": "2026-01-12",
+          "sunriseUtc": null,
+          "arunodayaUtc": "2026-01-12T04:24:00+00:00",
+          "sunsetUtc": "2026-01-12T18:00:00+00:00",
+          "sunriseTithi": null,
+          "arunodayaTithi": null,
+          "sunsetTithi": 11,
+          "nakshatra": 12
+        },
+        {
+          "localDate": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-13T04:24:00+00:00",
+          "sunsetUtc": "2026-01-13T18:00:00+00:00",
+          "sunriseTithi": 12,
+          "arunodayaTithi": 12,
+          "sunsetTithi": 12,
+          "nakshatra": 13
+        },
+        {
+          "localDate": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-14T04:24:00+00:00",
+          "sunsetUtc": "2026-01-14T18:00:00+00:00",
+          "sunriseTithi": 13,
+          "arunodayaTithi": 13,
+          "sunsetTithi": 13,
+          "nakshatra": 14
+        },
+        {
+          "localDate": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-15T04:24:00+00:00",
+          "sunsetUtc": "2026-01-15T18:00:00+00:00",
+          "sunriseTithi": 14,
+          "arunodayaTithi": 14,
+          "sunsetTithi": 14,
+          "nakshatra": 15
+        },
+        {
+          "localDate": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-16T04:24:00+00:00",
+          "sunsetUtc": "2026-01-16T18:00:00+00:00",
+          "sunriseTithi": 15,
+          "arunodayaTithi": 15,
+          "sunsetTithi": 15,
+          "nakshatra": 16
+        },
+        {
+          "localDate": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-17T04:24:00+00:00",
+          "sunsetUtc": "2026-01-17T18:00:00+00:00",
+          "sunriseTithi": 16,
+          "arunodayaTithi": 16,
+          "sunsetTithi": 16,
+          "nakshatra": 17
+        },
+        {
+          "localDate": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-18T04:24:00+00:00",
+          "sunsetUtc": "2026-01-18T18:00:00+00:00",
+          "sunriseTithi": 17,
+          "arunodayaTithi": 17,
+          "sunsetTithi": 17,
+          "nakshatra": 18
+        },
+        {
+          "localDate": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-19T04:24:00+00:00",
+          "sunsetUtc": "2026-01-19T18:00:00+00:00",
+          "sunriseTithi": 18,
+          "arunodayaTithi": 18,
+          "sunsetTithi": 18,
+          "nakshatra": 19
+        },
+        {
+          "localDate": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-20T04:24:00+00:00",
+          "sunsetUtc": "2026-01-20T18:00:00+00:00",
+          "sunriseTithi": 19,
+          "arunodayaTithi": 19,
+          "sunsetTithi": 19,
+          "nakshatra": 20
+        },
+        {
+          "localDate": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-21T04:24:00+00:00",
+          "sunsetUtc": "2026-01-21T18:00:00+00:00",
+          "sunriseTithi": 20,
+          "arunodayaTithi": 20,
+          "sunsetTithi": 20,
+          "nakshatra": 21
+        },
+        {
+          "localDate": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-22T04:24:00+00:00",
+          "sunsetUtc": "2026-01-22T18:00:00+00:00",
+          "sunriseTithi": 21,
+          "arunodayaTithi": 21,
+          "sunsetTithi": 21,
+          "nakshatra": 22
+        },
+        {
+          "localDate": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-23T04:24:00+00:00",
+          "sunsetUtc": "2026-01-23T18:00:00+00:00",
+          "sunriseTithi": 22,
+          "arunodayaTithi": 22,
+          "sunsetTithi": 22,
+          "nakshatra": 23
+        },
+        {
+          "localDate": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-24T04:24:00+00:00",
+          "sunsetUtc": "2026-01-24T18:00:00+00:00",
+          "sunriseTithi": 23,
+          "arunodayaTithi": 23,
+          "sunsetTithi": 23,
+          "nakshatra": 24
+        },
+        {
+          "localDate": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-25T04:24:00+00:00",
+          "sunsetUtc": "2026-01-25T18:00:00+00:00",
+          "sunriseTithi": 24,
+          "arunodayaTithi": 24,
+          "sunsetTithi": 24,
+          "nakshatra": 25
+        },
+        {
+          "localDate": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-26T04:24:00+00:00",
+          "sunsetUtc": "2026-01-26T18:00:00+00:00",
+          "sunriseTithi": 25,
+          "arunodayaTithi": 25,
+          "sunsetTithi": 25,
+          "nakshatra": 26
+        }
+      ]
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-01-12T01:00:00+00:00",
+      "endUtc": "2026-01-13T01:00:00+00:00",
+      "solarDays": [
+        {
+          "date": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-11T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-12T06:00:00+00:00",
+          "overlapSeconds": 18000.0
+        },
+        {
+          "date": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-13T06:00:00+00:00",
+          "overlapSeconds": 68400.0
+        },
+        {
+          "date": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-14T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-15T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-16T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-17T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-18T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-19T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-20T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-21T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-22T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-23T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-24T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-25T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-26T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-27T06:00:00+00:00",
+          "overlapSeconds": 0
+        }
+      ],
+      "expectedFastingDate": null,
+      "expectedStatus": "missingRuleData",
+      "vaishnavaDays": [
+        {
+          "localDate": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-10T04:24:00+00:00",
+          "sunsetUtc": "2026-01-10T18:00:00+00:00",
+          "sunriseTithi": 9,
+          "arunodayaTithi": 9,
+          "sunsetTithi": 9,
+          "nakshatra": 10
+        },
+        {
+          "localDate": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-11T04:24:00+00:00",
+          "sunsetUtc": "2026-01-11T18:00:00+00:00",
+          "sunriseTithi": 10,
+          "arunodayaTithi": 10,
+          "sunsetTithi": 10,
+          "nakshatra": 11
+        },
+        {
+          "localDate": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-12T04:24:00+00:00",
+          "sunsetUtc": "2026-01-12T18:00:00+00:00",
+          "sunriseTithi": 11,
+          "arunodayaTithi": 11,
+          "sunsetTithi": 11,
+          "nakshatra": 12
+        },
+        {
+          "localDate": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-13T04:24:00+00:00",
+          "sunsetUtc": "2026-01-13T18:00:00+00:00",
+          "sunriseTithi": 12,
+          "arunodayaTithi": 12,
+          "sunsetTithi": 12,
+          "nakshatra": null
+        },
+        {
+          "localDate": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-14T04:24:00+00:00",
+          "sunsetUtc": "2026-01-14T18:00:00+00:00",
+          "sunriseTithi": 13,
+          "arunodayaTithi": 13,
+          "sunsetTithi": 13,
+          "nakshatra": 14
+        },
+        {
+          "localDate": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-15T04:24:00+00:00",
+          "sunsetUtc": "2026-01-15T18:00:00+00:00",
+          "sunriseTithi": 14,
+          "arunodayaTithi": 14,
+          "sunsetTithi": 14,
+          "nakshatra": 15
+        },
+        {
+          "localDate": "2026-01-16",
+          "sunriseUtc": "2026-01-16T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-16T04:24:00+00:00",
+          "sunsetUtc": "2026-01-16T18:00:00+00:00",
+          "sunriseTithi": 15,
+          "arunodayaTithi": 15,
+          "sunsetTithi": 15,
+          "nakshatra": 16
+        },
+        {
+          "localDate": "2026-01-17",
+          "sunriseUtc": "2026-01-17T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-17T04:24:00+00:00",
+          "sunsetUtc": "2026-01-17T18:00:00+00:00",
+          "sunriseTithi": 16,
+          "arunodayaTithi": 16,
+          "sunsetTithi": 16,
+          "nakshatra": 17
+        },
+        {
+          "localDate": "2026-01-18",
+          "sunriseUtc": "2026-01-18T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-18T04:24:00+00:00",
+          "sunsetUtc": "2026-01-18T18:00:00+00:00",
+          "sunriseTithi": 17,
+          "arunodayaTithi": 17,
+          "sunsetTithi": 17,
+          "nakshatra": 18
+        },
+        {
+          "localDate": "2026-01-19",
+          "sunriseUtc": "2026-01-19T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-19T04:24:00+00:00",
+          "sunsetUtc": "2026-01-19T18:00:00+00:00",
+          "sunriseTithi": 18,
+          "arunodayaTithi": 18,
+          "sunsetTithi": 18,
+          "nakshatra": 19
+        },
+        {
+          "localDate": "2026-01-20",
+          "sunriseUtc": "2026-01-20T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-20T04:24:00+00:00",
+          "sunsetUtc": "2026-01-20T18:00:00+00:00",
+          "sunriseTithi": 19,
+          "arunodayaTithi": 19,
+          "sunsetTithi": 19,
+          "nakshatra": 20
+        },
+        {
+          "localDate": "2026-01-21",
+          "sunriseUtc": "2026-01-21T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-21T04:24:00+00:00",
+          "sunsetUtc": "2026-01-21T18:00:00+00:00",
+          "sunriseTithi": 20,
+          "arunodayaTithi": 20,
+          "sunsetTithi": 20,
+          "nakshatra": 21
+        },
+        {
+          "localDate": "2026-01-22",
+          "sunriseUtc": "2026-01-22T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-22T04:24:00+00:00",
+          "sunsetUtc": "2026-01-22T18:00:00+00:00",
+          "sunriseTithi": 21,
+          "arunodayaTithi": 21,
+          "sunsetTithi": 21,
+          "nakshatra": 22
+        },
+        {
+          "localDate": "2026-01-23",
+          "sunriseUtc": "2026-01-23T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-23T04:24:00+00:00",
+          "sunsetUtc": "2026-01-23T18:00:00+00:00",
+          "sunriseTithi": 22,
+          "arunodayaTithi": 22,
+          "sunsetTithi": 22,
+          "nakshatra": 23
+        },
+        {
+          "localDate": "2026-01-24",
+          "sunriseUtc": "2026-01-24T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-24T04:24:00+00:00",
+          "sunsetUtc": "2026-01-24T18:00:00+00:00",
+          "sunriseTithi": 23,
+          "arunodayaTithi": 23,
+          "sunsetTithi": 23,
+          "nakshatra": 24
+        },
+        {
+          "localDate": "2026-01-25",
+          "sunriseUtc": "2026-01-25T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-25T04:24:00+00:00",
+          "sunsetUtc": "2026-01-25T18:00:00+00:00",
+          "sunriseTithi": 24,
+          "arunodayaTithi": 24,
+          "sunsetTithi": 24,
+          "nakshatra": 25
+        },
+        {
+          "localDate": "2026-01-26",
+          "sunriseUtc": "2026-01-26T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-26T04:24:00+00:00",
+          "sunsetUtc": "2026-01-26T18:00:00+00:00",
+          "sunriseTithi": 25,
+          "arunodayaTithi": 25,
+          "sunsetTithi": 25,
+          "nakshatra": 26
+        }
+      ]
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-01-12T01:00:00+00:00",
+      "endUtc": "2026-01-13T01:00:00+00:00",
+      "solarDays": [
+        {
+          "date": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-11T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-12T06:00:00+00:00",
+          "overlapSeconds": 18000.0
+        },
+        {
+          "date": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-13T06:00:00+00:00",
+          "overlapSeconds": 68400.0
+        },
+        {
+          "date": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-14T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-15T06:00:00+00:00",
+          "overlapSeconds": 0
+        },
+        {
+          "date": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "nextSunriseUtc": "2026-01-16T06:00:00+00:00",
+          "overlapSeconds": 0
+        }
+      ],
+      "expectedFastingDate": null,
+      "expectedStatus": "missingRuleData",
+      "vaishnavaDays": [
+        {
+          "localDate": "2026-01-10",
+          "sunriseUtc": "2026-01-10T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-10T04:24:00+00:00",
+          "sunsetUtc": "2026-01-10T18:00:00+00:00",
+          "sunriseTithi": 9,
+          "arunodayaTithi": 9,
+          "sunsetTithi": 9,
+          "nakshatra": 10
+        },
+        {
+          "localDate": "2026-01-11",
+          "sunriseUtc": "2026-01-11T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-11T04:24:00+00:00",
+          "sunsetUtc": "2026-01-11T18:00:00+00:00",
+          "sunriseTithi": 10,
+          "arunodayaTithi": 10,
+          "sunsetTithi": 10,
+          "nakshatra": 11
+        },
+        {
+          "localDate": "2026-01-12",
+          "sunriseUtc": "2026-01-12T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-12T04:24:00+00:00",
+          "sunsetUtc": "2026-01-12T18:00:00+00:00",
+          "sunriseTithi": 11,
+          "arunodayaTithi": 11,
+          "sunsetTithi": 11,
+          "nakshatra": 12
+        },
+        {
+          "localDate": "2026-01-13",
+          "sunriseUtc": "2026-01-13T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-13T04:24:00+00:00",
+          "sunsetUtc": "2026-01-13T18:00:00+00:00",
+          "sunriseTithi": 12,
+          "arunodayaTithi": 12,
+          "sunsetTithi": 12,
+          "nakshatra": 13
+        },
+        {
+          "localDate": "2026-01-14",
+          "sunriseUtc": "2026-01-14T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-14T04:24:00+00:00",
+          "sunsetUtc": "2026-01-14T18:00:00+00:00",
+          "sunriseTithi": 13,
+          "arunodayaTithi": 13,
+          "sunsetTithi": 13,
+          "nakshatra": 14
+        },
+        {
+          "localDate": "2026-01-15",
+          "sunriseUtc": "2026-01-15T06:00:00+00:00",
+          "arunodayaUtc": "2026-01-15T04:24:00+00:00",
+          "sunsetUtc": "2026-01-15T18:00:00+00:00",
+          "sunriseTithi": 14,
+          "arunodayaTithi": 14,
+          "sunsetTithi": 14,
+          "nakshatra": 15
+        }
+      ]
+    }
+  ]
+}
