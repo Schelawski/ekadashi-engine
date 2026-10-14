@@ -26,6 +26,13 @@ Für Berlin Sector 2025/2027 wurden bislang keine belegten Daten gefunden; die U
 zeigt fehlende Referenzen ausdrücklich. Bedienung und Statistik stehen in
 [Kalendervergleich](docs/calendar-comparison.md). ISKCON-Regeln folgen separat.
 
+[Issue #7](https://github.com/Schelawski/ekadashi-engine/issues/7) ergänzt die
+vollständige Grenzfalldiagnose sowie **JSON-, CSV- und Testvektor-Export** aus der
+App und einem UI-unabhängigen CLI-Werkzeug. Fünf versionierte Datensätze prüfen
+20 Tageswerte und 55 Regelfälle für die spätere Dart-Portierung. Bedienung,
+Format und Nullwert-Konventionen stehen in
+[Diagnose und Export](docs/diagnostics-and-export.md).
+
 Die astronomische Basis aus [Issue #3](https://github.com/Schelawski/ekadashi-engine/issues/3)
 ist implementiert: Sonne/Mond, Winkeldifferenz, Tithi, lokaler Sonnenaufgang und
 Diagnoseobjekte. SwissEphSharp ist in einem separaten Adapter gekapselt;
@@ -108,10 +115,13 @@ src/
 tests/
   EkadashiEngine.Astronomy.Tests/           UI-unabhängige Fach- und Referenztests
   EkadashiEngine.Tests/                     Desktop-Smoke-Test und Architekturtest
+tools/
+  EkadashiEngine.Export/                    UI-unabhängige JSON-/CSV-/Vektorerzeugung
 data/
   reference/                Astronomische Referenzen und AM Berlin Sector 2026
+  test-vectors/             Versionierte Tages- und Regeltests für die Portierung
   locations/                Späterer Ortskatalog
-  exports/                  Spätere lokale Exporte und Testvektoren
+  exports/                  Platzhalter für lokale Exporte; Beispiele nach artifacts/
 ```
 
 Die Desktop-Schicht referenziert Core und den Astronomieadapter. Core nutzt

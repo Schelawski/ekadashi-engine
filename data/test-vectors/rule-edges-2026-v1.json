@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "kind": "testVectors",
+  "location": { "displayName": "Berlin", "country": "DE", "latitude": 52.52, "longitude": 13.405, "timeZone": "Europe/Berlin" },
+  "year": 2026,
+  "astronomy": { "provider": "Synthetic", "version": "1", "ephemeris": "Hand-constructed rule inputs; not astronomical observations" },
+  "conventions": { "timeZoneDatabase": "Not used for synthetic UTC solar windows", "longitudes": "Not used", "angles": "Not used", "intervals": "half-open [start,end); elapsed durations in UTC" },
+  "rule": { "tradition": "anandaMarga", "version": "am-max-overlap-v1", "source": "https://ampsnys.org/fasting-calendar/", "isCalendarValidated": false },
+  "reference": null,
+  "tolerances": { "longitudeDegrees": 0.00001, "sunriseSeconds": 2, "tithiBoundarySeconds": 1 },
+  "vectors": [],
+  "ruleCases": [
+    {
+      "tithi": 26, "startUtc": "2026-01-13T09:00:00+00:00", "endUtc": "2026-01-13T23:00:00+00:00",
+      "solarDays": [ { "date": "2026-01-13", "sunriseUtc": "2026-01-13T07:00:00+00:00", "nextSunriseUtc": "2026-01-14T07:00:00+00:00", "overlapSeconds": 50400 } ],
+      "expectedFastingDate": "2026-01-13", "expectedStatus": "selected"
+    },
+    {
+      "tithi": 11, "startUtc": "2026-01-13T06:00:00+00:00", "endUtc": "2026-01-14T08:00:00+00:00",
+      "solarDays": [
+        { "date": "2026-01-12", "sunriseUtc": "2026-01-12T07:00:00+00:00", "nextSunriseUtc": "2026-01-13T07:00:00+00:00", "overlapSeconds": 3600 },
+        { "date": "2026-01-13", "sunriseUtc": "2026-01-13T07:00:00+00:00", "nextSunriseUtc": "2026-01-14T07:00:00+00:00", "overlapSeconds": 86400 },
+        { "date": "2026-01-14", "sunriseUtc": "2026-01-14T07:00:00+00:00", "nextSunriseUtc": "2026-01-15T07:00:00+00:00", "overlapSeconds": 3600 }
+      ],
+      "expectedFastingDate": "2026-01-13", "expectedStatus": "selected"
+    },
+    {
+      "tithi": 11, "startUtc": "2026-01-13T19:00:00+00:00", "endUtc": "2026-01-14T19:00:00+00:00",
+      "solarDays": [
+        { "date": "2026-01-13", "sunriseUtc": "2026-01-13T07:00:00+00:00", "nextSunriseUtc": "2026-01-14T07:00:00+00:00", "overlapSeconds": 43200 },
+        { "date": "2026-01-14", "sunriseUtc": "2026-01-14T07:00:00+00:00", "nextSunriseUtc": "2026-01-15T07:00:00+00:00", "overlapSeconds": 43200 }
+      ],
+      "expectedFastingDate": null, "expectedStatus": "ambiguousOverlap"
+    },
+    {
+      "tithi": 11, "startUtc": "2026-01-13T19:00:00+00:00", "endUtc": "2026-01-14T19:00:00.5+00:00",
+      "solarDays": [
+        { "date": "2026-01-13", "sunriseUtc": "2026-01-13T07:00:00+00:00", "nextSunriseUtc": "2026-01-14T07:00:00+00:00", "overlapSeconds": 43200 },
+        { "date": "2026-01-14", "sunriseUtc": "2026-01-14T07:00:00+00:00", "nextSunriseUtc": "2026-01-15T07:00:00+00:00", "overlapSeconds": 43200.5 }
+      ],
+      "expectedFastingDate": null, "expectedStatus": "ambiguousOverlap"
+    },
+    {
+      "tithi": 26, "startUtc": "2026-01-13T09:00:00+00:00", "endUtc": "2026-01-14T13:00:00+00:00",
+      "solarDays": [ { "date": "2026-01-14", "sunriseUtc": "2026-01-14T07:00:00+00:00", "nextSunriseUtc": "2026-01-15T07:00:00+00:00", "overlapSeconds": 21600 } ],
+      "expectedFastingDate": null, "expectedStatus": "missingSunriseCoverage"
+    },
+    {
+      "tithi": 26, "startUtc": "2026-01-13T09:00:00+00:00", "endUtc": "2026-01-14T13:00:00+00:00", "solarDays": [],
+      "expectedFastingDate": null, "expectedStatus": "missingSunriseCoverage"
+    },
+    {
+      "tithi": 11, "startUtc": "2025-12-31T23:00:00+00:00", "endUtc": "2026-01-02T00:00:00+00:00",
+      "solarDays": [
+        { "date": "2025-12-31", "sunriseUtc": "2025-12-31T07:00:00+00:00", "nextSunriseUtc": "2026-01-01T07:00:00+00:00", "overlapSeconds": 28800 },
+        { "date": "2026-01-01", "sunriseUtc": "2026-01-01T07:00:00+00:00", "nextSunriseUtc": "2026-01-02T07:00:00+00:00", "overlapSeconds": 61200 }
+      ],
+      "expectedFastingDate": "2026-01-01", "expectedStatus": "selected"
+    }
+  ]
+}

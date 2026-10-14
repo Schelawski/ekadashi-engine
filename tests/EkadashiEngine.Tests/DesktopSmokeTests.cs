@@ -7,11 +7,40 @@ using EkadashiEngine.Desktop;
 using EkadashiEngine.Desktop.ViewModels;
 using EkadashiEngine.Desktop.Views;
 using Microsoft.Extensions.DependencyInjection;
+using EkadashiEngine.Core.Export;
+using System.Text.Json;
 
 namespace EkadashiEngine.Tests;
 
 public sealed class DesktopSmokeTests
 {
+    [AvaloniaFact]
+    public async Task PendingExportDisablesActionsAndDoesNotReplaceStatusAfterInputChanges()
+    {
+        using var services = ServiceConfiguration.CreateServiceProvider();
+        var viewModel = services.GetRequiredService<MainWindowViewModel>();
+        var window = new MainWindow { DataContext = viewModel };
+        try
+        {
+            window.Show();
+            Assert.False(viewModel.CanExport);
+            await viewModel.CalculateCommand.ExecuteAsync(null);
+            var destination = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+            var exporting = window.ExportAsync(ExportFormat.Json, _ => destination.Task);
+            Dispatcher.UIThread.RunJobs();
+            Assert.True(viewModel.IsExporting);
+            Assert.False(window.FindControl<Button>("ExportJsonButton")!.IsEnabled);
+            Assert.False(viewModel.CalculateCommand.CanExecute(null));
+            viewModel.Year = 2027;
+            destination.SetResult(true);
+            await exporting;
+            Assert.False(viewModel.IsExporting);
+            Assert.False(viewModel.CanExport);
+            Assert.Contains("Eingaben geändert", viewModel.StatusMessage);
+        }
+        finally { window.Close(); }
+    }
+
     [AvaloniaFact]
     public async Task OfficialCalendarComparisonCanBeCalculatedFilteredAndInspected()
     {
@@ -44,6 +73,12 @@ public sealed class DesktopSmokeTests
             Dispatcher.UIThread.RunJobs();
             Assert.True(window.FindControl<Border>("ComparisonDetailsPanel")!.IsVisible);
             Assert.Contains("Tithi 26", viewModel.SelectedComparisonRow!.Diagnosis);
+            var diagnosis = window.FindControl<SelectableTextBlock>("ComparisonDiagnosisText")!.Text!;
+            foreach (var required in new[] { "2026-01-13", "2026-01-14", "Sonnenaufgang lokal", "UTC", "Tithi bei Sonnenaufgang", "Ekadashi-Start lokal", "Ekadashi-Ende lokal", "Sonnenlänge", "Mondlänge", "Winkeldifferenz", "am-max-overlap-v1" })
+                Assert.Contains(required, diagnosis);
+            Assert.True(window.FindControl<Button>("ExportJsonButton")!.IsEnabled);
+            Assert.True(window.FindControl<Button>("ExportCsvButton")!.IsEnabled);
+            Assert.True(window.FindControl<Button>("ExportVectorsButton")!.IsEnabled);
 
             if (Environment.GetEnvironmentVariable("EKADASHI_COMPARISON_SCREENSHOT") is { Length: > 0 } screenshot)
             {
@@ -53,14 +88,31 @@ public sealed class DesktopSmokeTests
                 frame.Save(screenshot, Avalonia.Media.Imaging.PngBitmapEncoderOptions.Default);
             }
 
+            viewModel.CloseComparisonDetailsCommand.Execute(null);
             window.FindControl<CheckBox>("MismatchFilter")!.IsChecked = true;
             Dispatcher.UIThread.RunJobs();
             Assert.Equal(12, viewModel.ComparisonRows.Count);
             Assert.All(viewModel.ComparisonRows, row => Assert.True(row.IsMismatch));
             Assert.Null(viewModel.SelectedComparisonRow);
+            await window.ExportAsync(ExportFormat.Json, payload =>
+            {
+                using var export = JsonDocument.Parse(payload.Content);
+                Assert.Equal(365, export.RootElement.GetProperty("days").GetArrayLength());
+                Assert.Equal(24, export.RootElement.GetProperty("comparisons").GetArrayLength());
+                return Task.FromResult(true);
+            });
+            Assert.Contains("gespeichert", viewModel.StatusMessage);
+            await window.ExportAsync(ExportFormat.Csv, _ => Task.FromResult(false));
+            Assert.Contains("abgebrochen", viewModel.StatusMessage);
+            Assert.True(viewModel.CanExport);
+            await window.ExportAsync(ExportFormat.TestVectors, _ => throw new IOException("Test write failure"));
+            Assert.Contains("fehlgeschlagen", viewModel.StatusMessage);
+            Assert.True(viewModel.CanExport);
             window.FindControl<NumericUpDown>("YearInput")!.Value = 2027;
             Dispatcher.UIThread.RunJobs();
             Assert.Empty(viewModel.ComparisonRows);
+            Assert.False(viewModel.CanExport);
+            Assert.False(window.FindControl<Button>("ExportJsonButton")!.IsEnabled);
             Assert.Equal(string.Empty, window.FindControl<SelectableTextBlock>("ReferenceSourceText")!.Text);
             window.FindControl<CheckBox>("MismatchFilter")!.IsChecked = false;
             window.FindControl<Button>("CalculateButton")!.Command!.Execute(null);
@@ -89,6 +141,8 @@ public sealed class DesktopSmokeTests
             Dispatcher.UIThread.RunJobs();
 
             Assert.Equal(365, viewModel.Results.Count);
+            Assert.True(viewModel.CanExport);
+            Assert.False(viewModel.CanExportCsv);
             Assert.False(viewModel.IsBusy);
             var table = window.FindControl<DataGrid>("ResultsTable")!;
             Assert.Same(viewModel.Results, table.ItemsSource);
@@ -99,6 +153,13 @@ public sealed class DesktopSmokeTests
             Assert.NotEmpty(viewModel.Results);
             Assert.All(viewModel.Results, row => Assert.True(row.Day.IsEkadashiCandidate));
             Assert.True(viewModel.Results.Count < 365);
+            await window.ExportAsync(ExportFormat.TestVectors, payload =>
+            {
+                using var export = JsonDocument.Parse(payload.Content);
+                Assert.Equal(365, export.RootElement.GetProperty("vectors").GetArrayLength());
+                Assert.Equal(JsonValueKind.Null, export.RootElement.GetProperty("vectors")[0].GetProperty("fasting").ValueKind);
+                return Task.FromResult(true);
+            });
             table.UpdateLayout();
             var detailsButton = table.GetVisualDescendants().OfType<Button>().First(control => Equals(control.Content, "Details"));
             detailsButton.Command!.Execute(null);
@@ -123,6 +184,7 @@ public sealed class DesktopSmokeTests
             window.FindControl<ComboBox>("LocationSelector")!.SelectedIndex = 2;
             Dispatcher.UIThread.RunJobs();
             Assert.Empty(viewModel.Results);
+            Assert.False(viewModel.CanExport);
             Assert.False(window.FindControl<Border>("DetailsPanel")!.IsVisible);
 
             window.FindControl<NumericUpDown>("YearInput")!.Value = null;

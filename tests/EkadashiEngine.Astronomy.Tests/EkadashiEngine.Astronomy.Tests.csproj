@@ -15,5 +15,7 @@
           Link="Fixtures/swetest-2.10.03.json" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../../data/reference/ananda-marga/berlin-sector-2026.json"
           Link="Fixtures/berlin-sector-2026.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../data/test-vectors/*-v1.json"
+          Link="TestVectors/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

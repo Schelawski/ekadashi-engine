@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "testVectors",
+  "location": {
+    "displayName": "Apia",
+    "country": "WS",
+    "latitude": -13.8333,
+    "longitude": -171.75,
+    "timeZone": "Pacific/Apia"
+  },
+  "year": 2011,
+  "astronomy": {
+    "provider": "SwissEphSharp",
+    "version": "2.10.3.1",
+    "ephemeris": "Moshier (SEFLG_MOSEPH)"
+  },
+  "conventions": {
+    "timeZoneDatabase": "TZDB: 2026d (mapping: 48.2)",
+    "longitudes": "apparent geocentric tropical ecliptic of date",
+    "angles": "degrees [0,360)",
+    "intervals": "half-open [start,end); elapsed durations in UTC"
+  },
+  "rule": {
+    "tradition": "technicalSunriseCandidate",
+    "version": "technical-sunrise-v1",
+    "source": null,
+    "isCalendarValidated": false
+  },
+  "reference": null,
+  "tolerances": {
+    "longitudeDegrees": 1E-05,
+    "sunriseSeconds": 2,
+    "tithiBoundarySeconds": 1
+  },
+  "vectors": [
+    {
+      "date": "2011-12-29",
+      "sunriseStatus": "available",
+      "sunriseDefinition": "upperLimbWithRefraction",
+      "sunriseUtc": "2011-12-29T17:00:59.2982232+00:00",
+      "sunriseLocal": "2011-12-29T07:00:59.2982232-10:00",
+      "sunLongitude": 277.6231879329941,
+      "moonLongitude": 339.10544172063385,
+      "angularDifference": 61.48225378763976,
+      "tithi": 6,
+      "isEkadashiCandidate": false,
+      "fasting": null,
+      "officialFasting": null
+    },
+    {
+      "date": "2011-12-30",
+      "sunriseStatus": "skippedLocalDate",
+      "sunriseDefinition": "upperLimbWithRefraction",
+      "sunriseUtc": null,
+      "sunriseLocal": null,
+      "sunLongitude": null,
+      "moonLongitude": null,
+      "angularDifference": null,
+      "tithi": null,
+      "isEkadashiCandidate": null,
+      "fasting": null,
+      "officialFasting": null
+    },
+    {
+      "date": "2011-12-31",
+      "sunriseStatus": "available",
+      "sunriseDefinition": "upperLimbWithRefraction",
+      "sunriseUtc": "2011-12-30T17:01:32.8817868+00:00",
+      "sunriseLocal": "2011-12-31T07:01:32.8817868+14:00",
+      "sunLongitude": 278.64286452521765,
+      "moonLongitude": 351.4978080663196,
+      "angularDifference": 72.85494354110193,
+      "tithi": 7,
+      "isEkadashiCandidate": false,
+      "fasting": null,
+      "officialFasting": null
+    }
+  ],
+  "ruleCases": []
+}

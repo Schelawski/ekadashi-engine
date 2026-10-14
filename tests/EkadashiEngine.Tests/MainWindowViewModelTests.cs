@@ -2,6 +2,7 @@ using EkadashiEngine.Core;
 using EkadashiEngine.Core.Astronomy;
 using EkadashiEngine.Core.ReferenceData;
 using EkadashiEngine.Core.Rules;
+using EkadashiEngine.Core.Export;
 using EkadashiEngine.Desktop.ViewModels;
 using Microsoft.Extensions.Logging.Abstractions;
 
@@ -75,7 +76,7 @@ public sealed class MainWindowViewModelTests
 
     private static MainWindowViewModel CreateViewModel(IYearAstronomyCalculator calculator) =>
         new(calculator, new UnusedFastingCalculator(), new EmbeddedCalendarReferenceProvider(),
-            new CalendarComparisonService(), NullLogger<MainWindowViewModel>.Instance);
+            new CalendarComparisonService(), TestCalculationServices.Factory, new CalculationExporter(), NullLogger<MainWindowViewModel>.Instance);
 
     private sealed class UnusedFastingCalculator : IFastingCalendarCalculator
     {

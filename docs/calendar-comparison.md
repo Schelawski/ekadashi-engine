@@ -11,7 +11,9 @@ Umsetzung von [Issue #6](https://github.com/Schelawski/ekadashi-engine/issues/6)
    Der Textstatus bleibt auch ohne Farberkennung eindeutig.
 4. **Nur Abweichungen** blendet Treffer aus. Die Statistik bezieht sich weiter
    auf das gesamte Jahr.
-5. Eine Zeile öffnet Tithi-Zeitraum und Überschneidungsdauern der Regelentscheidung.
+5. Eine Zeile öffnet die vollständige Diagnose mit Sonnenaufgang und Winkeln für
+   beide Tage, Tithi-Grenzen lokal/UTC und angewandter Regel. **Schließen** führt
+   zurück zur Tabelle. Siehe [Diagnose und Export](diagnostics-and-export.md).
 
 Quellen-URL, Abrufdatum und Geltungsbereich stehen im Fenster. Bei Änderung von
 Ort, Jahr oder Modus werden alte Vergleichsdaten und Details gelöscht. Abbruch

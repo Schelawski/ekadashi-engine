@@ -18,20 +18,12 @@ public sealed class YearAstronomyCalculator(
         var firstDay = new DateOnly(year, 1, 1);
         var dayCount = DateTime.IsLeapYear(year) ? 366 : 365;
         var days = new List<DailyAstronomyResult>(dayCount);
+        var dayCalculator = new DayAstronomyCalculator(astronomy, sunrise, tithi);
         for (var index = 0; index < dayCount; index++)
         {
             cancellationToken.ThrowIfCancellationRequested();
             var date = firstDay.AddDays(index);
-            var rise = sunrise.CalculateSunrise(date, location, SunriseDefinition.UpperLimbWithRefraction);
-            PlanetaryPositions? positions = null;
-            TithiInfo? lunarDay = null;
-            if (rise.Status == SunriseStatus.Available)
-            {
-                positions = astronomy.GetPositions(rise.SunriseUtc
-                    ?? throw new AstronomyCalculationException("An available sunrise must have a UTC instant."));
-                lunarDay = tithi.Calculate(positions.SunLongitude, positions.MoonLongitude);
-            }
-            days.Add(new(date, rise, positions, lunarDay));
+            days.Add(dayCalculator.Calculate(date, location));
         }
         cancellationToken.ThrowIfCancellationRequested();
         return new(location, year, days.AsReadOnly());

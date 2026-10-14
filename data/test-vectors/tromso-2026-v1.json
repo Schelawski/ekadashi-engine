@@ -1,0 +1,495 @@
+{
+  "schemaVersion": 1,
+  "kind": "testVectors",
+  "location": {
+    "displayName": "Tromso",
+    "country": "NO",
+    "latitude": 69.6492,
+    "longitude": 18.9553,
+    "timeZone": "Europe/Oslo"
+  },
+  "year": 2026,
+  "astronomy": {
+    "provider": "SwissEphSharp",
+    "version": "2.10.3.1",
+    "ephemeris": "Moshier (SEFLG_MOSEPH)"
+  },
+  "conventions": {
+    "timeZoneDatabase": "TZDB: 2026d (mapping: 48.2)",
+    "longitudes": "apparent geocentric tropical ecliptic of date",
+    "angles": "degrees [0,360)",
+    "intervals": "half-open [start,end); elapsed durations in UTC"
+  },
+  "rule": {
+    "tradition": "anandaMarga",
+    "version": "am-max-overlap-v1",
+    "source": "https://ampsnys.org/fasting-calendar/",
+    "isCalendarValidated": false
+  },
+  "reference": null,
+  "tolerances": {
+    "longitudeDegrees": 1E-05,
+    "sunriseSeconds": 2,
+    "tithiBoundarySeconds": 1
+  },
+  "vectors": [
+    {
+      "date": "2026-01-01",
+      "sunriseStatus": "noSunriseOnLocalDate",
+      "sunriseDefinition": "upperLimbWithRefraction",
+      "sunriseUtc": null,
+      "sunriseLocal": null,
+      "sunLongitude": null,
+      "moonLongitude": null,
+      "angularDifference": null,
+      "tithi": null,
+      "isEkadashiCandidate": null,
+      "fasting": null,
+      "officialFasting": null
+    },
+    {
+      "date": "2026-06-21",
+      "sunriseStatus": "noSunriseOnLocalDate",
+      "sunriseDefinition": "upperLimbWithRefraction",
+      "sunriseUtc": null,
+      "sunriseLocal": null,
+      "sunLongitude": null,
+      "moonLongitude": null,
+      "angularDifference": null,
+      "tithi": null,
+      "isEkadashiCandidate": null,
+      "fasting": null,
+      "officialFasting": null
+    },
+    {
+      "date": "2026-10-06",
+      "sunriseStatus": "available",
+      "sunriseDefinition": "upperLimbWithRefraction",
+      "sunriseUtc": "2026-10-06T05:18:34.7071838+00:00",
+      "sunriseLocal": "2026-10-06T07:18:34.7071838+02:00",
+      "sunLongitude": 192.97828175253508,
+      "moonLongitude": 137.63075194948496,
+      "angularDifference": 304.6524701969499,
+      "tithi": 26,
+      "isEkadashiCandidate": true,
+      "fasting": true,
+      "officialFasting": null
+    },
+    {
+      "date": "2026-12-21",
+      "sunriseStatus": "noSunriseOnLocalDate",
+      "sunriseDefinition": "upperLimbWithRefraction",
+      "sunriseUtc": null,
+      "sunriseLocal": null,
+      "sunLongitude": null,
+      "moonLongitude": null,
+      "angularDifference": null,
+      "tithi": null,
+      "isEkadashiCandidate": null,
+      "fasting": null,
+      "officialFasting": null
+    }
+  ],
+  "ruleCases": [
+    {
+      "tithi": 26,
+      "startUtc": "2026-01-13T09:48:24.7988892+00:00",
+      "endUtc": "2026-01-14T12:23:14.7006226+00:00",
+      "solarDays": [],
+      "expectedFastingDate": null,
+      "expectedStatus": "missingSunriseCoverage"
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-01-28T11:06:34.4503784+00:00",
+      "endUtc": "2026-01-29T08:25:40.5166627+00:00",
+      "solarDays": [
+        {
+          "date": "2026-01-28",
+          "sunriseUtc": "2026-01-28T08:45:44.2404896+00:00",
+          "nextSunriseUtc": "2026-01-29T08:40:12.2199609+00:00",
+          "overlapSeconds": 76746.0662843
+        }
+      ],
+      "expectedFastingDate": "2026-01-28",
+      "expectedStatus": "selected"
+    },
+    {
+      "tithi": 26,
+      "startUtc": "2026-02-12T06:52:38.0062866+00:00",
+      "endUtc": "2026-02-13T08:56:23.0886841+00:00",
+      "solarDays": [
+        {
+          "date": "2026-02-11",
+          "sunriseUtc": "2026-02-11T07:34:11.7036035+00:00",
+          "nextSunriseUtc": "2026-02-12T07:29:23.5322034+00:00",
+          "overlapSeconds": 2205.5259168
+        },
+        {
+          "date": "2026-02-12",
+          "sunriseUtc": "2026-02-12T07:29:23.5322034+00:00",
+          "nextSunriseUtc": "2026-02-13T07:24:36.7890393+00:00",
+          "overlapSeconds": 86113.2568359
+        },
+        {
+          "date": "2026-02-13",
+          "sunriseUtc": "2026-02-13T07:24:36.7890393+00:00",
+          "nextSunriseUtc": "2026-02-14T07:19:51.3779944+00:00",
+          "overlapSeconds": 5506.2996448
+        }
+      ],
+      "expectedFastingDate": "2026-02-12",
+      "expectedStatus": "selected"
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-02-26T19:03:56.7965699+00:00",
+      "endUtc": "2026-02-27T17:03:19.4155884+00:00",
+      "solarDays": [
+        {
+          "date": "2026-02-26",
+          "sunriseUtc": "2026-02-26T06:24:00.4517725+00:00",
+          "nextSunriseUtc": "2026-02-27T06:19:25.4914453+00:00",
+          "overlapSeconds": 40528.6948754
+        },
+        {
+          "date": "2026-02-27",
+          "sunriseUtc": "2026-02-27T06:19:25.4914453+00:00",
+          "nextSunriseUtc": "2026-02-28T06:14:50.9705445+00:00",
+          "overlapSeconds": 38633.9241431
+        }
+      ],
+      "expectedFastingDate": "2026-02-26",
+      "expectedStatus": "selected"
+    },
+    {
+      "tithi": 26,
+      "startUtc": "2026-03-14T02:41:28.0874634+00:00",
+      "endUtc": "2026-03-15T03:47:01.1654663+00:00",
+      "solarDays": [
+        {
+          "date": "2026-03-13",
+          "sunriseUtc": "2026-03-13T05:15:45.3941211+00:00",
+          "nextSunriseUtc": "2026-03-14T05:11:13.3314245+00:00",
+          "overlapSeconds": 8985.2439611
+        },
+        {
+          "date": "2026-03-14",
+          "sunriseUtc": "2026-03-14T05:11:13.3314245+00:00",
+          "nextSunriseUtc": "2026-03-15T05:06:41.2275293+00:00",
+          "overlapSeconds": 81347.8340418
+        }
+      ],
+      "expectedFastingDate": "2026-03-14",
+      "expectedStatus": "selected"
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-03-28T03:16:12.9080201+00:00",
+      "endUtc": "2026-03-29T02:16:54.8208619+00:00",
+      "solarDays": [
+        {
+          "date": "2026-03-27",
+          "sunriseUtc": "2026-03-27T04:12:04.0196362+00:00",
+          "nextSunriseUtc": "2026-03-28T04:07:29.1005077+00:00",
+          "overlapSeconds": 3076.1924876
+        },
+        {
+          "date": "2026-03-28",
+          "sunriseUtc": "2026-03-28T04:07:29.1005077+00:00",
+          "nextSunriseUtc": "2026-03-29T04:02:53.7693518+00:00",
+          "overlapSeconds": 79765.7203542
+        }
+      ],
+      "expectedFastingDate": "2026-03-28",
+      "expectedStatus": "selected"
+    },
+    {
+      "tithi": 26,
+      "startUtc": "2026-04-12T19:47:26.1593628+00:00",
+      "endUtc": "2026-04-13T19:39:11.8569947+00:00",
+      "solarDays": [
+        {
+          "date": "2026-04-12",
+          "sunriseUtc": "2026-04-12T02:57:31.9660413+00:00",
+          "nextSunriseUtc": "2026-04-13T02:52:45.0031238+00:00",
+          "overlapSeconds": 25518.843761
+        },
+        {
+          "date": "2026-04-13",
+          "sunriseUtc": "2026-04-13T02:52:45.0031238+00:00",
+          "nextSunriseUtc": "2026-04-14T02:47:56.7905652+00:00",
+          "overlapSeconds": 60386.8538709
+        }
+      ],
+      "expectedFastingDate": "2026-04-13",
+      "expectedStatus": "selected"
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-04-26T12:37:27.8439331+00:00",
+      "endUtc": "2026-04-27T12:46:27.0529175+00:00",
+      "solarDays": [
+        {
+          "date": "2026-04-26",
+          "sunriseUtc": "2026-04-26T01:48:01.1301648+00:00",
+          "nextSunriseUtc": "2026-04-27T01:42:45.3556555+00:00",
+          "overlapSeconds": 47117.5117224
+        },
+        {
+          "date": "2026-04-27",
+          "sunriseUtc": "2026-04-27T01:42:45.3556555+00:00",
+          "nextSunriseUtc": "2026-04-28T01:37:26.0105359+00:00",
+          "overlapSeconds": 39821.697262
+        }
+      ],
+      "expectedFastingDate": "2026-04-26",
+      "expectedStatus": "selected"
+    },
+    {
+      "tithi": 26,
+      "startUtc": "2026-05-12T09:22:53.6892701+00:00",
+      "endUtc": "2026-05-13T08:00:22.4258424+00:00",
+      "solarDays": [
+        {
+          "date": "2026-05-12",
+          "sunriseUtc": "2026-05-12T00:10:34.0827807+00:00",
+          "nextSunriseUtc": "2026-05-13T00:02:24.0376013+00:00",
+          "overlapSeconds": 52770.3483312
+        },
+        {
+          "date": "2026-05-13",
+          "sunriseUtc": "2026-05-13T00:02:24.0376013+00:00",
+          "nextSunriseUtc": "2026-05-13T23:53:33.0623281+00:00",
+          "overlapSeconds": 28678.3882411
+        }
+      ],
+      "expectedFastingDate": "2026-05-12",
+      "expectedStatus": "selected"
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-05-25T23:41:25.4507447+00:00",
+      "endUtc": "2026-05-27T00:52:16.9125366+00:00",
+      "solarDays": [],
+      "expectedFastingDate": null,
+      "expectedStatus": "missingSunriseCoverage"
+    },
+    {
+      "tithi": 26,
+      "startUtc": "2026-06-10T19:28:16.1380005+00:00",
+      "endUtc": "2026-06-11T17:06:44.0908814+00:00",
+      "solarDays": [],
+      "expectedFastingDate": null,
+      "expectedStatus": "missingSunriseCoverage"
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-06-24T12:42:48.7820435+00:00",
+      "endUtc": "2026-06-25T14:39:53.2479858+00:00",
+      "solarDays": [],
+      "expectedFastingDate": null,
+      "expectedStatus": "missingSunriseCoverage"
+    },
+    {
+      "tithi": 26,
+      "startUtc": "2026-07-10T02:46:51.4974976+00:00",
+      "endUtc": "2026-07-10T23:53:11.1026002+00:00",
+      "solarDays": [],
+      "expectedFastingDate": null,
+      "expectedStatus": "missingSunriseCoverage"
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-07-24T03:43:16.055603+00:00",
+      "endUtc": "2026-07-25T06:04:47.9379273+00:00",
+      "solarDays": [],
+      "expectedFastingDate": null,
+      "expectedStatus": "missingSunriseCoverage"
+    },
+    {
+      "tithi": 26,
+      "startUtc": "2026-08-08T08:29:46.9674683+00:00",
+      "endUtc": "2026-08-09T05:35:32.2952271+00:00",
+      "solarDays": [
+        {
+          "date": "2026-08-08",
+          "sunriseUtc": "2026-08-08T01:07:32.8083533+00:00",
+          "nextSunriseUtc": "2026-08-09T01:13:15.1011255+00:00",
+          "overlapSeconds": 60208.1336572
+        },
+        {
+          "date": "2026-08-09",
+          "sunriseUtc": "2026-08-09T01:13:15.1011255+00:00",
+          "nextSunriseUtc": "2026-08-10T01:18:48.8658007+00:00",
+          "overlapSeconds": 15737.1941016
+        }
+      ],
+      "expectedFastingDate": "2026-08-08",
+      "expectedStatus": "selected"
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-08-22T20:30:52.5558472+00:00",
+      "endUtc": "2026-08-23T22:49:12.6992799+00:00",
+      "solarDays": [
+        {
+          "date": "2026-08-22",
+          "sunriseUtc": "2026-08-22T02:18:03.5746631+00:00",
+          "nextSunriseUtc": "2026-08-23T02:22:33.3714294+00:00",
+          "overlapSeconds": 21100.8155822
+        },
+        {
+          "date": "2026-08-23",
+          "sunriseUtc": "2026-08-23T02:22:33.3714294+00:00",
+          "nextSunriseUtc": "2026-08-24T02:27:00.2155664+00:00",
+          "overlapSeconds": 73599.3278505
+        }
+      ],
+      "expectedFastingDate": "2026-08-23",
+      "expectedStatus": "selected"
+    },
+    {
+      "tithi": 26,
+      "startUtc": "2026-09-06T13:59:43.1222534+00:00",
+      "endUtc": "2026-09-07T11:34:38.1600952+00:00",
+      "solarDays": [
+        {
+          "date": "2026-09-06",
+          "sunriseUtc": "2026-09-06T03:21:30.2274817+00:00",
+          "nextSunriseUtc": "2026-09-07T03:25:30.7044312+00:00",
+          "overlapSeconds": 48347.5821778
+        },
+        {
+          "date": "2026-09-07",
+          "sunriseUtc": "2026-09-07T03:25:30.7044312+00:00",
+          "nextSunriseUtc": "2026-09-08T03:29:30.0965747+00:00",
+          "overlapSeconds": 29347.455664
+        }
+      ],
+      "expectedFastingDate": "2026-09-06",
+      "expectedStatus": "selected"
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-09-21T14:31:25.6796264+00:00",
+      "endUtc": "2026-09-22T16:13:48.9871216+00:00",
+      "solarDays": [
+        {
+          "date": "2026-09-21",
+          "sunriseUtc": "2026-09-21T04:20:14.3806055+00:00",
+          "nextSunriseUtc": "2026-09-22T04:24:05.7663953+00:00",
+          "overlapSeconds": 49960.0867689
+        },
+        {
+          "date": "2026-09-22",
+          "sunriseUtc": "2026-09-22T04:24:05.7663953+00:00",
+          "nextSunriseUtc": "2026-09-23T04:27:57.1247461+00:00",
+          "overlapSeconds": 42583.2207263
+        }
+      ],
+      "expectedFastingDate": "2026-09-21",
+      "expectedStatus": "selected"
+    },
+    {
+      "tithi": 26,
+      "startUtc": "2026-10-05T20:37:59.9514771+00:00",
+      "endUtc": "2026-10-06T19:05:00.2426148+00:00",
+      "solarDays": [
+        {
+          "date": "2026-10-05",
+          "sunriseUtc": "2026-10-05T05:14:37.1415039+00:00",
+          "nextSunriseUtc": "2026-10-06T05:18:34.7071838+00:00",
+          "overlapSeconds": 31234.7557067
+        },
+        {
+          "date": "2026-10-06",
+          "sunriseUtc": "2026-10-06T05:18:34.7071838+00:00",
+          "nextSunriseUtc": "2026-10-07T05:22:33.2203137+00:00",
+          "overlapSeconds": 49585.535431
+        }
+      ],
+      "expectedFastingDate": "2026-10-06",
+      "expectedStatus": "selected"
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-10-21T08:42:23.3761597+00:00",
+      "endUtc": "2026-10-22T09:18:35.5380249+00:00",
+      "solarDays": [
+        {
+          "date": "2026-10-21",
+          "sunriseUtc": "2026-10-21T06:20:29.4730737+00:00",
+          "nextSunriseUtc": "2026-10-22T06:24:50.412113+00:00",
+          "overlapSeconds": 78147.0359533
+        },
+        {
+          "date": "2026-10-22",
+          "sunriseUtc": "2026-10-22T06:24:50.412113+00:00",
+          "nextSunriseUtc": "2026-10-23T06:29:13.4660071+00:00",
+          "overlapSeconds": 10425.1259119
+        }
+      ],
+      "expectedFastingDate": "2026-10-21",
+      "expectedStatus": "selected"
+    },
+    {
+      "tithi": 26,
+      "startUtc": "2026-11-04T05:33:46.5792847+00:00",
+      "endUtc": "2026-11-05T05:06:08.5775757+00:00",
+      "solarDays": [
+        {
+          "date": "2026-11-03",
+          "sunriseUtc": "2026-11-03T07:20:21.5080261+00:00",
+          "nextSunriseUtc": "2026-11-04T07:25:19.9653491+00:00",
+          "overlapSeconds": 6693.3860644
+        },
+        {
+          "date": "2026-11-04",
+          "sunriseUtc": "2026-11-04T07:25:19.9653491+00:00",
+          "nextSunriseUtc": "2026-11-05T07:30:22.4327087+00:00",
+          "overlapSeconds": 78048.6122266
+        }
+      ],
+      "expectedFastingDate": "2026-11-04",
+      "expectedStatus": "selected"
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-11-20T01:46:06.8930054+00:00",
+      "endUtc": "2026-11-21T01:01:58.8858033+00:00",
+      "solarDays": [
+        {
+          "date": "2026-11-19",
+          "sunriseUtc": "2026-11-19T08:51:45.1826074+00:00",
+          "nextSunriseUtc": "2026-11-20T08:58:55.5857849+00:00",
+          "overlapSeconds": 25968.6927795
+        },
+        {
+          "date": "2026-11-20",
+          "sunriseUtc": "2026-11-20T08:58:55.5857849+00:00",
+          "nextSunriseUtc": "2026-11-21T09:06:28.5201215+00:00",
+          "overlapSeconds": 57783.3000184
+        }
+      ],
+      "expectedFastingDate": "2026-11-20",
+      "expectedStatus": "selected"
+    },
+    {
+      "tithi": 26,
+      "startUtc": "2026-12-03T17:34:02.2348023+00:00",
+      "endUtc": "2026-12-04T18:15:15.4769898+00:00",
+      "solarDays": [],
+      "expectedFastingDate": null,
+      "expectedStatus": "missingSunriseCoverage"
+    },
+    {
+      "tithi": 11,
+      "startUtc": "2026-12-19T16:39:51.4901733+00:00",
+      "endUtc": "2026-12-20T14:45:04.3807983+00:00",
+      "solarDays": [],
+      "expectedFastingDate": null,
+      "expectedStatus": "missingSunriseCoverage"
+    }
+  ]
+}

@@ -4,6 +4,8 @@ using EkadashiEngine.Core;
 using EkadashiEngine.Core.Astronomy;
 using EkadashiEngine.Core.ReferenceData;
 using EkadashiEngine.Core.Rules;
+using EkadashiEngine.Core.Diagnostics;
+using EkadashiEngine.Core.Export;
 using Microsoft.Extensions.Logging;
 
 namespace EkadashiEngine.Desktop.ViewModels;
@@ -14,6 +16,8 @@ public sealed partial class MainWindowViewModel : ObservableObject
     private readonly IFastingCalendarCalculator _fastingCalculator;
     private readonly ICalendarReferenceProvider _references;
     private readonly CalendarComparisonService _comparisonService;
+    private readonly CalculationSnapshotFactory _snapshotFactory;
+    private readonly CalculationExporter _exporter;
     private readonly ILogger<MainWindowViewModel> _logger;
     private IReadOnlyList<ResultRow> _allResults = [];
     private IReadOnlyList<ComparisonRow> _allComparisonRows = [];
@@ -46,7 +50,20 @@ public sealed partial class MainWindowViewModel : ObservableObject
 
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(CalculateCommand))]
+    [NotifyPropertyChangedFor(nameof(CanExport))]
+    [NotifyPropertyChangedFor(nameof(CanExportCsv))]
     private bool _isBusy;
+
+    [ObservableProperty]
+    [NotifyCanExecuteChangedFor(nameof(CalculateCommand))]
+    [NotifyPropertyChangedFor(nameof(CanExport))]
+    [NotifyPropertyChangedFor(nameof(CanExportCsv))]
+    private bool _isExporting;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(CanExport))]
+    [NotifyPropertyChangedFor(nameof(CanExportCsv))]
+    private CalculationSnapshot? _snapshot;
 
     [ObservableProperty]
     private bool _showCandidatesOnly;
@@ -59,6 +76,7 @@ public sealed partial class MainWindowViewModel : ObservableObject
 
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(HasSelectedComparisonRow))]
+    [NotifyPropertyChangedFor(nameof(ShowComparisonOverview))]
     private ComparisonRow? _selectedComparisonRow;
 
     [ObservableProperty]
@@ -87,7 +105,10 @@ public sealed partial class MainWindowViewModel : ObservableObject
     private string _resultSummary = "Noch keine Berechnung";
 
     public bool HasSelectedResult => SelectedResult is not null;
+    public bool CanExport => Snapshot is not null && !IsBusy && !IsExporting;
+    public bool CanExportCsv => CanExport && Snapshot!.Comparison is not null;
     public bool HasSelectedComparisonRow => SelectedComparisonRow is not null;
+    public bool ShowComparisonOverview => IsAnandaMargaMode && !HasSelectedComparisonRow;
     public bool IsAnandaMargaMode => SelectedTradition?.Tradition == Tradition.AnandaMarga;
     public string ModeDescription => IsAnandaMargaMode
         ? "Ananda Marga: größte Überschneidung zwischen Ekadashi und Sonnenaufgangstag. Mit offiziellen Kalendern noch nicht validiert."
@@ -96,16 +117,19 @@ public sealed partial class MainWindowViewModel : ObservableObject
     public string YearValidationMessage => IsYearValid ? string.Empty : $"Bitte ein ganzes Jahr von {MinimumYear} bis {MaximumYear} eingeben.";
     private bool IsYearValid => Year is >= YearAstronomyCalculator.MinimumYear and <= YearAstronomyCalculator.MaximumYear
         && decimal.Truncate(Year.Value) == Year.Value;
-    private bool CanCalculate => !IsBusy && IsYearValid && SelectedLocation is not null
+    private bool CanCalculate => !IsBusy && !IsExporting && IsYearValid && SelectedLocation is not null
         && SelectedTradition?.Tradition is Tradition.TechnicalSunriseCandidate or Tradition.AnandaMarga;
 
     public MainWindowViewModel(IYearAstronomyCalculator calculator, IFastingCalendarCalculator fastingCalculator,
-        ICalendarReferenceProvider references, CalendarComparisonService comparisonService, ILogger<MainWindowViewModel> logger)
+        ICalendarReferenceProvider references, CalendarComparisonService comparisonService, CalculationSnapshotFactory snapshotFactory,
+        CalculationExporter exporter, ILogger<MainWindowViewModel> logger)
     {
         _calculator = calculator;
         _fastingCalculator = fastingCalculator;
         _references = references;
         _comparisonService = comparisonService;
+        _snapshotFactory = snapshotFactory;
+        _exporter = exporter;
         _logger = logger;
         _selectedLocation = Locations[0];
         _selectedTradition = Traditions[0];
@@ -129,10 +153,18 @@ public sealed partial class MainWindowViewModel : ObservableObject
             _logger.LogInformation("Calculating {Tradition} for {Location}, {Year}.", tradition, location.DisplayName, year);
             if (tradition == Tradition.AnandaMarga)
             {
-                var calendar = await Task.Run(() => _fastingCalculator.Calculate(year, location, cancellationToken), cancellationToken);
+                var snapshot = await Task.Run(() =>
+                {
+                    var calendar = _fastingCalculator.Calculate(year, location, cancellationToken);
+                    var astronomy = _calculator.Calculate(year, location, cancellationToken);
+                    var reference = _references.Find(year, location, calendar.Tradition);
+                    var comparison = _comparisonService.Compare(calendar, reference);
+                    return _snapshotFactory.Create(astronomy, calendar, comparison, cancellationToken);
+                }, cancellationToken);
                 cancellationToken.ThrowIfCancellationRequested();
                 if (inputVersion != _inputVersion) return;
-                PublishComparison(calendar);
+                PublishComparison(snapshot);
+                Snapshot = snapshot;
                 StatusMessage = "Kalendervergleich abgeschlossen. Eine Zeile öffnet die Regelentscheidung.";
                 return;
             }
@@ -141,7 +173,9 @@ public sealed partial class MainWindowViewModel : ObservableObject
             if (inputVersion != _inputVersion)
                 return;
 
+            var technicalSnapshot = _snapshotFactory.Create(calculation, cancellationToken: cancellationToken);
             _allResults = calculation.Days.Select(day => new ResultRow(location, day, row => SelectedResult = row)).ToArray();
+            Snapshot = technicalSnapshot;
             UpdateVisibleRows();
             var candidates = calculation.Days.Count(day => day.IsEkadashiCandidate == true);
             var unavailable = calculation.Days.Count(day => day.IsEkadashiCandidate is null);
@@ -177,6 +211,7 @@ public sealed partial class MainWindowViewModel : ObservableObject
     {
         InputsChanged();
         OnPropertyChanged(nameof(IsAnandaMargaMode));
+        OnPropertyChanged(nameof(ShowComparisonOverview));
         OnPropertyChanged(nameof(ModeDescription));
     }
     partial void OnShowCandidatesOnlyChanged(bool value) => UpdateVisibleRows();
@@ -193,6 +228,7 @@ public sealed partial class MainWindowViewModel : ObservableObject
     private void ClearResults()
     {
         _allResults = [];
+        Snapshot = null;
         Results = [];
         SelectedResult = null;
         ResultSummary = "Noch keine Berechnung";
@@ -211,12 +247,12 @@ public sealed partial class MainWindowViewModel : ObservableObject
         Results = ShowCandidatesOnly ? _allResults.Where(row => row.Day.IsEkadashiCandidate == true).ToArray() : _allResults;
     }
 
-    private void PublishComparison(TraditionYearResult calendar)
+    private void PublishComparison(CalculationSnapshot snapshot)
     {
-        var reference = _references.Find(calendar.Year, calendar.Location, calendar.Tradition);
-        var comparison = _comparisonService.Compare(calendar, reference);
-        _allComparisonRows = comparison.Rows.Select(row => new ComparisonRow(row, calendar.Location,
-            calendar.Decisions.FirstOrDefault(decision => decision.FastingDate == row.Calculated && row.Calculated.HasValue))).ToArray();
+        var calendar = snapshot.Calendar!;
+        var comparison = snapshot.Comparison!;
+        var reference = comparison.Reference;
+        _allComparisonRows = snapshot.Diagnostics.Select(diagnostic => new ComparisonRow(diagnostic, calendar)).ToArray();
         UpdateComparisonRows();
         ResultSummary = $"{calendar.Location.DisplayName} · {calendar.Year} · {calendar.FastingDates.Count} berechnete Fastentage";
         ComparisonSummary = reference is null
@@ -234,5 +270,18 @@ public sealed partial class MainWindowViewModel : ObservableObject
     {
         SelectedComparisonRow = null;
         ComparisonRows = ShowMismatchesOnly ? _allComparisonRows.Where(row => row.IsMismatch).ToArray() : _allComparisonRows;
+    }
+
+    public ExportPayload CreateExport(ExportFormat format)
+    {
+        if (!CanExport || (format == ExportFormat.Csv && !CanExportCsv))
+            throw new InvalidOperationException("No completed calculation is available for this export.");
+        return _exporter.Create(Snapshot!, format);
+    }
+
+    public void ReportExportFailure(Exception exception)
+    {
+        _logger.LogError(exception, "Export failed.");
+        StatusMessage = "Export fehlgeschlagen. Bitte Ziel und Schreibrechte prüfen und erneut versuchen.";
     }
 }

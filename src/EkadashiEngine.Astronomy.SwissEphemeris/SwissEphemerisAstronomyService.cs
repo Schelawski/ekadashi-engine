@@ -1,11 +1,14 @@
 using EkadashiEngine.Core;
 using EkadashiEngine.Core.Astronomy;
+using EkadashiEngine.Core.Diagnostics;
 using SwissEphNet;
 
 namespace EkadashiEngine.Astronomy.SwissEphemeris;
 
 public sealed class SwissEphemerisAstronomyService : IAstronomyService, ISunriseCalculator
 {
+    public static AstronomyProvenance Provenance => new("SwissEphSharp",
+        typeof(SwissEph).Assembly.GetName().Version!.ToString(), "Moshier (SEFLG_MOSEPH)");
     // Use the analytic ephemeris explicitly: no data files or silent file fallback.
     private const int EphemerisFlags = SwissEph.SEFLG_MOSEPH;
 

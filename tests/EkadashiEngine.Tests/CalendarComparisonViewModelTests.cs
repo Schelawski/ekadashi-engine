@@ -2,6 +2,7 @@ using EkadashiEngine.Core;
 using EkadashiEngine.Core.Astronomy;
 using EkadashiEngine.Core.ReferenceData;
 using EkadashiEngine.Core.Rules;
+using EkadashiEngine.Core.Export;
 using EkadashiEngine.Desktop.ViewModels;
 using Microsoft.Extensions.Logging.Abstractions;
 
@@ -103,8 +104,9 @@ public sealed class CalendarComparisonViewModelTests
 
     private static MainWindowViewModel Create(Func<int, Location, CancellationToken, TraditionYearResult> calculate)
     {
-        var viewModel = new MainWindowViewModel(new UnusedTechnicalCalculator(), new StubFastingCalculator(calculate),
-            new EmbeddedCalendarReferenceProvider(), new CalendarComparisonService(), NullLogger<MainWindowViewModel>.Instance);
+        var viewModel = new MainWindowViewModel(new SyntheticYearCalculator(), new StubFastingCalculator(calculate),
+            new EmbeddedCalendarReferenceProvider(), new CalendarComparisonService(), TestCalculationServices.Factory,
+            new CalculationExporter(), NullLogger<MainWindowViewModel>.Instance);
         viewModel.SelectedTradition = viewModel.Traditions[1];
         return viewModel;
     }
@@ -121,9 +123,9 @@ public sealed class CalendarComparisonViewModelTests
         public TraditionYearResult Calculate(int year, Location location, CancellationToken cancellationToken = default) => calculate(year, location, cancellationToken);
     }
 
-    private sealed class UnusedTechnicalCalculator : IYearAstronomyCalculator
+    private sealed class SyntheticYearCalculator : IYearAstronomyCalculator
     {
         public YearAstronomyResult Calculate(int year, Location location, CancellationToken cancellationToken = default) =>
-            throw new InvalidOperationException("Traditional mode must not invoke technical candidates.");
+            TestCalculationServices.Year(year, location);
     }
 }

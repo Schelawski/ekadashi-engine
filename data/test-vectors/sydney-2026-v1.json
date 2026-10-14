@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "kind": "testVectors",
+  "location": {
+    "displayName": "Sydney",
+    "country": "AU",
+    "latitude": -33.8688,
+    "longitude": 151.2093,
+    "timeZone": "Australia/Sydney"
+  },
+  "year": 2026,
+  "astronomy": {
+    "provider": "SwissEphSharp",
+    "version": "2.10.3.1",
+    "ephemeris": "Moshier (SEFLG_MOSEPH)"
+  },
+  "conventions": {
+    "timeZoneDatabase": "TZDB: 2026d (mapping: 48.2)",
+    "longitudes": "apparent geocentric tropical ecliptic of date",
+    "angles": "degrees [0,360)",
+    "intervals": "half-open [start,end); elapsed durations in UTC"
+  },
+  "rule": {
+    "tradition": "technicalSunriseCandidate",
+    "version": "technical-sunrise-v1",
+    "source": null,
+    "isCalendarValidated": false
+  },
+  "reference": null,
+  "tolerances": {
+    "longitudeDegrees": 1E-05,
+    "sunriseSeconds": 2,
+    "tithiBoundarySeconds": 1
+  },
+  "vectors": [
+    {
+      "date": "2026-04-04",
+      "sunriseStatus": "available",
+      "sunriseDefinition": "upperLimbWithRefraction",
+      "sunriseUtc": "2026-04-03T20:09:16.0553357+00:00",
+      "sunriseLocal": "2026-04-04T07:09:16.0553357+11:00",
+      "sunLongitude": 14.076043081487976,
+      "moonLongitude": 214.08675823813223,
+      "angularDifference": 200.01071515664427,
+      "tithi": 17,
+      "isEkadashiCandidate": false,
+      "fasting": null,
+      "officialFasting": null
+    },
+    {
+      "date": "2026-04-05",
+      "sunriseStatus": "available",
+      "sunriseDefinition": "upperLimbWithRefraction",
+      "sunriseUtc": "2026-04-04T20:10:00.5653738+00:00",
+      "sunriseLocal": "2026-04-05T06:10:00.5653738+10:00",
+      "sunLongitude": 15.061557048102232,
+      "moonLongitude": 226.2824566478251,
+      "angularDifference": 211.22089959972286,
+      "tithi": 18,
+      "isEkadashiCandidate": false,
+      "fasting": null,
+      "officialFasting": null
+    },
+    {
+      "date": "2026-10-03",
+      "sunriseStatus": "available",
+      "sunriseDefinition": "upperLimbWithRefraction",
+      "sunriseUtc": "2026-10-02T19:30:09.4992041+00:00",
+      "sunriseLocal": "2026-10-03T05:30:09.4992041+10:00",
+      "sunLongitude": 189.62101458392604,
+      "moonLongitude": 89.76364656138902,
+      "angularDifference": 260.142631977463,
+      "tithi": 22,
+      "isEkadashiCandidate": false,
+      "fasting": null,
+      "officialFasting": null
+    },
+    {
+      "date": "2026-10-04",
+      "sunriseStatus": "available",
+      "sunriseDefinition": "upperLimbWithRefraction",
+      "sunriseUtc": "2026-10-03T19:28:47.9833719+00:00",
+      "sunriseLocal": "2026-10-04T06:28:47.9833719+11:00",
+      "sunLongitude": 190.6042522936904,
+      "moonLongitude": 103.92789881916245,
+      "angularDifference": 273.32364652547204,
+      "tithi": 23,
+      "isEkadashiCandidate": false,
+      "fasting": null,
+      "officialFasting": null
+    }
+  ],
+  "ruleCases": []
+}
